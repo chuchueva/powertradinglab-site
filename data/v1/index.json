@@ -1,0 +1,75 @@
+{
+  "dataset": "PowerTradingLab benchmarks",
+  "interface_version": 1,
+  "publisher": {
+    "name": "PowerTradingLab",
+    "url": "https://powertradinglab.org"
+  },
+  "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
+  "generated_from": "2026-09-30T09:40:24Z",
+  "unit": "EUR per MW of trading capacity, summed over the delivery day",
+  "granularity": "one row per zone per delivery day, newest pass only",
+  "benchmarks": {
+    "passive_da_buy_value": "Buy 1 MW on the day-ahead auction for every PTU of the day and settle the position in imbalance. No foresight: the same side every PTU.",
+    "passive_da_sell_value": "Sell 1 MW on the day-ahead auction for every PTU of the day and settle the position in imbalance. No foresight: the same side every PTU.",
+    "extractable_value": "The better of the two passive positions, chosen per PTU with perfect hindsight. It can be negative where dual imbalance pricing leaves the day-ahead price inside the penalty band, and that negative is real.",
+    "adverse_value": "The worse of the two passive positions, chosen per PTU with perfect hindsight. Where a zone prices imbalance single-sided it is the exact mirror of extractable_value.",
+    "trailing_bias_value": "The result of the hourly trailing-bias rule, which picks the day-ahead side from a trailing mean per hour of day and uses only what was known before the auction closed. Empty where no decision was issued."
+  },
+  "columns": {
+    "zone": "Bidding zone code.",
+    "delivery_day": "The delivery day in the zone's own market time, ISO date.",
+    "ptu": "How many 15-minute periods the day was graded on. Less than a full day means the source published fewer.",
+    "ptu_with_action": "How many of those carried a decision of ours. The denominator for trailing_bias_value.",
+    "pass": "as-known (graded the morning after delivery) or as-final (regraded after imbalance settled).",
+    "calc_iteration": "Which pass this is for this delivery day, counting from 1.",
+    "knownby_ts": "The instant the row was computed \u2014 everything in it was knowable then.",
+    "source_file": "The frozen published document this row was derived from."
+  },
+  "zones": [
+    "NL",
+    "RO"
+  ],
+  "files": [
+    {
+      "name": "NL_scores-90d.csv",
+      "bytes": 2243,
+      "sha256": "3be6e48b80bbc3052574c7d27c6cfa26b733c6767e803d7451b3215bbf7d3fbd"
+    },
+    {
+      "name": "NL_scores-latest.csv",
+      "bytes": 367,
+      "sha256": "093870e19811dd23d6cd8ead63becebb13016aedc9af257b7661cc24c0746e54"
+    },
+    {
+      "name": "NL_scores.csv",
+      "bytes": 2243,
+      "sha256": "3be6e48b80bbc3052574c7d27c6cfa26b733c6767e803d7451b3215bbf7d3fbd"
+    },
+    {
+      "name": "RO_scores-90d.csv",
+      "bytes": 2151,
+      "sha256": "c13f5e4ce033b599fdca3363275235d17717cc67082dd244eb018855ee081501"
+    },
+    {
+      "name": "RO_scores-latest.csv",
+      "bytes": 369,
+      "sha256": "39e8030aabaed9762f443b8565bfa71d80d1dbebe48c89e3bc62fd8869b02032"
+    },
+    {
+      "name": "RO_scores.csv",
+      "bytes": 2151,
+      "sha256": "c13f5e4ce033b599fdca3363275235d17717cc67082dd244eb018855ee081501"
+    },
+    {
+      "name": "scores-latest.csv",
+      "bytes": 525,
+      "sha256": "f6299cc5ad3dfcb0aa8a47264933ecf2467081a886614b1ac6d962c1ecc5fe5f"
+    },
+    {
+      "name": "zones.json",
+      "bytes": 505,
+      "sha256": "0ffc64751f143d4dace05a2dbdad414f4b70fa71ecff5714a39c8ebf80f081ae"
+    }
+  ]
+}
