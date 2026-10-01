@@ -29,6 +29,8 @@ SITE_URL = "https://powertradinglab.org"
 DATA_PATH = "benchmarks/data/"          # where data/ is mirrored on the site
 EMAIL = "chuchueva@powertradinglab.org"
 GITHUB = "https://github.com/chuchueva"
+DESCRIPTION = "Irina Chuchueva's Open Research Platform: European power trading benchmarks"
+IMAGES = ["logo.svg", "mark.svg", "apple-touch-icon.png"]   # src/img -> /img
 
 VALUES = [
     ("extractable_value", "Extractable"),
@@ -283,11 +285,21 @@ def layout(ctx, path, title, body):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(full_title)}</title>
+<meta name="description" content="{esc(DESCRIPTION)}">
 <link rel="canonical" href="{SITE_URL}/{path}">
+<link rel="icon" href="{rel('img/mark.svg')}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{rel('img/apple-touch-icon.png')}">
+<meta property="og:image" content="{SITE_URL}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:title" content="{esc(full_title)}">
+<meta property="og:description" content="{esc(DESCRIPTION)}">
+<meta property="og:url" content="{SITE_URL}/{path}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="{rel('style.css')}">
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="{rel('')}">PowerTradingLab</a><nav>{nav}</nav></div></header>
+<header><div class="wrap"><a class="brand" href="{rel('')}"><img src="{rel('img/logo.svg')}" alt="" width="46" height="32"><span>Power<b class="d1">·</b>Trading<b class="d2">·</b>Lab</span></a><nav>{nav}</nav></div></header>
 <main class="wrap">
 {body(rel)}
 </main>
@@ -630,6 +642,10 @@ def build(out):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding="utf-8")
     shutil.copyfile(SRC / "style.css", out / "style.css")
+    (out / "img").mkdir()
+    for name in IMAGES:
+        shutil.copyfile(SRC / "img" / name, out / "img" / name)
+    shutil.copyfile(SRC / "img" / "og.png", out / "og.png")
     if has_report:
         shutil.copyfile(CONTENT / "report.pdf", out / "docs" / "report.pdf")
     shutil.copytree(DATA, out / DATA_PATH)

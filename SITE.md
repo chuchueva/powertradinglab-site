@@ -57,6 +57,10 @@ renaming anything. Concretely, for whoever builds this:
 - **It works without JavaScript.** JS may add convenience and may never be
   required to read a value.
 - **No tracking, no ads, no cookie banner, no login, no newsletter capture.**
+  Visitor statistics are aggregate and server-side only: Cloudflare's own
+  traffic analytics on the proxied domain (requests, approximate unique
+  visitors, countries, paths). No cookies, no script on the page, no
+  per-person data. Decided 2026-10-01.
 
 ## The data contract
 
