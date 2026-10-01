@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="status">
-  <generated_ts>2026-09-30T14:01:13Z</generated_ts>
+  <generated_ts>2026-10-01T09:40:31Z</generated_ts>
   <version schema="6" methodology="3" />
   <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <notice>The only file here that changes. Everything inside a dated folder is frozen: written once and never rewritten.</notice>
   <area code="NL" mode="live">
-    <source da_through="2026-09-30T21:45:00Z" im_through="2026-09-29T21:45:00Z" last_poll="2026-09-30T14:00:42Z" />
-    <forecast delivery_day="2026-10-01" knownby_ts="2026-09-30T09:40:21Z" data_through="2026-09-29T21:00:00Z" with_signal="96" ptu="96" file="nl/2026/10/forecast_NL_2026-10-01_20260930T094021Z.xml" />
-    <score delivery_day="2026-09-29" knownby_ts="2026-09-30T09:40:24Z" calc_iteration="1" ptu="96" file="nl/2026/09/score_NL_2026-09-29_20260930T094024Z.xml" />
+    <source da_through="2026-10-01T21:45:00Z" im_through="2026-09-30T21:45:00Z" last_poll="2026-10-01T09:40:07Z" />
+    <forecast delivery_day="2026-10-02" knownby_ts="2026-10-01T09:40:22Z" data_through="2026-09-30T21:00:00Z" with_signal="96" ptu="96" file="nl/2026/10/forecast_NL_2026-10-02_20261001T094022Z.xml" />
+    <score delivery_day="2026-09-30" knownby_ts="2026-10-01T09:40:24Z" calc_iteration="1" ptu="96" file="nl/2026/09/score_NL_2026-09-30_20261001T094024Z.xml" />
   </area>
   <area code="RO" mode="live">
-    <source da_through="2026-09-30T21:45:00Z" im_through="2026-09-30T13:30:00Z" last_poll="2026-09-30T14:01:02Z" />
-    <forecast delivery_day="2026-10-01" knownby_ts="2026-09-30T09:40:21Z" data_through="2026-09-29T23:00:00Z" with_signal="96" ptu="96" file="ro/2026/10/forecast_RO_2026-10-01_20260930T094021Z.xml" />
-    <score delivery_day="2026-09-29" knownby_ts="2026-09-30T09:40:24Z" calc_iteration="1" ptu="96" file="ro/2026/09/score_RO_2026-09-29_20260930T094024Z.xml" />
+    <source da_through="2026-10-01T21:45:00Z" im_through="2026-10-01T09:00:00Z" last_poll="2026-10-01T09:40:18Z" />
+    <forecast delivery_day="2026-10-02" knownby_ts="2026-10-01T09:40:22Z" data_through="2026-09-30T23:00:00Z" with_signal="96" ptu="96" file="ro/2026/10/forecast_RO_2026-10-02_20261001T094022Z.xml" />
+    <score delivery_day="2026-09-30" knownby_ts="2026-10-01T09:40:24Z" calc_iteration="1" ptu="96" file="ro/2026/09/score_RO_2026-09-30_20261001T094024Z.xml" />
   </area>
 </tradinglab>
