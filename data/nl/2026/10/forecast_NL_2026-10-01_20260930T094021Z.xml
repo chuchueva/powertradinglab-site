@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tradinglab kind="forecast" area="NL" delivery_day="2026-10-01">
+  <knownby_ts>2026-09-30T09:40:21Z</knownby_ts>
+  <calc_iteration>1</calc_iteration>
+  <version schema="6" methodology="3" />
+  <parameters n_days_trailing_bias_default="3" final_day_of_month="20" run_time_utc="09:40" causality="as_of" />
+  <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
+  <unit>EUR per 1 MW of trading quantity</unit>
+  <action_codes>+1 = buy on the day-ahead auction and settle in imbalance; -1 = sell. The attribute is absent when no action was issued.</action_codes>
+  <attribution>Derived from data published on the ENTSO-E Transparency Platform (transparency.entsoe.eu). Imbalance prices (A85) are reused under CC-BY 4.0. Day-ahead prices (A44) belong to the respective power exchanges and are NOT republished here — this file contains only values derived from them.</attribution>
+  <notice>This file reports a measurement of market conditions, not a trading recommendation and not investment advice.</notice>
+  <quality ptu="96" with_signal="96" data_through="2026-09-29T21:00:00Z" />
+  <points count="96">
+    <p ts="2026-09-30T22:00:00Z" action="-1" />
+    <p ts="2026-09-30T22:15:00Z" action="-1" />
+    <p ts="2026-09-30T22:30:00Z" action="-1" />
+    <p ts="2026-09-30T22:45:00Z" action="-1" />
+    <p ts="2026-09-30T23:00:00Z" action="-1" />
+    <p ts="2026-09-30T23:15:00Z" action="-1" />
+    <p ts="2026-09-30T23:30:00Z" action="-1" />
+    <p ts="2026-09-30T23:45:00Z" action="-1" />
+    <p ts="2026-10-01T00:00:00Z" action="-1" />
+    <p ts="2026-10-01T00:15:00Z" action="-1" />
+    <p ts="2026-10-01T00:30:00Z" action="-1" />
+    <p ts="2026-10-01T00:45:00Z" action="-1" />
+    <p ts="2026-10-01T01:00:00Z" action="1" />
+    <p ts="2026-10-01T01:15:00Z" action="1" />
+    <p ts="2026-10-01T01:30:00Z" action="1" />
+    <p ts="2026-10-01T01:45:00Z" action="1" />
+    <p ts="2026-10-01T02:00:00Z" action="1" />
+    <p ts="2026-10-01T02:15:00Z" action="1" />
+    <p ts="2026-10-01T02:30:00Z" action="1" />
+    <p ts="2026-10-01T02:45:00Z" action="1" />
+    <p ts="2026-10-01T03:00:00Z" action="-1" />
+    <p ts="2026-10-01T03:15:00Z" action="-1" />
+    <p ts="2026-10-01T03:30:00Z" action="-1" />
+    <p ts="2026-10-01T03:45:00Z" action="-1" />
+    <p ts="2026-10-01T04:00:00Z" action="-1" />
+    <p ts="2026-10-01T04:15:00Z" action="-1" />
+    <p ts="2026-10-01T04:30:00Z" action="-1" />
+    <p ts="2026-10-01T04:45:00Z" action="-1" />
+    <p ts="2026-10-01T05:00:00Z" action="-1" />
+    <p ts="2026-10-01T05:15:00Z" action="-1" />
+    <p ts="2026-10-01T05:30:00Z" action="-1" />
+    <p ts="2026-10-01T05:45:00Z" action="-1" />
+    <p ts="2026-10-01T06:00:00Z" action="-1" />
+    <p ts="2026-10-01T06:15:00Z" action="-1" />
+    <p ts="2026-10-01T06:30:00Z" action="-1" />
+    <p ts="2026-10-01T06:45:00Z" action="-1" />
+    <p ts="2026-10-01T07:00:00Z" action="-1" />
+    <p ts="2026-10-01T07:15:00Z" action="-1" />
+    <p ts="2026-10-01T07:30:00Z" action="-1" />
+    <p ts="2026-10-01T07:45:00Z" action="-1" />
+    <p ts="2026-10-01T08:00:00Z" action="1" />
+    <p ts="2026-10-01T08:15:00Z" action="1" />
+    <p ts="2026-10-01T08:30:00Z" action="1" />
+    <p ts="2026-10-01T08:45:00Z" action="1" />
+    <p ts="2026-10-01T09:00:00Z" action="1" />
+    <p ts="2026-10-01T09:15:00Z" action="1" />
+    <p ts="2026-10-01T09:30:00Z" action="1" />
+    <p ts="2026-10-01T09:45:00Z" action="1" />
+    <p ts="2026-10-01T10:00:00Z" action="1" />
+    <p ts="2026-10-01T10:15:00Z" action="1" />
+    <p ts="2026-10-01T10:30:00Z" action="1" />
+    <p ts="2026-10-01T10:45:00Z" action="1" />
+    <p ts="2026-10-01T11:00:00Z" action="1" />
+    <p ts="2026-10-01T11:15:00Z" action="1" />
+    <p ts="2026-10-01T11:30:00Z" action="1" />
+    <p ts="2026-10-01T11:45:00Z" action="1" />
+    <p ts="2026-10-01T12:00:00Z" action="1" />
+    <p ts="2026-10-01T12:15:00Z" action="1" />
+    <p ts="2026-10-01T12:30:00Z" action="1" />
+    <p ts="2026-10-01T12:45:00Z" action="1" />
+    <p ts="2026-10-01T13:00:00Z" action="1" />
+    <p ts="2026-10-01T13:15:00Z" action="1" />
+    <p ts="2026-10-01T13:30:00Z" action="1" />
+    <p ts="2026-10-01T13:45:00Z" action="1" />
+    <p ts="2026-10-01T14:00:00Z" action="1" />
+    <p ts="2026-10-01T14:15:00Z" action="1" />
+    <p ts="2026-10-01T14:30:00Z" action="1" />
+    <p ts="2026-10-01T14:45:00Z" action="1" />
+    <p ts="2026-10-01T15:00:00Z" action="1" />
+    <p ts="2026-10-01T15:15:00Z" action="1" />
+    <p ts="2026-10-01T15:30:00Z" action="1" />
+    <p ts="2026-10-01T15:45:00Z" action="1" />
+    <p ts="2026-10-01T16:00:00Z" action="-1" />
+    <p ts="2026-10-01T16:15:00Z" action="-1" />
+    <p ts="2026-10-01T16:30:00Z" action="-1" />
+    <p ts="2026-10-01T16:45:00Z" action="-1" />
+    <p ts="2026-10-01T17:00:00Z" action="-1" />
+    <p ts="2026-10-01T17:15:00Z" action="-1" />
+    <p ts="2026-10-01T17:30:00Z" action="-1" />
+    <p ts="2026-10-01T17:45:00Z" action="-1" />
+    <p ts="2026-10-01T18:00:00Z" action="-1" />
+    <p ts="2026-10-01T18:15:00Z" action="-1" />
+    <p ts="2026-10-01T18:30:00Z" action="-1" />
+    <p ts="2026-10-01T18:45:00Z" action="-1" />
+    <p ts="2026-10-01T19:00:00Z" action="-1" />
+    <p ts="2026-10-01T19:15:00Z" action="-1" />
+    <p ts="2026-10-01T19:30:00Z" action="-1" />
+    <p ts="2026-10-01T19:45:00Z" action="-1" />
+    <p ts="2026-10-01T20:00:00Z" action="-1" />
+    <p ts="2026-10-01T20:15:00Z" action="-1" />
+    <p ts="2026-10-01T20:30:00Z" action="-1" />
+    <p ts="2026-10-01T20:45:00Z" action="-1" />
+    <p ts="2026-10-01T21:00:00Z" action="1" />
+    <p ts="2026-10-01T21:15:00Z" action="1" />
+    <p ts="2026-10-01T21:30:00Z" action="1" />
+    <p ts="2026-10-01T21:45:00Z" action="1" />
+  </points>
+</tradinglab>

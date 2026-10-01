@@ -26,11 +26,38 @@
     "knownby_ts": "The instant the row was computed \u2014 everything in it was knowable then.",
     "source_file": "The frozen published document this row was derived from."
   },
+  "forecast_columns": {
+    "zone": "Bidding zone code.",
+    "delivery_day": "The day the decision is FOR, in the zone's own market time.",
+    "knownby_ts": "When the decision was made. Always before the day-ahead gate of the day before delivery_day.",
+    "ptu": "15-minute periods in the delivery day (92, 96 or 100).",
+    "ptu_buy": "Periods with action +1: buy on the day-ahead auction, settle in imbalance.",
+    "ptu_sell": "Periods with action -1: sell on the day-ahead auction, settle in imbalance.",
+    "ptu_no_action": "Periods with no action. ptu = ptu_buy + ptu_sell + ptu_no_action, always.",
+    "data_through": "The freshest fact the signal saw.",
+    "skip_reason": "Empty: where there is no action, the signal did not form. Set: the forecast was REFUSED, and the value says why (kind:missing day[:leg]).",
+    "source_file": "The frozen published forecast this row was derived from; per-period actions are there."
+  },
   "zones": [
     "NL",
     "RO"
   ],
   "files": [
+    {
+      "name": "NL_forecasts-90d.csv",
+      "bytes": 2068,
+      "sha256": "b91169e9b71cd7caa1fbd269b1c01aceb44bfa4365ced3561a4f2d80b774a5a2"
+    },
+    {
+      "name": "NL_forecasts-latest.csv",
+      "bytes": 263,
+      "sha256": "6e07d562eda6baa3e0b6f13316b674dc61c0603516a89303b99eec8ce6479873"
+    },
+    {
+      "name": "NL_forecasts.csv",
+      "bytes": 2068,
+      "sha256": "b91169e9b71cd7caa1fbd269b1c01aceb44bfa4365ced3561a4f2d80b774a5a2"
+    },
     {
       "name": "NL_scores-90d.csv",
       "bytes": 2243,
@@ -47,6 +74,21 @@
       "sha256": "3be6e48b80bbc3052574c7d27c6cfa26b733c6767e803d7451b3215bbf7d3fbd"
     },
     {
+      "name": "RO_forecasts-90d.csv",
+      "bytes": 546,
+      "sha256": "ac9d63ed29d8823fc271d20e9530bba1ab93477e96d8e72fafb830240cdcb21c"
+    },
+    {
+      "name": "RO_forecasts-latest.csv",
+      "bytes": 263,
+      "sha256": "8ec831bc550ddbec00a69b7cfbaa5c8d764d4b324436d5f6aa1f686f422f5c54"
+    },
+    {
+      "name": "RO_forecasts.csv",
+      "bytes": 546,
+      "sha256": "ac9d63ed29d8823fc271d20e9530bba1ab93477e96d8e72fafb830240cdcb21c"
+    },
+    {
       "name": "RO_scores-90d.csv",
       "bytes": 2151,
       "sha256": "c13f5e4ce033b599fdca3363275235d17717cc67082dd244eb018855ee081501"
@@ -60,6 +102,11 @@
       "name": "RO_scores.csv",
       "bytes": 2151,
       "sha256": "c13f5e4ce033b599fdca3363275235d17717cc67082dd244eb018855ee081501"
+    },
+    {
+      "name": "forecasts-latest.csv",
+      "bytes": 390,
+      "sha256": "457f6a497f4c3219e41110b488ead4a0694549a020ee6957d3f7b9e459e5096c"
     },
     {
       "name": "scores-latest.csv",
