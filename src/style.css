@@ -12,12 +12,10 @@ body {
 a { color: var(--teal); }
 a:hover { color: var(--ink); }
 header { border-bottom: 1px solid var(--rule); }
-header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-top: 14px; padding-bottom: 14px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 500; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
-.brand img { display: block; }
-.brand b { font-weight: 700; padding: 0 0.12em; }
-.brand .d1 { color: var(--teal); }
-.brand .d2 { color: var(--amber); }
+header .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 22px; padding-bottom: 12px; }
+.brand { display: inline-flex; align-items: center; }
+.brand img { display: block; height: 88px; width: auto; max-width: 100%; }
+@media (max-width: 640px) { .brand img { height: auto; width: 100%; } }
 nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 nav a { color: var(--ink); text-decoration: none; }
 nav a[aria-current="page"] { color: var(--teal); border-bottom: 2px solid var(--teal); }

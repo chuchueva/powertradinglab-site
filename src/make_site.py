@@ -29,7 +29,7 @@ SITE_URL = "https://powertradinglab.org"
 DATA_PATH = "benchmarks/data/"          # where data/ is mirrored on the site
 EMAIL = "chuchueva@powertradinglab.org"
 GITHUB = "https://github.com/chuchueva"
-DESCRIPTION = "Irina Chuchueva's Open Research Platform: European power trading benchmarks"
+DESCRIPTION = "Irina Chuchueva's Open Research Platform: European Power Trading Benchmarks"
 IMAGES = ["logo.svg", "mark.svg", "apple-touch-icon.png"]   # src/img -> /img
 
 VALUES = [
@@ -276,7 +276,7 @@ def layout(ctx, path, title, body):
         f'<p>Schema {esc(st["schema"])} · Methodology {esc(st["methodology"])} · '
         f'Data through {ts(ctx.index["generated_from"])} · Last run {ts(st["generated_ts"])}</p>'
         '<p>Derived from data published on the ENTSO-E Transparency Platform; imbalance prices '
-        'reused under CC-BY 4.0. No day-ahead or imbalance prices are republished here.</p>'
+        'reused under CC-BY 4.0. No day-ahead or imbalance prices are republished.</p>'
         f'<p><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{GITHUB}">GitHub</a> · '
         f'<a href="{rel("chuchueva/")}">Irina Chuchueva</a></p>')
     return f"""<!doctype html>
@@ -299,7 +299,7 @@ def layout(ctx, path, title, body):
 <link rel="stylesheet" href="{rel('style.css')}">
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="{rel('')}"><img src="{rel('img/logo.svg')}" alt="" width="46" height="32"><span>Power<b class="d1">·</b>Trading<b class="d2">·</b>Lab</span></a><nav>{nav}</nav></div></header>
+<header><div class="wrap"><a class="brand" href="{rel('')}"><img src="{rel('img/logo.svg')}" alt="PowerTradingLab" width="584" height="88"></a><nav>{nav}</nav></div></header>
 <main class="wrap">
 {body(rel)}
 </main>
