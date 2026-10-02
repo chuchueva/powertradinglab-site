@@ -42,13 +42,18 @@ VALUES = [
 UNIT = "EUR per 1 MW of trading capacity, summed over the delivery day"
 
 NAV = [
+    ("about/", "About"),
     ("benchmarks/", "Benchmarks"),
     ("docs/", "Docs"),
     ("news/", "News"),
-    ("about/", "About"),
     ("support/", "Support"),
     ("contact/", "Contact"),
 ]
+
+
+# The stylesheet address changes whenever its content does, so browsers and the
+# Cloudflare cache never serve an old style.css with new pages. Deterministic.
+CSS_VERSION = hashlib.sha256((SRC / "style.css").read_bytes()).hexdigest()[:10]
 
 
 class BuildError(Exception):
@@ -333,7 +338,7 @@ def layout(ctx, path, title, body):
 <meta property="og:description" content="{esc(DESCRIPTION)}">
 <meta property="og:url" content="{SITE_URL}/{path}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="{rel('style.css')}">
+<link rel="stylesheet" href="{rel('style.css')}?v={CSS_VERSION}">
 </head>
 <body>
 <header><div class="wrap">{brand}<nav>{nav}</nav></div></header>

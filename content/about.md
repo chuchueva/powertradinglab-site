@@ -14,7 +14,7 @@ They play a role similar to the S&P 500 in equity trading: an external, independ
 
 For each covered bidding zone, PowerTradingLab computes five benchmarks every day from the day-ahead (DA) and imbalance (IM) prices, per 1 MW of traded quantity.
 
-### Major
+### Key
 
 - **Extractable Value** — the ceiling: how much value the DA–IM price pair holds; the better side in every quarter-hour, chosen with perfect hindsight.
 - **Trailing Bias Value** — the result of a simple trailing bias strategy: the side is chosen from the bias of the three previous days and decided before the DA gate closure. It is the baseline any complex trading model should beat.

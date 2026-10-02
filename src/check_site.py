@@ -21,7 +21,7 @@ def main(root):
         for url in re.findall(r'(?:href|src)="([^"]+)"', text):
             if re.match(r"[a-z]+:", url) or url.startswith("#"):
                 continue
-            path = url.split("#")[0]
+            path = url.split("#")[0].split("?")[0]
             target = (page.parent / path).resolve()
             if path.endswith("/") or path in ("", "./"):
                 target = target / "index.html"
