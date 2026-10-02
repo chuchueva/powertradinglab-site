@@ -1,3 +1,1 @@
-# PowerTradingLab
-
-[PLACEHOLDER — two sentences: what this is. Was this market worth trading, and is it still?]
+Your short-term trading P&L: measured against what? A daily benchmark for European short-term power trading: decisions published before the auction, graded after delivery, frozen in free access files.

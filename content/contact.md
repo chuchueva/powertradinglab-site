@@ -1,7 +1,7 @@
 # Contact
 
+PowerTradingLab is developed and maintained by [Irina Chuchueva](/chuchueva/). For any question, write to the email address below or open an issue in the repository.
+
 Email: [chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org)
 
-GitHub: [github.com/chuchueva](https://github.com/chuchueva)
-
-[PLACEHOLDER — what to write about; replies come from the owner's own address.]
+Repository: [github.com/chuchueva/powertradinglab-benchmarks](https://github.com/chuchueva/powertradinglab-benchmarks)

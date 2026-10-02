@@ -2,11 +2,8 @@
 
 **The data is free, complete and open, always.**
 
-[PLACEHOLDER — donations pay for hosting, the domain and, one day, the compute
-the harder maths will need. They never gate a file and never touch the
-methodology. No payment buttons yet: the rails are being settled. Until then,
-write to [chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org).]
+PowerTradingLab **will run someday on voluntary donations**. They will pay for hosting and the domain and, later, for the computing time that the more complex models will need. A donation never unlocks a file and never changes the methodology: a benchmark is useful only while it is neutral.
 
-## A query interface
+There are no payment buttons yet: the payment channels are still being set up. Until then, to support the project, write to [chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org).
 
-[PLACEHOLDER — same paragraph as on the data page: funded work, same numbers, just as freely.]
+Support also means feedback. Bug reports, suggestions and questions are welcome at the same address.

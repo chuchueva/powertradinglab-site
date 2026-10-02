@@ -30,7 +30,7 @@ DATA_PATH = "benchmarks/data/"          # where data/ is mirrored on the site
 EMAIL = "chuchueva@powertradinglab.org"
 GITHUB = "https://github.com/chuchueva"
 DESCRIPTION = "Irina Chuchueva's Open Research Platform: European Power Trading Benchmarks"
-IMAGES = ["logo.svg", "mark.svg", "apple-touch-icon.png"]   # src/img -> /img
+NOT_COPIED = {"og.svg", "og.png"}   # everything else in src/img goes to /img; og.png goes to the root
 
 VALUES = [
     ("extractable_value", "Extractable"),
@@ -160,7 +160,9 @@ def score_statements(r, tzname):
 
 def md(text, rel):
     """A small markdown subset: # headings, paragraphs, - lists, ``` blocks,
-    `code`, **bold**, *italic*, [text](url). A url starting with / is made
+    `code`, **bold**, *italic*, [text](url), ![alt](url){width=N}, and
+    blocks "::: name" ... ":::" -> <div class="name">. "::: side" whose first
+    line is an image puts the image left and the rest to its right. A url starting with / is made
     relative, so the pages work under any base path."""
 
     def inline(s):
@@ -169,12 +171,35 @@ def md(text, rel):
         s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
         s = re.sub(r"(?<![\w*])\*([^*]+)\*(?![\w*])", r"<em>\1</em>", s)
 
+        def image(m):
+            url = m.group(2)
+            if url.startswith("/"):
+                url = rel(url[1:])
+            width = f' width="{m.group(3)}"' if m.group(3) else ""
+            return f'<img src="{url}" alt="{m.group(1)}"{width}>'
+        s = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)(?:\{width=(\d+)\})?", image, s)
+
         def link(m):
             url = m.group(2)
             if url.startswith("/"):
                 url = rel(url[1:])
             return f'<a href="{url}">{m.group(1)}</a>'
-        return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, s)
+        return re.sub(r"(?<!!)\[([^\]]+)\]\(([^)\s]+)\)", link, s)
+
+    blocks = []
+
+    def block(m):
+        name, inner = m.group(1), m.group(2)
+        lines = inner.strip("\n").splitlines()
+        if name == "side" and lines and lines[0].startswith("!["):
+            body = (f'<div class="side"><div class="side-media">{md(lines[0], rel)}</div>'
+                    f'<div class="side-text">{md(chr(10).join(lines[1:]), rel)}</div></div>')
+        else:
+            body = f'<div class="{esc(name)}">{md(inner, rel)}</div>'
+        blocks.append(body)
+        return f"\x00{len(blocks) - 1}\x00"
+
+    text = re.sub(r"^:::\s*([\w-]+)\s*\n(.*?)\n:::\s*$", block, text, flags=re.S | re.M)
 
     out, para, items, code = [], [], [], None
 
@@ -194,7 +219,10 @@ def md(text, rel):
             else:
                 code.append(line)
             continue
-        if line.startswith("```"):
+        if m := re.fullmatch(r"\x00(\d+)\x00", line.strip()):
+            flush()
+            out.append(blocks[int(m.group(1))])
+        elif line.startswith("```"):
             flush()
             code = []
         elif not line.strip():
@@ -643,8 +671,9 @@ def build(out):
         target.write_text(text, encoding="utf-8")
     shutil.copyfile(SRC / "style.css", out / "style.css")
     (out / "img").mkdir()
-    for name in IMAGES:
-        shutil.copyfile(SRC / "img" / name, out / "img" / name)
+    for f in sorted((SRC / "img").iterdir()):
+        if f.is_file() and f.name not in NOT_COPIED and not f.name.startswith("."):
+            shutil.copyfile(f, out / "img" / f.name)
     shutil.copyfile(SRC / "img" / "og.png", out / "og.png")
     if has_report:
         shutil.copyfile(CONTENT / "report.pdf", out / "docs" / "report.pdf")

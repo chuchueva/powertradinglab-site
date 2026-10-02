@@ -46,3 +46,9 @@ dd { margin: 2px 0 0 0; }
 section { scroll-margin-top: 12px; }
 footer { border-top: 1px solid var(--rule); font-size: 0.85rem; padding: 12px 0 24px; }
 footer p { margin: 4px 0; }
+main img { max-width: 100%; height: auto; }
+.side { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start; margin: 8px 0 24px; }
+.side-media img { width: 100%; height: auto; border-radius: 4px; display: block; }
+.side-media p { margin: 0; }
+.side-text > :first-child { margin-top: 0; }
+@media (max-width: 640px) { .side { grid-template-columns: 1fr; } .side-media { max-width: 220px; } }
