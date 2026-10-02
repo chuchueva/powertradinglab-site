@@ -160,7 +160,7 @@ def score_statements(r, tzname):
 
 def md(text, rel):
     """A small markdown subset: # headings, paragraphs, - lists, ``` blocks,
-    `code`, **bold**, *italic*, [text](url), ![alt](url){width=N}, and
+    `code`, - and 1. lists, **bold**, *italic*, [text](url), ![alt](url){width=N}, and
     blocks "::: name" ... ":::" -> <div class="name">. "::: side" whose first
     line is an image puts the image left and the rest to its right. A url starting with / is made
     relative, so the pages work under any base path."""
@@ -192,7 +192,9 @@ def md(text, rel):
         name, inner = m.group(1), m.group(2)
         lines = inner.strip("\n").splitlines()
         if name == "side" and lines and lines[0].startswith("!["):
-            body = (f'<div class="side"><div class="side-media">{md(lines[0], rel)}</div>'
+            w = re.search(r"\{width=(\d+)\}", lines[0])
+            style = f' style="grid-template-columns: {w.group(1)}px 1fr"' if w else ""
+            body = (f'<div class="side"{style}><div class="side-media">{md(lines[0], rel)}</div>'
                     f'<div class="side-text">{md(chr(10).join(lines[1:]), rel)}</div></div>')
         else:
             body = f'<div class="{esc(name)}">{md(inner, rel)}</div>'
@@ -202,13 +204,15 @@ def md(text, rel):
     text = re.sub(r"^:::\s*([\w-]+)\s*\n(.*?)\n:::\s*$", block, text, flags=re.S | re.M)
 
     out, para, items, code = [], [], [], None
+    kind = ["ul"]
 
     def flush():
         if para:
             out.append("<p>" + inline(" ".join(para)) + "</p>")
             para.clear()
         if items:
-            out.append("<ul>" + "".join(f"<li>{inline(i)}</li>" for i in items) + "</ul>")
+            tag = kind[0]
+            out.append(f"<{tag}>" + "".join(f"<li>{inline(i)}</li>" for i in items) + f"</{tag}>")
             items.clear()
 
     for line in text.splitlines():
@@ -231,10 +235,12 @@ def md(text, rel):
             flush()
             lvl = len(m.group(1))
             out.append(f"<h{lvl}>{inline(m.group(2))}</h{lvl}>")
-        elif line.startswith("- "):
-            if para:
+        elif line.startswith("- ") or re.match(r"\d+\.\s", line):
+            new = "ul" if line.startswith("- ") else "ol"
+            if para or (items and kind[0] != new):
                 flush()
-            items.append(line[2:])
+            kind[0] = new
+            items.append(line[2:] if new == "ul" else re.sub(r"^\d+\.\s+", "", line))
         elif items and line.startswith("  "):
             items[-1] += " " + line.strip()
         else:
@@ -299,6 +305,9 @@ def layout(ctx, path, title, body):
     nav = "".join(
         f'<a href="{rel(u)}"{current if path == u else ""}>{n}</a>' for u, n in NAV)
     full_title = f"{title} — PowerTradingLab" if title else "PowerTradingLab"
+    logo = f'<img src="{rel("img/logo.svg")}" alt="PowerTradingLab" width="584" height="88">'
+    # the home page does not link to itself
+    brand = f'<span class="brand">{logo}</span>' if path == "" else f'<a class="brand" href="{rel("")}">{logo}</a>'
     st = ctx.status
     footer = (
         f'<p>Schema {esc(st["schema"])} · Methodology {esc(st["methodology"])} · '
@@ -327,7 +336,7 @@ def layout(ctx, path, title, body):
 <link rel="stylesheet" href="{rel('style.css')}">
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="{rel('')}"><img src="{rel('img/logo.svg')}" alt="PowerTradingLab" width="584" height="88"></a><nav>{nav}</nav></div></header>
+<header><div class="wrap">{brand}<nav>{nav}</nav></div></header>
 <main class="wrap">
 {body(rel)}
 </main>
@@ -355,17 +364,38 @@ def value_cells(r):
         if v == "":
             cells.append('<td class="muted">no decision</td>')
         else:
-            cells.append(f'<td class="n">{num(v)}</td>')
+            sign = "pos" if float(v) > 0 else "neg" if float(v) < 0 else ""
+            cells.append(f'<td class="n {sign}">{num(v)}</td>')
     return "".join(cells)
 
 
+# Display names. zones.json may carry its own "name", which wins; otherwise this
+# table; otherwise the code alone.
+ZONE_NAMES = {
+    "AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "CH": "Switzerland",
+    "CZ": "Czechia", "DE-LU": "Germany–Luxembourg", "DK1": "Denmark West",
+    "DK2": "Denmark East", "EE": "Estonia", "ES": "Spain", "FI": "Finland",
+    "FR": "France", "GR": "Greece", "HR": "Croatia", "HU": "Hungary",
+    "IT-North": "Italy North", "LT": "Lithuania", "LV": "Latvia", "NL": "Netherlands",
+    "NO1": "Norway 1", "NO2": "Norway 2", "NO3": "Norway 3", "NO4": "Norway 4",
+    "NO5": "Norway 5", "PL": "Poland", "PT": "Portugal", "RO": "Romania",
+    "RS": "Serbia", "SE1": "Sweden 1", "SE2": "Sweden 2", "SE3": "Sweden 3",
+    "SE4": "Sweden 4", "SI": "Slovenia", "SK": "Slovakia",
+}
+
+
+def zone_name(ctx, z):
+    name = ctx.zones.get(z, {}).get("name") or ZONE_NAMES.get(z)
+    return f"{esc(name)} ({z})" if name else z
+
+
 def latest_scores_table(ctx, rel):
-    head = "".join(f"<th>{lbl}</th>" for _, lbl in VALUES)
+    head = "".join(f'<th class="n">{lbl}</th>' for _, lbl in VALUES)
     rows, notes = [], []
     for z in ctx.zone_codes:
         r = ctx.latest_score.get(z)
         if r is None:
-            rows.append(f'<tr><th><a href="{rel("benchmarks/")}#{z}">{z}</a></th>'
+            rows.append(f'<tr><th>{z}</th>'
                         f'<td colspan="9" class="muted">No graded day published yet.</td></tr>')
             continue
         if r["methodology_version"] != ctx.m:
@@ -376,11 +406,11 @@ def latest_scores_table(ctx, rel):
                      f'<td>{data_link(rel, r["source_file"], "score")}</td>')
             for s in score_statements(r, ctx.zones[z]["timezone"]):
                 notes.append(f"<li><strong>{z} {r['delivery_day']}.</strong> {s}</li>")
-        rows.append(f'<tr><th><a href="{rel("benchmarks/")}#{z}">{z}</a></th>{cells}</tr>')
+        rows.append(f'<tr><th>{z}</th>{cells}</tr>')
     note_html = f'<ul class="notes">{"".join(notes)}</ul>' if notes else ""
     return (f'<div class="scroll"><table><caption>{UNIT}.</caption>'
             f'<thead><tr><th>Zone</th><th>Delivery day</th><th>Pass</th>{head}'
-            f'<th>PTU graded / decided</th><th>File</th></tr></thead>'
+            f'<th class="n">PTU scored / forecasted</th><th>File</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{note_html}')
 
 
@@ -401,9 +431,9 @@ def latest_forecasts_table(ctx, rel):
             f'<td>{data_link(rel, r["source_file"], "forecast")}</td></tr>'
             f'<tr class="sub"><td></td><td colspan="6">{forecast_statement(r)}</td></tr>')
     return ('<div class="scroll"><table><caption>The decision is counted in PTU: buy on the day-ahead '
-            'auction, sell, or no action. Each was published before the auction gate.</caption>'
-            '<thead><tr><th>Zone</th><th>Delivery day</th><th>Buy</th><th>Sell</th>'
-            '<th>No action</th><th>Published</th><th>File</th></tr></thead>'
+            'auction, sell, or no action in case of price gaps.</caption>'
+            '<thead><tr><th>Zone</th><th>Delivery day</th><th class="n">Buy</th><th class="n">Sell</th>'
+            '<th class="n">No action</th><th>Published</th><th>File</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
@@ -439,7 +469,7 @@ def zone_days_table(ctx, z, rel):
         days.append(d.isoformat())
         d -= timedelta(days=1)
 
-    head = "".join(f"<th>{lbl}</th>" for _, lbl in VALUES)
+    head = "".join(f'<th class="n">{lbl}</th>' for _, lbl in VALUES)
     rows = []
     for day in days:
         notes, files = [], []
@@ -473,8 +503,8 @@ def zone_days_table(ctx, z, rel):
                     f'{" · ".join(files)}</td></tr>')
     return (f'<div class="scroll"><table><caption>Newest days first. Decision: PTU buy / sell / '
             f'no action. Values: {UNIT}.</caption>'
-            f'<thead><tr><th>Delivery day</th><th>Decision</th>{head}'
-            f'<th>PTU graded / decided</th></tr></thead>'
+            f'<thead><tr><th>Delivery day</th><th class="n">Decision</th>{head}'
+            f'<th class="n">PTU scored / forecasted</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
@@ -499,24 +529,34 @@ def definitions(ctx):
 
 # ---------------------------------------------------------------- pages
 
+def latest_news(ctx, rel):
+    if not ctx.news:
+        return ""
+    e = ctx.news[0]
+    return (f'<h2>Latest news</h2><article class="news-latest"><p class="meta">{e["date"]}</p>'
+            f'{md(chr(10).join(e["lines"]), rel)}'
+            f'<p><a href="{rel("news/")}#{e["date"]}">All news</a></p></article>')
+
+
 def page_home(ctx):
     def body(rel):
         st = ctx.status
         through = ", ".join(
             f"{z} {ts(st['areas'].get(z, {}).get('im_through', ''))}" for z in ctx.zone_codes)
         b = ctx.index["benchmarks"]
-        return f"""{md(content('home.md'), rel)}
+        return f"""<div class="intro">{md(content('home.md'), rel)}</div>
 <p class="fresh">Last run {ts(st['generated_ts'])}. Imbalance data through: {through}.</p>
-<h2>Latest graded day</h2>
+<h2>Latest scored day</h2>
 {latest_scores_table(ctx, rel)}
-<h2>Next decision</h2>
+<h2>Latest trading action forecast (Trailing Bias Value)</h2>
 {latest_forecasts_table(ctx, rel)}
-<h2>Two things measured</h2>
+{latest_news(ctx, rel)}
+<h2>Two key benchmarks</h2>
 <dl>
 <dt>How fat a market is: <code>extractable_value</code></dt><dd>{esc(b.get('extractable_value', ''))}</dd>
 <dt>How much a mechanical rule takes: <code>trailing_bias_value</code></dt><dd>{esc(b.get('trailing_bias_value', ''))}</dd>
 </dl>
-<p><a href="{rel('benchmarks/')}">All zones</a> · <a href="{rel('docs/data/')}">The data</a> · <a href="{rel('docs/')}">The report and the methodology</a></p>"""
+<p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>"""
     return layout(ctx, "", "", body)
 
 
@@ -528,26 +568,26 @@ def page_benchmarks(ctx):
             f"<td>{ts(st['areas'].get(z, {}).get('im_through', ''))}</td>"
             f"<td>{ts(st['areas'].get(z, {}).get('last_poll', ''))}</td></tr>"
             for z in ctx.zone_codes)
+        zone_index = " · ".join(f'<a href="#{z}">{zone_name(ctx, z)}</a>' for z in ctx.zone_codes)
         zone_blocks = []
         for z in ctx.zone_codes:
             zi = ctx.zones[z]
-            meta = (f"EIC <code>{esc(zi.get('eic', ''))}</code> · {esc(zi.get('timezone', ''))} · "
-                    f"day-ahead in {esc(zi.get('day_ahead_currency', ''))}, imbalance in "
-                    f"{esc(zi.get('imbalance_currency', ''))} · delivery days published "
-                    f"{esc(zi.get('first_delivery_day', ''))} to {esc(zi.get('last_delivery_day', ''))}")
-            notes = (method_note(ctx, ctx.scores[z], "Scores") +
-                     method_note(ctx, ctx.forecasts[z], "Forecasts")).replace("NEWS", rel("news/"))
+            meta = (f'<span class="h-meta">EIC <code>{esc(zi.get("eic", ""))}</code> · '
+                    f'{esc(zi.get("timezone", ""))}</span>')
+            # method_note() is kept for later: at launch the page says nothing about
+            # earlier methodologies (owner's call, 2026-10-02).
             zone_blocks.append(
-                f'<section id="{z}"><h2>{z}</h2><p class="meta">{meta}</p>{notes}'
-                f'{zone_days_table(ctx, z, rel)}<h3>Download</h3>{downloads(ctx, z, rel)}</section>')
+                f'<section id="{z}"><h2>{zone_name(ctx, z)} {meta}</h2>'
+                f'{zone_days_table(ctx, z, rel)}<h3>Archive</h3>{downloads(ctx, z, rel)}</section>')
         return f"""<h1>Benchmarks</h1>
 <p class="version">Schema {esc(st['schema'])} · Methodology {esc(st['methodology'])}</p>
+<p class="zones">Zones: {zone_index}</p>
 <h2>Status</h2>
 <p>Last run {ts(st['generated_ts'])}. Data through {ts(ctx.index['generated_from'])}.</p>
 <div class="scroll"><table><thead><tr><th>Zone</th><th>Day-ahead through</th><th>Imbalance through</th><th>Last poll</th></tr></thead><tbody>{srows}</tbody></table></div>
-<h2>All zones, latest graded day</h2>
+<h2>All zones, latest scored day</h2>
 {latest_scores_table(ctx, rel)}
-<h2>Next decision</h2>
+<h2>Latest trading action forecast (Trailing Bias Value)</h2>
 {latest_forecasts_table(ctx, rel)}
 {''.join(zone_blocks)}
 <h2>Definitions</h2>
@@ -555,36 +595,21 @@ def page_benchmarks(ctx):
     return layout(ctx, "benchmarks/", "Benchmarks", body)
 
 
-def page_docs(ctx, has_report):
-    def body(rel):
-        report = (f'<a href="{rel("docs/report.pdf")}">The 2020–2026 retrospective</a> (PDF)'
-                  if has_report else "The 2020–2026 retrospective (PDF) is not published yet.")
-        return f"""<h1>Docs</h1>
-<ul>
-<li><a href="{rel('docs/methodology/')}">Methodology</a></li>
-<li><a href="{rel('docs/data/')}">Data interface</a></li>
-<li>{report}</li>
-</ul>"""
-    return layout(ctx, "docs/", "Docs", body)
+def demote(text):
+    """Shift markdown headings one level down, for a file shown as a section."""
+    return re.sub(r"^(#{1,5})(\s)", r"#\1\2", text, flags=re.M)
 
 
-def page_methodology(ctx):
-    def body(rel):
-        return md(content("methodology.md"), rel) + "<h2>The five benchmarks</h2>" + definitions(ctx)
-    return layout(ctx, "docs/methodology/", "Methodology", body)
+def data_section(ctx, rel):
+    idx = ctx.index
+    base = f"{SITE_URL}/{DATA_PATH}"
+    files = "".join(
+        f'<tr><td>{data_link(rel, "v1/" + f["name"], f["name"])}</td><td class="n">{f["bytes"]:,}</td>'
+        f'<td><code>{f["sha256"]}</code></td></tr>' for f in idx["files"])
 
-
-def page_data(ctx):
-    def body(rel):
-        idx = ctx.index
-        base = f"{SITE_URL}/{DATA_PATH}"
-        files = "".join(
-            f'<tr><td>{data_link(rel, "v1/" + f["name"], f["name"])}</td><td class="n">{f["bytes"]:,}</td>'
-            f'<td><code>{f["sha256"]}</code></td></tr>' for f in idx["files"])
-        def cols(d):
-            return "<dl>" + "".join(f"<dt><code>{esc(k)}</code></dt><dd>{esc(v)}</dd>" for k, v in d.items()) + "</dl>"
-        return f"""<h1>Data interface</h1>
-<p class="lead">Files over HTTPS. There is no query interface.</p>
+    def cols(d):
+        return "<dl>" + "".join(f"<dt><code>{esc(k)}</code></dt><dd>{esc(v)}</dd>" for k, v in d.items()) + "</dl>"
+    return f"""<p class="lead">Files over HTTPS. There is no query interface.</p>
 <p>Base address: <code>{base}</code></p>
 <ul>
 <li>Unit: {esc(idx['unit'])}.</li>
@@ -592,19 +617,57 @@ def page_data(ctx):
 <li>Terms: {esc(idx['terms'])}</li>
 <li>Heartbeat: {data_link(rel, 'status.xml', 'status.xml')}, rewritten by every run.</li>
 </ul>
-{md(content('data.md'), rel)}
-<h2>Files</h2>
-<div class="scroll"><table><thead><tr><th>File</th><th>Bytes</th><th>sha256</th></tr></thead><tbody>
+{md(demote(content('data.md')), rel)}
+<h3>Files</h3>
+<div class="scroll"><table><thead><tr><th>File</th><th class="n">Bytes</th><th>sha256</th></tr></thead><tbody>
 <tr><td>{data_link(rel, 'v1/index.json', 'index.json')}</td><td></td><td>the map: vocabulary, definitions, files</td></tr>
 <tr><td>{data_link(rel, 'v1/zones.json', 'zones.json')}</td><td></td><td>per zone: EIC, timezone, currencies, first and last day</td></tr>
 {files}</tbody></table></div>
-<h2>Score columns</h2>
+<h3>Score columns</h3>
 {cols(idx.get('columns', {}))}
-<h2>Benchmark columns</h2>
+<h3>Benchmark columns</h3>
 {definitions(ctx)}
-<h2>Forecast columns</h2>
+<h3>Forecast columns</h3>
 {cols(idx.get('forecast_columns', {}))}"""
-    return layout(ctx, "docs/data/", "Data interface", body)
+
+
+def page_docs(ctx, has_report):
+    def body(rel):
+        report = (f'<a href="{rel("docs/report.pdf")}">The 2020–2026 retrospective</a> (PDF)'
+                  if has_report else "The 2020–2026 retrospective (PDF) is not published yet.")
+        method = re.sub(r"^#\s+.*\n?", "", content("methodology.md"), count=1)
+        return f"""<h1>Docs</h1>
+<ul>
+<li><a href="#methodology">Methodology</a></li>
+<li><a href="#data">Data interface</a></li>
+<li>{report}</li>
+</ul>
+<section id="methodology"><h2>Methodology</h2>
+{md(demote(method), rel)}
+<h3>The five benchmarks</h3>
+{definitions(ctx)}
+</section>
+<section id="data"><h2>Data interface</h2>
+{data_section(ctx, rel)}
+</section>"""
+    return layout(ctx, "docs/", "Docs", body)
+
+
+def redirect(path, target):
+    """A permanent address that moved inside another page. Works without JS."""
+    depth = path.count("/")
+    url = "../" * depth + target
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Moved</title>
+<link rel="canonical" href="{SITE_URL}/{target}">
+<meta http-equiv="refresh" content="0; url={url}">
+</head>
+<body><p><a href="{url}">This page is now part of Docs.</a></p></body>
+</html>
+"""
 
 
 def page_news(ctx):
@@ -623,7 +686,8 @@ def page_news(ctx):
 
 
 def page_content(ctx, path, name, title):
-    return layout(ctx, path, title, lambda rel: md(content(name), rel))
+    cls = "page-" + name.rsplit(".", 1)[0]
+    return layout(ctx, path, title, lambda rel: f'<div class="{cls}">{md(content(name), rel)}</div>')
 
 
 def sitemap(paths):
@@ -657,15 +721,17 @@ def build(out):
         "": page_home(ctx),
         "benchmarks/": page_benchmarks(ctx),
         "docs/": page_docs(ctx, has_report),
-        "docs/methodology/": page_methodology(ctx),
-        "docs/data/": page_data(ctx),
         "news/": page_news(ctx),
         "about/": page_content(ctx, "about/", "about.md", "About"),
         "chuchueva/": page_content(ctx, "chuchueva/", "chuchueva.md", "Irina Chuchueva"),
         "contact/": page_content(ctx, "contact/", "contact.md", "Contact"),
         "support/": page_content(ctx, "support/", "support.md", "Support"),
     }
-    for path, text in pages.items():
+    moved = {
+        "docs/methodology/": redirect("docs/methodology/", "docs/#methodology"),
+        "docs/data/": redirect("docs/data/", "docs/#data"),
+    }
+    for path, text in list(pages.items()) + list(moved.items()):
         target = out / path / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding="utf-8")

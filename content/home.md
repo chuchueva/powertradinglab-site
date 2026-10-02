@@ -1,1 +1,1 @@
-Your short-term trading P&L: measured against what? A daily benchmark for European short-term power trading: decisions published before the auction, graded after delivery, frozen in free access files.
+**What do you measure your short-term trading portfolio against?** A daily benchmark for European short-term power trading: decisions published before the auction, graded after delivery, frozen in free access files.

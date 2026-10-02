@@ -52,3 +52,31 @@ main img { max-width: 100%; height: auto; }
 .side-media p { margin: 0; }
 .side-text > :first-child { margin-top: 0; }
 @media (max-width: 640px) { .side { grid-template-columns: 1fr; } .side-media { max-width: 220px; } }
+main ol li, main ul li { margin: 4px 0; }
+/* sign of a value: teal = gain; loss in a darkened amber (#E39B2F is too light
+   for text on white). #A8670F is NOT in the project palette — owner's trial, 2026-10-02 */
+td.pos { color: var(--teal); }
+td.neg { color: #A8670F; }
+th.n { text-align: right; }
+.h-meta { font-size: 0.8rem; font-weight: 400; color: var(--grey); margin-left: 10px; white-space: nowrap; }
+ul.files { font-size: 0.85rem; margin-top: 4px; }
+ul.files li { margin: 2px 0; }
+.intro { border-left: 4px solid var(--teal); padding: 4px 0 4px 18px; margin: 28px 0 20px; }
+.intro p { font-size: 1.35rem; line-height: 1.45; color: var(--ink); margin: 0 0 8px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--teal); }
+@media (max-width: 640px) { .intro p { font-size: 1.15rem; } }
+/* links inside tables: ink, underlined — teal there means a positive value */
+table a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--grey); text-underline-offset: 2px; }
+table a:hover { color: var(--teal); text-decoration-color: var(--teal); }
+.side-text p { margin: 0 0 12px; }
+.side-text ul { list-style: none; padding-left: 0; margin: 4px 0 0; }
+.side-text li { margin: 3px 0; }
+@media (max-width: 640px) { .side[style] { grid-template-columns: 1fr !important; } .side-media { max-width: 320px; } }
+/* CV: employer heading, then the role line under it in a quieter style */
+.page-chuchueva h3 { color: var(--teal); font-size: 1.1rem; margin: 32px 0 2px; }
+.page-chuchueva h3 + p { color: var(--grey); margin-top: 0; }
+.page-chuchueva h3 + p strong { font-weight: 500; }
+.page-chuchueva h3 { position: relative; padding-left: 18px; }
+.page-chuchueva h3::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.page-chuchueva h3 + p { padding-left: 18px; }

@@ -232,7 +232,8 @@ Facts the builder must respect:
   different methodologies are NOT comparable. Older rows stay in the CSV for
   download; on the page they are replaced by one sentence, e.g. "Methodology 3
   since 2026-09-26. Earlier days were computed under methodology 2 and are not
-  comparable; see News."
+  comparable; see News." NOT shown at launch (owner's call, 2026-10-02): with
+  no users yet there is nobody to inform. The code is kept (`method_note`).
 - **A version change without a News entry fails the build.** The current
   schema and methodology from `status.xml` must each be named by an entry in
   the news source file (format under News below). The owner writes these
@@ -243,9 +244,10 @@ Facts the builder must respect:
 ```
 /                     landing
 /benchmarks           status + every zone, the last 2-3 delivery days
-/docs/                index
-/docs/methodology     the nine rules, the five benchmarks, what is NOT claimed
-/docs/data            the data interface: tree, naming, passes, versions, v1 files
+/docs/                ONE page: #methodology (the nine rules, the five benchmarks,
+                      what is NOT claimed) and #data (the data interface)
+/docs/methodology     redirect to /docs/#methodology (address kept, 2026-10-02)
+/docs/data            redirect to /docs/#data — the report links here, keep it
 /docs/report.pdf      the 2020-2026 retrospective
 /news                 dated entries, a few sentences each
 /about                the project: why it exists, how it is funded, who runs it

@@ -24,7 +24,7 @@ For each covered bidding zone, PowerTradingLab computes five benchmarks every da
 - **Adverse Value** — the floor: the worse side in every quarter-hour.
 - **Passive DA Buy Value** and **Passive DA Sell Value** — one side taken every day, with no foresight; their sign shows which way the DA–IM spread leans.
 
-The method is described on the [Methodology](/methodology/) page, and the files are on the [Data](/data/) page.
+The method is described on the [Methodology](/docs/#methodology) page, and the files are on the [Data](/docs/#data) page.
 
 The site opens on 5 October 2026 with two zones, the Netherlands (NL) and Romania (RO); their data starts on 17 September 2026. More zones will be added one at a time. 
 The retrospective report *A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe* covers 25 bidding zones over 2020–2026.

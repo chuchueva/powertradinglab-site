@@ -4,24 +4,29 @@
 ![Irina Chuchueva](/img/chuchueva.jpg){width=450}
 
 **Power Market Quant: forecasting, optimisation, algorithmic trading**
+- 
+- Happy mother, book lover, musical theater enthusiast, plan my first marathon
+- PhD in mathematical modelling 
+- Yerevan, Armenia (UTC+4) 
+- Remote, contract via registered Individual Entrepreneur
 
-Since 2007 across nodal and zonal pricing systems · PhD in mathematical modelling · Yerevan, Armenia (UTC+4) · Remote, contract via registered Individual Entrepreneur
 
-[chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org) 
-[GitHub](https://github.com/chuchueva) 
-[LinkedIn](https://www.linkedin.com/in/irinachuchueva/) 
-[ORCID](https://orcid.org/0009-0003-0208-5853) 
-[Google Scholar](https://scholar.google.com/citations?user=p-AgsYYAAAAJ) 
-[Papers, code and worked examples](https://drive.google.com/drive/folders/1XzHRekpXh_9MxMSSggHhN_e3j3_TXcRI)
+
+- [chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org)
+- [GitHub](https://github.com/chuchueva)
+- [LinkedIn](https://www.linkedin.com/in/irinachuchueva/)
+- [ORCID](https://orcid.org/0009-0003-0208-5853)
+- [Google Scholar](https://scholar.google.com/citations?user=p-AgsYYAAAAJ)
+- [Papers, code and worked examples](https://drive.google.com/drive/folders/1XzHRekpXh_9MxMSSggHhN_e3j3_TXcRI)
 :::
 
-- 2020–2026: an algorithmic trading project as the sole developer in the European power market (**zonal pricing**).
-- 2007–2020: optimisation and forecasting projects in the Russian power market (**nodal (LMP) pricing**).
+- 2020–2026: an algorithmic trading project as the sole developer in the European power market, zonal pricing.
+- 2007–2020: optimisation and forecasting projects in the Russian power market, nodal (LMP) pricing.
 - Over a 19-year career, **all my models and solutions went into production**.
 
 ## Experience
 
-### Power trading company, Western Europe — privately owned, name on request
+### Power trading company, Western Europe — privately owned, name under NDA
 
 **Algorithmic Trading Developer (contract) · June 2020 – May 2026 · remote**
 
