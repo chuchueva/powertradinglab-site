@@ -10,7 +10,7 @@ More zones will follow one at a time. If you are interested in specific zone, wr
 ## 2026-10-03
 
 The report **A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe** 
-is published on Zenodo: [doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX). 
+is published on Zenodo: [https://doi.org/10.5281/zenodo.23119533](https://doi.org/10.5281/zenodo.XXXXXXX). 
 It covers 25 European bidding zones over 2020–2026. 
 The main finding: the *"speculative market fat"* peaked in 2022 on high day-ahead prices, 
 two lesser peaks followed in 2024–2025 on volatility, and it has decayed in most zones since the end of 2025. 
