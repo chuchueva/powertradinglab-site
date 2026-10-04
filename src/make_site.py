@@ -549,14 +549,14 @@ def latest_news(ctx, rel):
             f'<p><a href="{rel("news/")}#{e["date"]}">All news</a></p></article>')
 
 
-KEY_DEFINITIONS = """<dl>
+KEY_DEFINITIONS = """<dl class="defs">
 <dt>&ldquo;Speculative Fat&rdquo;: how much a market holds &mdash; <code>extractable_value</code></dt>
 <dd>Imagine a trader with a crystal ball who knows in advance both the day-ahead (DA) and the imbalance (IM) prices. For every 15-minute interval this trader buys or sells 1 MW at DA and closes the position at the IM price. The profit of such a trader is <code>extractable_value</code>.</dd>
 <dt>&ldquo;Simplest trading strategy&rdquo;: how much of market fat is repeatable &mdash; <code>trailing_bias_value</code></dt>
 <dd>Imagine a trader with no model, only a habit. For each hour of the day the trader looks at the previous three days, sees whether buying or selling at DA paid better in that hour, and follows the same pattern bidding for tomorrow. The profit of such a trader is <code>trailing_bias_value</code>.</dd>
 </dl>"""
 
-EXTRA_DEFINITIONS = """<dl>
+EXTRA_DEFINITIONS = """<dl class="defs">
 <dt>Passive DA buy &mdash; <code>passive_da_buy_value</code></dt>
 <dd>Imagine a trader who always buys 1 MW at DA in every 15-minute interval and closes the position at the IM price. The profit of such a trader is <code>passive_da_buy_value</code>.</dd>
 <dt>Passive DA sell &mdash; <code>passive_da_sell_value</code></dt>
@@ -740,8 +740,9 @@ def data_section(ctx, rel):
 
 def page_docs(ctx, has_report):
     def body(rel):
-        report = (f'<a href="{rel("docs/" + REPORT)}">The 2020–2026 retrospective</a> (PDF)'
-                  if has_report else "The 2020–2026 retrospective (PDF) is not published yet.")
+        title = "A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe"
+        report = (f'Report: <a href="{rel("docs/" + REPORT)}"><em>{title}</em></a> by Irina Chuchueva (PDF)'
+                  if has_report else f"Report: <em>{title}</em> (PDF) is not published yet.")
         method = re.sub(r"^#\s+.*\n?", "", content("methodology.md"), count=1)
         return f"""<h1>Docs</h1>
 <ul>

@@ -87,3 +87,8 @@ table a:hover { color: var(--teal); text-decoration-color: var(--teal); }
   thead th { font-size: 0.68rem; hyphens: auto; }
   th, td { padding: 5px 3px; }
 }
+/* benchmark definitions: a marked list, item = name, text indented under it */
+dl.defs dt { position: relative; padding-left: 18px; margin-top: 14px; }
+dl.defs dt::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+dl.defs dd { margin-left: 18px; }
+h4 { font-size: 1rem; margin: 18px 0 4px; color: var(--ink); }
