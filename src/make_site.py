@@ -732,6 +732,7 @@ def data_section(ctx, rel):
 <h3>Score columns</h3>
 {cols(idx.get('columns', {}))}
 <h3>Benchmark columns</h3>
+<p>As stated in <code>index.json</code>, which travels with the data. Plain-language definitions are under <a href="#methodology">Methodology</a>.</p>
 {definitions(ctx)}
 <h3>Forecast columns</h3>
 {cols(idx.get('forecast_columns', {}))}"""
@@ -751,7 +752,10 @@ def page_docs(ctx, has_report):
 <section id="methodology"><h2>Methodology</h2>
 {md(demote(method), rel)}
 <h3>The five benchmarks</h3>
-{definitions(ctx)}
+<h4>Key</h4>
+{KEY_DEFINITIONS}
+<h4>Extra</h4>
+{EXTRA_DEFINITIONS}
 </section>
 <section id="data"><h2>Data interface</h2>
 {data_section(ctx, rel)}
