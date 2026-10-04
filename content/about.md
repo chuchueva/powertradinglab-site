@@ -1,14 +1,9 @@
 # About
 
 PowerTradingLab is a free and open project on short-term trading in the European power market. 
-It publishes a family of short-term trading benchmarks that serve as a reference for human traders and for algorithmic trading systems.
-
-The benchmarks measure a trading result against two major references for a given bidding zone:
-
-- the value the market held: the Extractable Value;
-- the result of a simple trailing bias strategy: the Trailing Bias Value.
-
-They play a role similar to the S&P 500 in equity trading: an external, independent reference. [Irina Chuchueva](/chuchueva/), a power market quant, develops and runs the project.
+It publishes a family of short-term trading benchmarks that serve as a reference for human traders 
+and for algorithmic trading systems. Developed benchmarks play a role similar to the S&P 500 index
+in equity trading: an external, independent reference. [Irina Chuchueva](/chuchueva/), a power market quant, develops and runs the project.
 
 ## Benchmarks
 
