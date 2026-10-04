@@ -1,6 +1,6 @@
 # About
 
-PowerTradingLab is a free and open project on short-term trading in the European power market. 
+PowerTradingLab is a free and [open project](https://github.com/chuchueva/powertradinglab-benchmarks) on short-term trading in the European power market. 
 It publishes a family of short-term trading benchmarks that serve as a reference for human traders 
 and for algorithmic trading systems. Developed benchmarks play a role similar to the S&P 500 index
 in equity trading: an external, independent reference. [Irina Chuchueva](/chuchueva/), a power market quant, develops and runs the project.
