@@ -21,13 +21,13 @@ because the result would be wrong without it.
    currency. Values are reported in EUR; a non-EUR price is converted with the
    central bank's published rate for that day, and a day with no published
    rate gets no converted value.
-7. **A day is graded exactly twice:** as-known, the morning after delivery,
+7. **A day is scored exactly twice:** as-known, the morning after delivery,
    once imbalance prices are complete; as-final, after the 20th of the
    following month, once settlement has closed.
 8. **A published file is never changed.** A correction is a new file beside
    the old one, and history is never re-rendered under a newer methodology.
    Every row states the versions in force when it was computed.
-9. **Nothing is invented.** A gap stays a gap: no incomplete day graded as whole, no default decision where
+9. **Nothing is invented.** A gap stays a gap: no incomplete day scored as whole, no default decision where
    the signal did not form, no interpolation.
 
 ## What is NOT claimed
@@ -39,7 +39,7 @@ because the result would be wrong without it.
   clearing price and not to move any price. Fees, collateral and balancing
   obligations are not considered.
 - **Not a trading recommendation.** The published decisions are a
-  benchmark rule, made public so that it can be graded. They are not advice
+  benchmark rule, made public so that it can be scored. They are not advice
   to take a position in any market.
 - **Not investment advice.** Past values do not predict future ones; the
   regime of a market can change overnight, as Romania's did on

@@ -108,8 +108,9 @@ Analysis of the cost of day-ahead and imbalance deviations; MATLAB, SAS Macro, S
 
 ## Publications
 
-Five papers: four in journals, the fifth presented at the International Symposium on Forecasting in 2022. The English translations and the originals are open access.
+Six papers: four in journals, the fifth presented at the International Symposium on Forecasting in 2022. The English translations and the originals are open access.
 
+- *A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe*, 2026 · [zenodo.23119533](https://doi.org/10.5281/zenodo.23119533) 
 - *The Short-term Electricity Consumption Forecast Competition Under COVID-19 Lockdown Conditions*, 2021 · [zenodo.19604858](https://doi.org/10.5281/zenodo.19604858)
 - *The Three-Headed Dragon: Electricity, Trading, Analysis* · Energo-Info, 2018 · [zenodo.19626342](https://doi.org/10.5281/zenodo.19626342)
 - *CHP Cost Allocation Methods: A New Method Based on the Linear Steam Turbine Characteristic Curve* · Science and Education of Bauman MSTU, 2016 · [zenodo.19625869](https://doi.org/10.5281/zenodo.19625869)

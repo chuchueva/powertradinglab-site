@@ -248,7 +248,7 @@ Facts the builder must respect:
                       what is NOT claimed) and #data (the data interface)
 /docs/methodology     redirect to /docs/#methodology (address kept, 2026-10-02)
 /docs/data            redirect to /docs/#data — the report links here, keep it
-/docs/report.pdf      the 2020-2026 retrospective
+/docs/chuchueva_2026_europe_power_trade_opportunities_2020_2026_eng.pdf  the 2020-2026 retrospective
 /news                 dated entries, a few sentences each
 /about                the project: why it exists, how it is funded, who runs it
 /chuchueva            the owner's CV — stable address, indexable

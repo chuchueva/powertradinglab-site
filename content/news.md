@@ -28,8 +28,8 @@ three days of decisions lost to one 96th of a day.
 **Methodology 3.** The signal is computed per hour of the day, so the input
 check now works per hour too. An hour with a gap anywhere in its window gets
 no action; every other hour of the day is decided as usual. A whole missing
-day still withdraws the whole forecast. Grading changed with it: a day is
-graded once it has ended, on the periods it has, and the file states how many
+day still withdraws the whole forecast. Scoring changed with it: a day is
+scored once it has ended, on the periods it has, and the file states how many
 (`ptu`). The same input can now produce a different result, which is why the
 methodology number moved.
 

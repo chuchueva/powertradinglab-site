@@ -12,22 +12,16 @@ They play a role similar to the S&P 500 in equity trading: an external, independ
 
 ## Benchmarks
 
-For each covered bidding zone, PowerTradingLab computes five benchmarks every day from the day-ahead (DA) and imbalance (IM) prices, per 1 MW of traded quantity.
+PowerTradingLab computes five benchmarks every day from the day-ahead (DA) and imbalance (IM) prices, per 1 MW of traded quantity.
 
-### Key
-
-- **Extractable Value** — the ceiling: how much value the DA–IM price pair holds; the better side in every quarter-hour, chosen with perfect hindsight.
-- **Trailing Bias Value** — the result of a simple trailing bias strategy: the side is chosen from the bias of the three previous days and decided before the DA gate closure. It is the baseline any complex trading model should beat.
-
-### Extra
-
-- **Adverse Value** — the floor: the worse side in every quarter-hour.
-- **Passive DA Buy Value** and **Passive DA Sell Value** — one side taken every day, with no foresight; their sign shows which way the DA–IM spread leans.
+{{definitions}}
 
 The method is described on the [Methodology](/docs/#methodology) page, and the files are on the [Data](/docs/#data) page.
 
+## Current publication rules
+
 The site opens on 5 October 2026 with two zones, the Netherlands (NL) and Romania (RO); their data starts on 17 September 2026. More zones will be added one at a time. 
-The retrospective report *A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe* covers 25 bidding zones over 2020–2026.
+The retrospective report [*A Retrospective Look at 2020–2026 Short-Term Power Trading Opportunities in Europe*](/docs/chuchueva_2026_europe_power_trade_opportunities_2020_2026_eng.pdf) covers 25 bidding zones over 2020–2026.
 
 Three rules hold for data publication:
 

@@ -39,7 +39,7 @@ VALUES = [
     ("passive_da_sell_value", "Passive DA sell"),
     ("adverse_value", "Adverse"),
 ]
-UNIT = "EUR per 1 MW of trading capacity, summed over the delivery day"
+UNIT = "EUR per 1 MW of trading quantity for each 15-minute interval, summed over the delivery day"
 
 NAV = [
     ("about/", "About"),
@@ -54,6 +54,10 @@ NAV = [
 # The stylesheet address changes whenever its content does, so browsers and the
 # Cloudflare cache never serve an old style.css with new pages. Deterministic.
 CSS_VERSION = hashlib.sha256((SRC / "style.css").read_bytes()).hexdigest()[:10]
+
+
+REPORT = "chuchueva_2026_europe_power_trade_opportunities_2020_2026_eng.pdf"   # content/ -> /docs/
+RUN_TIMES_UTC = ("09:40", "14:00")   # the server's schedule (SITE.md)
 
 
 class BuildError(Exception):
@@ -152,10 +156,10 @@ def score_statements(r, tzname):
     pwa = int(r["ptu_with_action"] or 0)
     full = full_ptu(tzname, r["delivery_day"])
     if ptu < full:
-        out.append(f"The source published {ptu} of {full} PTU; the day is graded on the {ptu} that exist.")
+        out.append(f"The source published {ptu} of {full} PTU; the day is scored on the {ptu} that exist.")
     if pwa == 0:
         out.append("No decision was issued for this day, so there is no trailing-bias result. "
-                   "The four market values are graded regardless.")
+                   "The four market values are scored regardless.")
     elif pwa < ptu:
         out.append(f"A decision covered {pwa} of {ptu} PTU; trailing bias is a sum over those {pwa}.")
     return out
@@ -316,7 +320,7 @@ def layout(ctx, path, title, body):
     st = ctx.status
     footer = (
         f'<p>Schema {esc(st["schema"])} · Methodology {esc(st["methodology"])} · '
-        f'Data through {ts(ctx.index["generated_from"])} · Last run {ts(st["generated_ts"])}</p>'
+        f'Last run {utc_time(st["generated_ts"])}, next run {utc_time(next_run(st["generated_ts"]))}</p>'
         '<p>Derived from data published on the ENTSO-E Transparency Platform; imbalance prices '
         'reused under CC-BY 4.0. No day-ahead or imbalance prices are republished.</p>'
         f'<p><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{GITHUB}">GitHub</a> · '
@@ -346,6 +350,7 @@ def layout(ctx, path, title, body):
 {body(rel)}
 </main>
 <footer><div class="wrap">{footer}</div></footer>
+{LOCAL_TIME_JS}
 </body>
 </html>
 """
@@ -401,7 +406,7 @@ def latest_scores_table(ctx, rel):
         r = ctx.latest_score.get(z)
         if r is None:
             rows.append(f'<tr><th>{z}</th>'
-                        f'<td colspan="9" class="muted">No graded day published yet.</td></tr>')
+                        f'<td colspan="9" class="muted">No scored day published yet.</td></tr>')
             continue
         if r["methodology_version"] != ctx.m:
             cells = f'<td>{r["delivery_day"]}</td>' + not_comparable(r, 8)
@@ -435,8 +440,9 @@ def latest_forecasts_table(ctx, rel):
             f'<td class="n">{r["ptu_no_action"]}</td><td>{ts(r["knownby_ts"])}</td>'
             f'<td>{data_link(rel, r["source_file"], "forecast")}</td></tr>'
             f'<tr class="sub"><td></td><td colspan="6">{forecast_statement(r)}</td></tr>')
-    return ('<div class="scroll"><table><caption>The decision is counted in PTU: buy on the day-ahead '
-            'auction, sell, or no action in case of price gaps.</caption>'
+    return ('<div class="scroll"><table><caption>Forecast action of the &ldquo;simplest trading strategy&rdquo; '
+            'for each interval: +1 means buy on DA, &minus;1 means sell on DA, NA means there is not enough '
+            'data for a decision.</caption>'
             '<thead><tr><th>Zone</th><th>Delivery day</th><th class="n">Buy</th><th class="n">Sell</th>'
             '<th class="n">No action</th><th>Published</th><th>File</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
@@ -492,9 +498,9 @@ def zone_days_table(ctx, z, rel):
         s = scores.get(day)
         if s is None:
             if last_score is None or day > last_score:
-                scell = '<td colspan="6" class="muted">Not graded yet.</td>'
+                scell = '<td colspan="6" class="muted">Not scored yet.</td>'
             else:
-                scell = '<td colspan="6" class="muted">Not graded: no score was published for this day.</td>'
+                scell = '<td colspan="6" class="muted">Not scored: no score was published for this day.</td>'
         elif s["methodology_version"] != ctx.m:
             scell = not_comparable(s, 6)
             files.append(data_link(rel, s["source_file"], "score"))
@@ -543,24 +549,117 @@ def latest_news(ctx, rel):
             f'<p><a href="{rel("news/")}#{e["date"]}">All news</a></p></article>')
 
 
+KEY_DEFINITIONS = """<dl>
+<dt>&ldquo;Speculative Fat&rdquo;: how much a market holds &mdash; <code>extractable_value</code></dt>
+<dd>Imagine a trader with a crystal ball who knows in advance both the day-ahead (DA) and the imbalance (IM) prices. For every 15-minute interval this trader buys or sells 1 MW at DA and closes the position at the IM price. The profit of such a trader is <code>extractable_value</code>.</dd>
+<dt>&ldquo;Simplest trading strategy&rdquo;: how much of market fat is repeatable &mdash; <code>trailing_bias_value</code></dt>
+<dd>Imagine a trader with no model, only a habit. For each hour of the day the trader looks at the previous three days, sees whether buying or selling at DA paid better in that hour, and follows the same pattern bidding for tomorrow. The profit of such a trader is <code>trailing_bias_value</code>.</dd>
+</dl>"""
+
+EXTRA_DEFINITIONS = """<dl>
+<dt>Passive DA buy &mdash; <code>passive_da_buy_value</code></dt>
+<dd>Imagine a trader who always buys 1 MW at DA in every 15-minute interval and closes the position at the IM price. The profit of such a trader is <code>passive_da_buy_value</code>.</dd>
+<dt>Passive DA sell &mdash; <code>passive_da_sell_value</code></dt>
+<dd>Imagine a trader who always sells 1 MW at DA in every 15-minute interval and closes the position at the IM price. The profit of such a trader is <code>passive_da_sell_value</code>. Read together with <code>passive_da_buy_value</code>, it shows whether there is a persistent bias between DA and IM prices.</dd>
+<dt>Adverse &mdash; <code>adverse_value</code></dt>
+<dd>Imagine the trader with the crystal ball again, now choosing the wrong side in every interval to lose as much as possible. The profit of such a trader is <code>adverse_value</code>. Where a zone settles imbalance at a single price, it is the exact mirror of <code>extractable_value</code>.</dd>
+</dl>"""
+
+
+def next_run(generated_ts):
+    """The next scheduled run after the last one, from RUN_TIMES_UTC."""
+    if not generated_ts:
+        return ""
+    day, hm = generated_ts[:10], generated_ts[11:16]
+    later = [t for t in RUN_TIMES_UTC if t > hm]
+    if later:
+        return f"{day}T{later[0]}:00Z"
+    d = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
+    return f"{d}T{RUN_TIMES_UTC[0]}:00Z"
+
+
+def utc_time(x):
+    """A UTC instant; a small script adds the viewer's local time beside it.
+    Without JavaScript the UTC value stands alone, which is complete."""
+    return f'<time class="lt" datetime="{x}">{ts(x)}</time>'
+
+
+LOCAL_TIME_JS = """<script>
+document.querySelectorAll("time.lt").forEach(function (t) {
+  var d = new Date(t.getAttribute("datetime"));
+  if (isNaN(d)) return;
+  t.insertAdjacentText("beforeend", " (" + d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) + " local time)");
+});
+</script>"""
+
+
+def zone_link(rel, z):
+    return f'<a href="{rel("benchmarks/")}#{z}">{z}</a>'
+
+
+def home_scores_table(ctx, rel):
+    rows = []
+    for z in ctx.zone_codes:
+        r = ctx.latest_score.get(z)
+        if r is None:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No scored day yet.</td></tr>')
+            continue
+        if r["methodology_version"] != ctx.m:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td>{not_comparable(r, 4)}</tr>')
+            continue
+        cells = []
+        for key in ("extractable_value", "trailing_bias_value"):
+            v = r[key]
+            if v == "":
+                cells.append('<td class="n muted">no decision</td>')
+            else:
+                sign = "pos" if float(v) > 0 else "neg" if float(v) < 0 else ""
+                cells.append(f'<td class="n {sign}">{num(v)}</td>')
+        rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td>{"".join(cells)}'
+                    f'<td class="n">{r["ptu"]} / {r["ptu_with_action"]}</td>'
+                    f'<td>{data_link(rel, r["source_file"], "score")}</td></tr>')
+    return (f'<div class="scroll"><table><caption>{UNIT}.</caption>'
+            '<thead><tr><th>Zone</th><th>Delivery day</th>'
+            '<th class="n">Daily &ldquo;Speculative Fat&rdquo;<br>(Extractable)</th>'
+            '<th class="n">Daily &ldquo;Simplest trading strategy&rdquo; PnL<br>(Trailing bias)</th>'
+            '<th class="n">15-minute intervals<br>scored / forecasted</th><th>File</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
+def home_forecasts_table(ctx, rel):
+    rows = []
+    for z in ctx.zone_codes:
+        r = ctx.latest_forecast.get(z)
+        if r is None:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No forecast yet.</td></tr>')
+            continue
+        if r["methodology_version"] != ctx.m:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td>{not_comparable(r, 4)}</tr>')
+            continue
+        rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td><td>{ts(r["knownby_ts"])}</td>'
+                    f'<td class="n">{r["ptu_buy"]}</td><td class="n">{r["ptu_sell"]}</td>'
+                    f'<td>{data_link(rel, r["source_file"], "forecast")}</td></tr>')
+    return ('<div class="scroll"><table><caption>Forecast action of the &ldquo;simplest trading strategy&rdquo; '
+            'for each interval: +1 means buy on DA, &minus;1 means sell on DA, NA means there is not enough '
+            'data for a decision.</caption>'
+            '<thead><tr><th>Zone</th><th>Delivery day</th><th>Published</th>'
+            '<th class="n">Buy</th><th class="n">Sell</th><th>File</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
 def page_home(ctx):
     def body(rel):
         st = ctx.status
-        through = ", ".join(
-            f"{z} {ts(st['areas'].get(z, {}).get('im_through', ''))}" for z in ctx.zone_codes)
         b = ctx.index["benchmarks"]
         return f"""<div class="intro">{md(content('home.md'), rel)}</div>
-<p class="fresh">Last run {ts(st['generated_ts'])}. Imbalance data through: {through}.</p>
+<p class="fresh small">Last run {utc_time(st['generated_ts'])}, next run {utc_time(next_run(st['generated_ts']))}</p>
 <h2>Latest scored day</h2>
-{latest_scores_table(ctx, rel)}
-<h2>Latest trading action forecast (Trailing Bias Value)</h2>
-{latest_forecasts_table(ctx, rel)}
+{home_scores_table(ctx, rel)}
+<h2>Next trading action (Trailing Bias Value)</h2>
+{home_forecasts_table(ctx, rel)}
 {latest_news(ctx, rel)}
 <h2>Two key benchmarks</h2>
-<dl>
-<dt>How fat a market is: <code>extractable_value</code></dt><dd>{esc(b.get('extractable_value', ''))}</dd>
-<dt>How much a mechanical rule takes: <code>trailing_bias_value</code></dt><dd>{esc(b.get('trailing_bias_value', ''))}</dd>
-</dl>
+{KEY_DEFINITIONS}
 <p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>"""
     return layout(ctx, "", "", body)
 
@@ -592,11 +691,14 @@ def page_benchmarks(ctx):
 <div class="scroll"><table><thead><tr><th>Zone</th><th>Day-ahead through</th><th>Imbalance through</th><th>Last poll</th></tr></thead><tbody>{srows}</tbody></table></div>
 <h2>All zones, latest scored day</h2>
 {latest_scores_table(ctx, rel)}
-<h2>Latest trading action forecast (Trailing Bias Value)</h2>
+<h2>Next trading action (Trailing Bias Value)</h2>
 {latest_forecasts_table(ctx, rel)}
 {''.join(zone_blocks)}
 <h2>Definitions</h2>
-{definitions(ctx)}"""
+<h3>Key</h3>
+{KEY_DEFINITIONS}
+<h3>Extra</h3>
+{EXTRA_DEFINITIONS}"""
     return layout(ctx, "benchmarks/", "Benchmarks", body)
 
 
@@ -638,7 +740,7 @@ def data_section(ctx, rel):
 
 def page_docs(ctx, has_report):
     def body(rel):
-        report = (f'<a href="{rel("docs/report.pdf")}">The 2020–2026 retrospective</a> (PDF)'
+        report = (f'<a href="{rel("docs/" + REPORT)}">The 2020–2026 retrospective</a> (PDF)'
                   if has_report else "The 2020–2026 retrospective (PDF) is not published yet.")
         method = re.sub(r"^#\s+.*\n?", "", content("methodology.md"), count=1)
         return f"""<h1>Docs</h1>
@@ -692,7 +794,13 @@ def page_news(ctx):
 
 def page_content(ctx, path, name, title):
     cls = "page-" + name.rsplit(".", 1)[0]
-    return layout(ctx, path, title, lambda rel: f'<div class="{cls}">{md(content(name), rel)}</div>')
+    def body(rel):
+        html_ = md(content(name), rel)
+        # a line "{{definitions}}" in any content page is replaced by the shared definitions
+        html_ = html_.replace("<p>{{definitions}}</p>",
+                              f"<h3>Key</h3>\n{KEY_DEFINITIONS}\n<h3>Extra</h3>\n{EXTRA_DEFINITIONS}")
+        return f'<div class="{cls}">{html_}</div>'
+    return layout(ctx, path, title, body)
 
 
 def sitemap(paths):
@@ -721,7 +829,7 @@ def build(out):
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
-    has_report = (CONTENT / "report.pdf").exists()
+    has_report = (CONTENT / REPORT).exists()
     pages = {
         "": page_home(ctx),
         "benchmarks/": page_benchmarks(ctx),
@@ -747,7 +855,7 @@ def build(out):
             shutil.copyfile(f, out / "img" / f.name)
     shutil.copyfile(SRC / "img" / "og.png", out / "og.png")
     if has_report:
-        shutil.copyfile(CONTENT / "report.pdf", out / "docs" / "report.pdf")
+        shutil.copyfile(CONTENT / REPORT, out / "docs" / REPORT)
     shutil.copytree(DATA, out / DATA_PATH)
     (out / "sitemap.xml").write_text(sitemap(sorted(pages)), encoding="utf-8")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n",

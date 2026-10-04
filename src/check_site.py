@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Checks on a built site: every local link resolves, no page over 200 KB,
-no script tags. Usage: python3 src/check_site.py _site"""
+no external scripts (inline convenience JS is allowed). Usage: python3 src/check_site.py _site"""
 import re
 import sys
 from pathlib import Path
@@ -16,8 +16,8 @@ def main(root):
         size = len(text.encode("utf-8"))
         if size > LIMIT:
             errors.append(f"{page}: {size} bytes, over 200 KB")
-        if "<script" in text.lower():
-            errors.append(f"{page}: contains a script tag")
+        if re.search(r"<script[^>]*\bsrc=", text, re.I):
+            errors.append(f"{page}: loads an external script")
         for url in re.findall(r'(?:href|src)="([^"]+)"', text):
             if re.match(r"[a-z]+:", url) or url.startswith("#"):
                 continue
