@@ -1,8 +1,8 @@
 ## How the files are organised
 
 **Two kinds of file.** The service writes one XML
-file per zone, per delivery day and per pass, carrying every 15-minute period
-(PTU) and the parameters the numbers were computed under:
+file per zone, per delivery day and per pass, carrying every 15-minute interval
+(the `ptu` columns count them) and the parameters the numbers were computed under:
 
     <zone>/YYYY/MM/forecast_<ZONE>_<delivery day>_<computed at>.xml
     <zone>/YYYY/MM/score_<ZONE>_<delivery day>_<computed at>.xml
@@ -41,7 +41,7 @@ re-renders history under a newer version.
 - An empty cell means no value, and it never means zero.
 - `trailing_bias_value` is empty on a day with no decision.
 - `ptu` below the day's full count (92, 96 or 100) means the source published
-  fewer PTU prices.
+  prices for fewer 15-minute intervals.
 - `ptu_with_action` gives the number for our forecast result.
 - In forecasts, `ptu_no_action` counts the undecided periods. `skip_reason`
   separates a refused forecast (input day incomplete) from a signal that did

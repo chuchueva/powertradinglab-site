@@ -140,14 +140,14 @@ def forecast_statement(r):
     ptu, n = int(r["ptu"]), int(r["ptu_no_action"])
     why = r.get("skip_reason", "")
     if n == 0:
-        return f"Decided on all {ptu} PTU."
+        return f"Decided on all {ptu} 15-minute intervals."
     if why and n == ptu:
-        return f"Forecast declined: no decision on any of the {ptu} PTU because {reason_text(why)}."
+        return f"Forecast declined: no decision on any of the {ptu} 15-minute intervals because {reason_text(why)}."
     if why:
-        return f"Partly declined: {n} of {ptu} PTU without a decision because {reason_text(why)}."
+        return f"Partly declined: {n} of {ptu} 15-minute intervals without a decision because {reason_text(why)}."
     if n == ptu:
-        return f"The signal did not form on any of the {ptu} PTU; nothing was refused."
-    return f"The signal did not form on {n} of {ptu} PTU; nothing was refused."
+        return f"The signal did not form on any of the {ptu} 15-minute intervals; nothing was refused."
+    return f"The signal did not form on {n} of {ptu} 15-minute intervals; nothing was refused."
 
 
 def score_statements(r, tzname):
@@ -156,12 +156,12 @@ def score_statements(r, tzname):
     pwa = int(r["ptu_with_action"] or 0)
     full = full_ptu(tzname, r["delivery_day"])
     if ptu < full:
-        out.append(f"The source published {ptu} of {full} PTU; the day is scored on the {ptu} that exist.")
+        out.append(f"The source published {ptu} of {full} 15-minute intervals; the day is scored on the {ptu} that exist.")
     if pwa == 0:
         out.append("No decision was issued for this day, so there is no trailing-bias result. "
                    "The four market values are scored regardless.")
     elif pwa < ptu:
-        out.append(f"A decision covered {pwa} of {ptu} PTU; trailing bias is a sum over those {pwa}.")
+        out.append(f"A decision covered {pwa} of {ptu} 15-minute intervals; trailing bias is a sum over those {pwa}.")
     return out
 
 
@@ -420,7 +420,7 @@ def latest_scores_table(ctx, rel):
     note_html = f'<ul class="notes">{"".join(notes)}</ul>' if notes else ""
     return (f'<div class="scroll"><table><caption>{UNIT}.</caption>'
             f'<thead><tr><th>Zone</th><th>Delivery day</th><th>Pass</th>{head}'
-            f'<th class="n">PTU scored / forecasted</th><th>File</th></tr></thead>'
+            f'<th class="n">15-minute intervals<br>scored / forecasted</th><th>File</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{note_html}')
 
 
@@ -512,10 +512,10 @@ def zone_days_table(ctx, z, rel):
         rows.append(f'<tr><th>{day}</th>{fcell}{scell}</tr>'
                     f'<tr class="sub"><td></td><td colspan="7">{" ".join(notes)} '
                     f'{" · ".join(files)}</td></tr>')
-    return (f'<div class="scroll"><table><caption>Newest days first. Decision: PTU buy / sell / '
+    return (f'<div class="scroll"><table><caption>Newest days first. Decision: number of 15-minute intervals buy / sell / '
             f'no action. Values: {UNIT}.</caption>'
             f'<thead><tr><th>Delivery day</th><th class="n">Decision</th>{head}'
-            f'<th class="n">PTU scored / forecasted</th></tr></thead>'
+            f'<th class="n">15-minute intervals<br>scored / forecasted</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
@@ -652,15 +652,14 @@ def page_home(ctx):
         st = ctx.status
         b = ctx.index["benchmarks"]
         return f"""<div class="intro">{md(content('home.md'), rel)}</div>
-<p class="fresh small">Last run {utc_time(st['generated_ts'])}, next run {utc_time(next_run(st['generated_ts']))}</p>
 <h2>Latest scored day</h2>
 {home_scores_table(ctx, rel)}
 <h2>Next trading action (Trailing Bias Value)</h2>
 {home_forecasts_table(ctx, rel)}
-{latest_news(ctx, rel)}
 <h2>Two key benchmarks</h2>
 {KEY_DEFINITIONS}
-<p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>"""
+<p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>
+{latest_news(ctx, rel)}"""
     return layout(ctx, "", "", body)
 
 
