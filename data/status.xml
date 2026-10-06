@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="status">
-  <generated_ts>2026-10-06T09:40:26Z</generated_ts>
+  <generated_ts>2026-10-06T14:01:27Z</generated_ts>
   <version schema="6" methodology="3" />
   <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <notice>The only file here that changes. Everything inside a dated folder is frozen: written once and never rewritten.</notice>
   <area code="NL" mode="live">
-    <source da_through="2026-10-06T21:45:00Z" im_through="2026-10-05T21:45:00Z" last_poll="2026-10-06T09:40:05Z" />
+    <source da_through="2026-10-06T21:45:00Z" im_through="2026-10-05T21:45:00Z" last_poll="2026-10-06T14:00:53Z" />
     <forecast delivery_day="2026-10-07" knownby_ts="2026-10-06T09:40:15Z" data_through="2026-10-05T21:00:00Z" with_signal="96" ptu="96" file="nl/2026/10/forecast_NL_2026-10-07_20261006T094015Z.xml" />
     <score delivery_day="2026-10-05" knownby_ts="2026-10-06T09:40:18Z" calc_iteration="1" ptu="96" file="nl/2026/10/score_NL_2026-10-05_20261006T094018Z.xml" />
   </area>
   <area code="RO" mode="live">
-    <source da_through="2026-10-06T21:45:00Z" im_through="2026-10-06T09:00:00Z" last_poll="2026-10-06T09:40:11Z" />
+    <source da_through="2026-10-06T21:45:00Z" im_through="2026-10-06T13:00:00Z" last_poll="2026-10-06T14:01:15Z" />
     <forecast delivery_day="2026-10-07" knownby_ts="2026-10-06T09:40:15Z" data_through="2026-10-03T18:00:00Z" with_signal="0" ptu="96" status="no_forecast" reason="input_incomplete" missing_day="2026-10-03,2026-10-04,2026-10-05" leg="IM" file="ro/2026/10/forecast_RO_2026-10-07_20261006T094015Z.xml" />
     <score delivery_day="2026-10-03" knownby_ts="2026-10-04T09:40:17Z" calc_iteration="1" ptu="85" file="ro/2026/10/score_RO_2026-10-03_20261004T094017Z.xml" />
   </area>
