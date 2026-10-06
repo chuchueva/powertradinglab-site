@@ -1,2 +1,2 @@
 zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
-NL,2026-10-06,2026-10-05T09:41:01Z,96,20,76,0,2026-10-04T21:00:00Z,,6,3,nl/2026/10/forecast_NL_2026-10-06_20261005T094101Z.xml
+NL,2026-10-07,2026-10-06T09:40:15Z,96,12,84,0,2026-10-05T21:00:00Z,,6,3,nl/2026/10/forecast_NL_2026-10-07_20261006T094015Z.xml
