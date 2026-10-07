@@ -6,7 +6,7 @@
     "url": "https://powertradinglab.org"
   },
   "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
-  "generated_from": "2026-10-06T09:40:18Z",
+  "generated_from": "2026-10-07T09:40:28Z",
   "unit": "EUR per MW of trading capacity, summed over the delivery day",
   "granularity": "one row per zone per delivery day, newest pass only",
   "benchmarks": {
@@ -45,78 +45,78 @@
   "files": [
     {
       "name": "NL_forecasts-90d.csv",
-      "bytes": 2828,
-      "sha256": "094f69e20d800dbfedaa029b4f60b19191fd77cc03768bb529c3cd8c082cf85d"
+      "bytes": 2955,
+      "sha256": "e53c72a69de69f6cf396f1302217b423aa7139a78bd23b11c3fcae8fcdce59b9"
     },
     {
       "name": "NL_forecasts-latest.csv",
       "bytes": 263,
-      "sha256": "3dc2c6aa6d9867a70f11080985e8262f02ccca19c01b507023f65dd210f34ba3"
+      "sha256": "a575f8bbc7262bba793a71d6872036ab943c8b8bc1b46ee827f6c34a3d5b54f3"
     },
     {
       "name": "NL_forecasts.csv",
-      "bytes": 2828,
-      "sha256": "094f69e20d800dbfedaa029b4f60b19191fd77cc03768bb529c3cd8c082cf85d"
+      "bytes": 2955,
+      "sha256": "e53c72a69de69f6cf396f1302217b423aa7139a78bd23b11c3fcae8fcdce59b9"
     },
     {
       "name": "NL_scores-90d.csv",
-      "bytes": 3190,
-      "sha256": "921d899f3ff4c4c4fc47e3f7366090f601c278ed1606880a50edd768cc89b0d1"
+      "bytes": 3349,
+      "sha256": "e14422ee72f8de04b251e2b2ca4a6df7d7397386cc30c6b27aee39fbf3ad1c90"
     },
     {
       "name": "NL_scores-latest.csv",
-      "bytes": 368,
-      "sha256": "af63b3f42e4a8faf97aff765cf66cad3a9654b092696a6f16dd2b68baff9a42a"
+      "bytes": 370,
+      "sha256": "4c126bf5ee0bffa4b9c2e736e60e022f26dc45e9c7fcff16344c8df3f9a59edd"
     },
     {
       "name": "NL_scores.csv",
-      "bytes": 3190,
-      "sha256": "921d899f3ff4c4c4fc47e3f7366090f601c278ed1606880a50edd768cc89b0d1"
+      "bytes": 3349,
+      "sha256": "e14422ee72f8de04b251e2b2ca4a6df7d7397386cc30c6b27aee39fbf3ad1c90"
     },
     {
       "name": "RO_forecasts-90d.csv",
-      "bytes": 1432,
-      "sha256": "ec0910ed3803b7e49a134edb4969793ef54949832842acd7cf888c5a5bb4b807"
+      "bytes": 1612,
+      "sha256": "6ad60f223b4e3d7b0dc2f6c17c085ff1c117ff2fed977e624084d9913b3087c5"
     },
     {
       "name": "RO_forecasts-latest.csv",
       "bytes": 316,
-      "sha256": "b5687b0c00681001e338dc18d07e49a187409c52eb61ba4934b3c09566e8efc6"
+      "sha256": "bd06361eb616d71e764fbace6b2278c36b715ad2c8413b7c835e341d0c6bf66f"
     },
     {
       "name": "RO_forecasts.csv",
-      "bytes": 1432,
-      "sha256": "ec0910ed3803b7e49a134edb4969793ef54949832842acd7cf888c5a5bb4b807"
+      "bytes": 1612,
+      "sha256": "6ad60f223b4e3d7b0dc2f6c17c085ff1c117ff2fed977e624084d9913b3087c5"
     },
     {
       "name": "RO_scores-90d.csv",
-      "bytes": 2784,
-      "sha256": "7c300f89f117bc620e77e3720ddec19263336c4a22cdb65036d2f916b396205e"
+      "bytes": 2934,
+      "sha256": "79d8ed990ce8997c1d22cadfbec3503fb48074e0952a5af35e98ebaacca32256"
     },
     {
       "name": "RO_scores-latest.csv",
-      "bytes": 368,
-      "sha256": "77df2c1e3a763b45763d676be84546afafa534a45a5d14293437a75b4821093d"
+      "bytes": 361,
+      "sha256": "bebba02249ceb0496ee88da0bbb28ea1d6e4061e2082f7ed374f826b616a4242"
     },
     {
       "name": "RO_scores.csv",
-      "bytes": 2784,
-      "sha256": "7c300f89f117bc620e77e3720ddec19263336c4a22cdb65036d2f916b396205e"
+      "bytes": 2934,
+      "sha256": "79d8ed990ce8997c1d22cadfbec3503fb48074e0952a5af35e98ebaacca32256"
     },
     {
       "name": "forecasts-latest.csv",
       "bytes": 443,
-      "sha256": "7902157d6226d77374c847835d575f3e441df83c2d3772339db2efc33d13faec"
+      "sha256": "bd529f953c57a70ca2f72de62371f7e16578a5c2b63badf89c96fadd60a0dfe6"
     },
     {
       "name": "scores-latest.csv",
-      "bytes": 525,
-      "sha256": "06575be7fc9e0a3abee7a00df42df2135d69947cb44bc731ecc6b5b4da000763"
+      "bytes": 520,
+      "sha256": "b39bc1aef382b6b7b5e64eee9ab19b754f5d2d048633e936c75b6a1bcb8440aa"
     },
     {
       "name": "zones.json",
       "bytes": 505,
-      "sha256": "9c28dafb2bb55f339ea6ad410fe6e257b50d7cc8f57ae49d631d085950dce9e5"
+      "sha256": "34443d8bac4ae0cb38624e3f91a3525bc4cfafe692bea9fcf35d5724fdca0ec4"
     }
   ]
 }

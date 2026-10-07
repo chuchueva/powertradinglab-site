@@ -1,20 +1,20 @@
 {
   "NL": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 19,
+    "delivery_days": 20,
     "eic": "10YNL----------L",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-10-05",
+    "last_delivery_day": "2026-10-06",
     "timezone": "Europe/Amsterdam"
   },
   "RO": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 17,
+    "delivery_days": 18,
     "eic": "10YRO-TEL------P",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "RON",
-    "last_delivery_day": "2026-10-03",
+    "last_delivery_day": "2026-10-06",
     "timezone": "Europe/Bucharest"
   }
 }
