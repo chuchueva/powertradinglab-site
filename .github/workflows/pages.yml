@@ -10,13 +10,17 @@ permissions:
   pages: write
   id-token: write
 
+# A newer push always carries all the data, so it may replace an older run.
+# This also frees the queue if a deploy hangs (seen 2026-10-06: deploy stuck
+# in "waiting" for a day and blocked every later run).
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,6 +41,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
