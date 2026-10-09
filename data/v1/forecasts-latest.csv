@@ -1,3 +1,3 @@
 zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
-NL,2026-10-09,2026-10-08T09:40:44Z,96,36,60,0,2026-10-07T21:00:00Z,,6,3,nl/2026/10/forecast_NL_2026-10-09_20261008T094044Z.xml
-RO,2026-10-09,2026-10-08T09:40:44Z,96,0,0,96,2026-10-07T23:00:00Z,"input_incomplete:2026-10-05,2026-10-06:IM",6,3,ro/2026/10/forecast_RO_2026-10-09_20261008T094044Z.xml
+NL,2026-10-10,2026-10-09T09:40:15Z,96,44,52,0,2026-10-08T21:00:00Z,,6,3,nl/2026/10/forecast_NL_2026-10-10_20261009T094015Z.xml
+RO,2026-10-10,2026-10-09T09:40:15Z,96,8,44,44,2026-10-08T23:00:00Z,hour_incomplete:2026-10-06:IM,6,3,ro/2026/10/forecast_RO_2026-10-10_20261009T094015Z.xml
