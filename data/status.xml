@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="status">
-  <generated_ts>2026-10-13T09:41:03Z</generated_ts>
+  <generated_ts>2026-10-13T14:02:25Z</generated_ts>
   <version schema="6" methodology="3" />
   <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <notice>The only file here that changes. Everything inside a dated folder is frozen: written once and never rewritten.</notice>
   <area code="NL" mode="live">
-    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-12T21:45:00Z" last_poll="2026-10-13T09:40:13Z" />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-12T21:45:00Z" last_poll="2026-10-13T14:00:42Z" />
     <forecast delivery_day="2026-10-14" knownby_ts="2026-10-13T09:40:51Z" data_through="2026-10-12T21:00:00Z" with_signal="96" ptu="96" file="nl/2026/10/forecast_NL_2026-10-14_20261013T094051Z.xml" />
     <score delivery_day="2026-10-12" knownby_ts="2026-10-13T09:40:54Z" calc_iteration="1" ptu="96" file="nl/2026/10/score_NL_2026-10-12_20261013T094054Z.xml" />
   </area>
   <area code="RO" mode="live">
-    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-13T09:00:00Z" last_poll="2026-10-13T09:40:20Z" />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-13T13:30:00Z" last_poll="2026-10-13T14:01:09Z" />
     <forecast delivery_day="2026-10-14" knownby_ts="2026-10-13T09:40:51Z" data_through="2026-10-12T23:00:00Z" with_signal="96" ptu="96" file="ro/2026/10/forecast_RO_2026-10-14_20261013T094051Z.xml" />
     <score delivery_day="2026-10-12" knownby_ts="2026-10-13T09:40:54Z" calc_iteration="1" ptu="96" file="ro/2026/10/score_RO_2026-10-12_20261013T094054Z.xml" />
   </area>
   <area code="LV" mode="shadow">
-    <source />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-12T20:45:00Z" last_poll="2026-10-13T14:01:28Z" />
   </area>
   <area code="EE" mode="shadow">
-    <source />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-13T11:45:00Z" last_poll="2026-10-13T14:01:43Z" />
   </area>
   <area code="SK" mode="shadow">
-    <source />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-11T21:45:00Z" last_poll="2026-10-13T14:01:55Z" />
   </area>
   <area code="SI" mode="shadow">
-    <source />
+    <source da_through="2026-10-13T21:45:00Z" im_through="2026-10-13T13:30:00Z" last_poll="2026-10-13T14:02:11Z" />
   </area>
 </tradinglab>
