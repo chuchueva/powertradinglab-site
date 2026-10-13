@@ -15,6 +15,7 @@
 - [chuchueva@powertradinglab.org](mailto:chuchueva@powertradinglab.org)
 - [GitHub](https://github.com/chuchueva)
 - [LinkedIn](https://www.linkedin.com/in/irinachuchueva/)
+- [Chuchueva on Power Trading](https://www.linkedin.com/newsletters/chuchueva-on-power-trading-7515317551866916864/) — articles (LinkedIn newsletter)
 - [ORCID](https://orcid.org/0009-0003-0208-5853)
 - [Google Scholar](https://scholar.google.com/citations?user=p-AgsYYAAAAJ)
 - [Papers, code and worked examples](https://drive.google.com/drive/folders/1XzHRekpXh_9MxMSSggHhN_e3j3_TXcRI)

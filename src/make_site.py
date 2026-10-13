@@ -29,6 +29,7 @@ SITE_URL = "https://powertradinglab.org"
 DATA_PATH = "benchmarks/data/"          # where data/ is mirrored on the site
 EMAIL = "chuchueva@powertradinglab.org"
 GITHUB = "https://github.com/chuchueva"
+NEWSLETTER = "https://www.linkedin.com/newsletters/chuchueva-on-power-trading-7515317551866916864/"
 DESCRIPTION = "Irina Chuchueva's Open Research Platform: European Power Trading Benchmarks"
 NOT_COPIED = {"og.svg", "og.png"}   # everything else in src/img goes to /img; og.png goes to the root
 
@@ -323,7 +324,7 @@ def layout(ctx, path, title, body):
         f'Last run {utc_time(st["generated_ts"])}, next run {utc_time(next_run(st["generated_ts"]))}</p>'
         '<p>Derived from data published on the ENTSO-E Transparency Platform; imbalance prices '
         'reused under CC-BY 4.0. No day-ahead or imbalance prices are republished.</p>'
-        f'<p><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{GITHUB}">GitHub</a> · '
+        f'<p><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{NEWSLETTER}">Chuchueva on Power Trading</a> · <a href="{GITHUB}">GitHub</a> · '
         f'<a href="{rel("chuchueva/")}">Irina Chuchueva</a></p>')
     return f"""<!doctype html>
 <html lang="en">
