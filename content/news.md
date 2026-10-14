@@ -1,5 +1,15 @@
 # News
 
+
+## 2026-10-14
+
+Irina Chuchueva publishes a preprint on latencies in low-latency trading on the Nord Pool order book, based on live data 
+from 114,864 trades executed in Belgium in 2022–2023. The study shows that exchange-side trade confirmation 
+takes 58–209 ms and accounts for 3/4 of the total trading cycle, a bottleneck is defined as *the Latency Wall*. 
+The paper also describes the optimisation behind the trading algorithm and discusses what this latency 
+means for the exchange and for traders. The full text is available on Zenodo (DOI: [zenodo.23309599](https://doi.org/10.5281/zenodo.23309599)), 
+and an executable [optimisation example is on Kaggle](https://www.kaggle.com/code/irinachuchueva/a2-power-overlapping-products-optimisation).
+
 ## 2026-10-05
 
 Today PowerTradingLab goes public. The site publishes five daily short-term trading benchmarks for two bidding zones, 
