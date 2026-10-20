@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="score" area="NL" delivery_day="2026-09-22">
-  <knownby_ts>2026-09-23T09:40:12Z</knownby_ts>
-  <calc_iteration>1</calc_iteration>
-  <version schema="5" methodology="2" />
+  <knownby_ts>2026-10-20T09:42:10Z</knownby_ts>
+  <calc_iteration>2</calc_iteration>
+  <version schema="6" methodology="3" />
   <parameters n_days_trailing_bias_default="3" final_day_of_month="20" run_time_utc="09:40" causality="as_of" />
-  <publisher name="TradingLab" />
+  <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <unit>EUR per 1 MW of trading quantity</unit>
   <action_codes>+1 = buy on the day-ahead auction and settle in imbalance; -1 = sell. The attribute is absent when no action was issued.</action_codes>
   <attribution>Derived from data published on the ENTSO-E Transparency Platform (transparency.entsoe.eu). Imbalance prices (A85) are reused under CC-BY 4.0. Day-ahead prices (A44) belong to the respective power exchanges and are NOT republished here — this file contains only values derived from them.</attribution>
