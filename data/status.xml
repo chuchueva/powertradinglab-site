@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="status">
-  <generated_ts>2026-10-20T09:42:24Z</generated_ts>
+  <generated_ts>2026-10-20T14:05:01Z</generated_ts>
   <version schema="6" methodology="3" />
   <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <notice>The only file here that changes. Everything inside a dated folder is frozen: written once and never rewritten.</notice>
   <area code="NL" mode="live">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-19T21:45:00Z" last_poll="2026-10-20T09:40:11Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-19T21:45:00Z" last_poll="2026-10-20T14:00:41Z" />
     <forecast delivery_day="2026-10-21" knownby_ts="2026-10-20T09:42:04Z" data_through="2026-10-19T21:00:00Z" with_signal="96" ptu="96" file="nl/2026/10/forecast_NL_2026-10-21_20261020T094204Z.xml" />
     <score delivery_day="2026-10-19" knownby_ts="2026-10-20T09:42:10Z" calc_iteration="1" ptu="96" days_in_pass="26" file="nl/2026/10/score_NL_2026-10-19_20261020T094210Z.xml" />
   </area>
   <area code="RO" mode="live">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:00:00Z" last_poll="2026-10-20T09:40:16Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:30:00Z" last_poll="2026-10-20T14:01:19Z" />
     <forecast delivery_day="2026-10-21" knownby_ts="2026-10-20T09:42:04Z" data_through="2026-10-19T23:00:00Z" with_signal="96" ptu="96" file="ro/2026/10/forecast_RO_2026-10-21_20261020T094204Z.xml" />
     <score delivery_day="2026-10-19" knownby_ts="2026-10-20T09:42:10Z" calc_iteration="1" ptu="96" days_in_pass="15" file="ro/2026/10/score_RO_2026-10-19_20261020T094210Z.xml" />
   </area>
   <area code="EE" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T07:45:00Z" last_poll="2026-10-20T09:40:27Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T11:45:00Z" last_poll="2026-10-20T14:01:44Z" />
   </area>
   <area code="SI" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T06:45:00Z" last_poll="2026-10-20T09:40:40Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:30:00Z" last_poll="2026-10-20T14:01:59Z" />
   </area>
   <area code="SE1" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:00:00Z" last_poll="2026-10-20T09:40:42Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:30:00Z" last_poll="2026-10-20T14:02:22Z" />
   </area>
   <area code="NO5" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:00:00Z" last_poll="2026-10-20T09:41:07Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:30:00Z" last_poll="2026-10-20T14:03:01Z" />
   </area>
   <area code="AL" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-19T21:45:00Z" last_poll="2026-10-20T09:41:20Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-19T21:45:00Z" last_poll="2026-10-20T14:03:44Z" />
   </area>
   <area code="DE_LU" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:00:00Z" last_poll="2026-10-20T09:41:30Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:15:00Z" last_poll="2026-10-20T14:04:00Z" />
   </area>
   <area code="HR" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:00:00Z" last_poll="2026-10-20T09:41:36Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:15:00Z" last_poll="2026-10-20T14:04:07Z" />
   </area>
   <area code="CZ" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:15:00Z" last_poll="2026-10-20T09:41:43Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:45:00Z" last_poll="2026-10-20T14:04:24Z" />
   </area>
   <area code="BE" mode="shadow">
-    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T09:15:00Z" last_poll="2026-10-20T09:42:00Z" />
+    <source da_through="2026-10-20T21:45:00Z" im_through="2026-10-20T13:45:00Z" last_poll="2026-10-20T14:04:44Z" />
   </area>
 </tradinglab>
