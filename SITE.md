@@ -467,4 +467,16 @@ GitHub Actions (site repo)     reads data/v1 → renders HTML → deploys Pages
 - **News source**: `content/news.md`, dated `##` entries, `versions:` line for
   announcements. Written by the owner.
 
+## Decided, 2026-10-21
+
+- **Monthly totals come from the server**, `<ZONE>_scores-monthly.csv` and
+  `scores-monthly-latest.csv`; the site sums nothing. Labels and tooltips come
+  from `index.json` -> `monthly_columns`.
+- **Front page:** "Last settled month", one row per zone (`final` only, from
+  `scores-monthly-latest.csv`). **Benchmarks page:** per zone the whole monthly
+  file, newest first; `open` months marked "running, not settled".
+- **Sums cross methodology changes.** Accumulated results are collected
+  continuously as the methodology evolves; the methodology of each row stays in
+  the data. (This revises "not comparable" of 2026-10-01 for totals.)
+
 Nothing is open. What is left is building it.

@@ -520,11 +520,80 @@ def zone_days_table(ctx, z, rel):
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
+def month_name(m):
+    """2026-09 -> September 2026"""
+    y, mo = m.split("-")
+    return date(int(y), int(mo), 1).strftime("%B %Y")
+
+
+def monthly_th(ctx, key, label, n=True):
+    """A header cell whose tooltip comes from index.json, never written here."""
+    tip = ctx.index.get("monthly_columns", {}).get(key) or ctx.index.get("benchmarks", {}).get(key, "")
+    cls = ' class="n"' if n else ""
+    title = f' title="{esc(tip)}"' if tip else ""
+    return f"<th{cls}{title}>{label}</th>"
+
+
+def monthly_value(v):
+    if v == "":
+        return '<td class="n muted">&mdash;</td>'
+    sign = "pos" if float(v) > 0 else "neg" if float(v) < 0 else ""
+    return f'<td class="n {sign}">{num(v)}</td>'
+
+
+def monthly_status(r):
+    if r["status"] == "final":
+        return "<td>settled</td>"
+    return '<td class="running">running, not settled</td>'
+
+
+def home_monthly_table(ctx, rel):
+    rows = []
+    for z in ctx.zone_codes:
+        r = ctx.monthly_latest.get(z)
+        if r is None:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="4" class="muted">No settled month yet.</td></tr>')
+            continue
+        rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{month_name(r["month"])}</td>'
+                    f'{monthly_value(r["extractable_value"])}{monthly_value(r["trailing_bias_value"])}'
+                    f'<td class="n">{r["days_scored"]} / {r["days_in_month"]}</td></tr>')
+    return (f'<div class="scroll"><table><caption>EUR per 1 MW of trading quantity, summed over the '
+            f'scored days of the month. Settled: every day has its final pass and the values will not change. '
+            f'{data_link(rel, "v1/scores-monthly-latest.csv", "File")}.</caption>'
+            f'<thead><tr><th>Zone</th>{monthly_th(ctx, "month", "Month", False)}'
+            f'{monthly_th(ctx, "extractable_value", "&ldquo;Speculative Fat&rdquo;<br>(Extractable)")}'
+            f'{monthly_th(ctx, "trailing_bias_value", "&ldquo;Simplest trading strategy&rdquo; PnL<br>(Trailing bias)")}'
+            f'{monthly_th(ctx, "days_scored", "Days scored /<br>days in month")}</tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
+def zone_monthly_table(ctx, z, rel):
+    rows = sorted(ctx.monthly.get(z, []), key=lambda r: r["month"], reverse=True)
+    if not rows:
+        return '<p class="muted">No monthly totals yet.</p>'
+    head = "".join(monthly_th(ctx, k, lbl) for k, lbl in VALUES)
+    body = []
+    for r in rows:
+        cls = "" if r["status"] == "final" else ' class="open"'
+        body.append(f'<tr{cls}><th>{month_name(r["month"])}</th>{monthly_status(r)}'
+                    + "".join(monthly_value(r[k]) for k, _ in VALUES) +
+                    f'<td class="n">{r["days_scored"]} / {r["days_in_month"]}</td>'
+                    f'<td class="n">{r["days_with_decision"]}</td></tr>')
+    return (f'<div class="scroll"><table><caption>Newest month first. {UNIT.replace("delivery day", "scored days of the month")}. '
+            f'Running months change every day until they settle on the 20th of the following month. '
+            f'{data_link(rel, "v1/" + z + "_scores-monthly.csv", "File")}.</caption>'
+            f'<thead><tr>{monthly_th(ctx, "month", "Month", False)}{monthly_th(ctx, "status", "Status", False)}{head}'
+            f'{monthly_th(ctx, "days_scored", "Days scored /<br>days in month")}'
+            f'{monthly_th(ctx, "days_with_decision", "Days with<br>decision")}</tr></thead>'
+            f'<tbody>{"".join(body)}</tbody></table></div>')
+
+
 def downloads(ctx, z, rel):
     sizes = {f["name"]: f["bytes"] for f in ctx.index["files"]}
     items = []
     for kind in ("scores", "forecasts"):
-        for suffix, what in (("", "full history"), ("-90d", "last 90 days"), ("-latest", "latest day")):
+        for suffix, what in (("", "full history"), ("-90d", "last 90 days"), ("-latest", "latest day"),
+                             ("-monthly", "monthly totals")):
             name = f"{z}_{kind}{suffix}.csv"
             if name in sizes:
                 items.append(f'<li>{data_link(rel, "v1/" + name, name)} — {kind}, {what}, '
@@ -657,6 +726,8 @@ def page_home(ctx):
 {home_scores_table(ctx, rel)}
 <h2>Next trading action (Trailing Bias Value)</h2>
 {home_forecasts_table(ctx, rel)}
+<h2>Last settled month</h2>
+{home_monthly_table(ctx, rel)}
 <h2>Two key benchmarks</h2>
 {KEY_DEFINITIONS}
 <p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>
@@ -682,7 +753,8 @@ def page_benchmarks(ctx):
             # earlier methodologies (owner's call, 2026-10-02).
             zone_blocks.append(
                 f'<section id="{z}"><h2>{zone_name(ctx, z)} {meta}</h2>'
-                f'{zone_days_table(ctx, z, rel)}<h3>Archive</h3>{downloads(ctx, z, rel)}</section>')
+                f'{zone_days_table(ctx, z, rel)}<h3>Monthly totals</h3>{zone_monthly_table(ctx, z, rel)}'
+                f'<h3>Archive</h3>{downloads(ctx, z, rel)}</section>')
         return f"""<h1>Benchmarks</h1>
 <p class="version">Schema {esc(st['schema'])} · Methodology {esc(st['methodology'])}</p>
 <p class="zones">Zones: {zone_index}</p>
@@ -736,7 +808,9 @@ def data_section(ctx, rel):
 <p>As stated in <code>index.json</code>, which travels with the data. Plain-language definitions are under <a href="#methodology">Methodology</a>.</p>
 {definitions(ctx)}
 <h3>Forecast columns</h3>
-{cols(idx.get('forecast_columns', {}))}"""
+{cols(idx.get('forecast_columns', {}))}
+<h3>Monthly columns</h3>
+{cols(idx.get('monthly_columns', {}))}"""
 
 
 def page_docs(ctx, has_report):
@@ -828,6 +902,8 @@ def build(out):
     ctx.forecasts = {z: read_csv(f"{z}_forecasts.csv") for z in ctx.zone_codes}
     ctx.latest_score = {r["zone"]: r for r in read_csv("scores-latest.csv")}
     ctx.latest_forecast = {r["zone"]: r for r in read_csv("forecasts-latest.csv")}
+    ctx.monthly = {z: read_csv(f"{z}_scores-monthly.csv") for z in ctx.zone_codes}
+    ctx.monthly_latest = {r["zone"]: r for r in read_csv("scores-monthly-latest.csv")}
     ctx.news = read_news()
     check_versions(ctx.news, ctx.status)
 
