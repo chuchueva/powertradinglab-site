@@ -6,7 +6,7 @@
     "url": "https://powertradinglab.org"
   },
   "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
-  "generated_from": "2026-10-20T09:42:10Z",
+  "generated_from": "2026-10-21T09:46:02Z",
   "unit": "EUR per MW of trading capacity, summed over the delivery day",
   "granularity": "one row per zone per delivery day, newest pass only",
   "benchmarks": {
@@ -38,6 +38,16 @@
     "skip_reason": "Empty: where there is no action, the signal did not form. Set: the forecast was REFUSED, and the value says why (kind:missing day[:leg]).",
     "source_file": "The frozen published forecast this row was derived from; per-period actions are there."
   },
+  "monthly_granularity": "one row per zone per calendar month: the sums of that zone's daily rows; final once settled, open while running",
+  "monthly_columns": {
+    "zone": "Bidding zone code.",
+    "month": "Calendar month of the delivery days, in the zone's own market time, YYYY-MM.",
+    "status": "final: every scored day of the month has had its as-final pass (from the 20th of the following month) - the month is settled and will not move. open: the month so far, a running total that changes every day until it settles.",
+    "days_in_month": "Calendar days in the month.",
+    "days_scored": "Delivery days with a row in <zone>_scores.csv. Fewer than days_in_month means the source left days out, or the month is still running; a missing day is never filled.",
+    "days_with_decision": "Days on which trailing_bias_value carries a decision.",
+    "knownby_ts": "The newest instant among the month's rows: everything in the line was knowable then."
+  },
   "zones": [
     "NL",
     "RO"
@@ -45,78 +55,93 @@
   "files": [
     {
       "name": "NL_forecasts-90d.csv",
-      "bytes": 4634,
-      "sha256": "7b9d041624533af422e2c5d8ff0bd4a32cb858997c59d6e4f148c7792cb87035"
+      "bytes": 4761,
+      "sha256": "ec9053f53574a587367ccc7e6f4cc57c95fe05a0cec0e646dc1a610feb529822"
     },
     {
       "name": "NL_forecasts-latest.csv",
       "bytes": 263,
-      "sha256": "98a1a7393984aa7ae602c233a00da21260784e4f5cf45f6b3f83de9d8df7b019"
+      "sha256": "05cd45f9ca84e5e2172951702247bcffa24c9363a48e9d7d8ea7070131dd23cd"
     },
     {
       "name": "NL_forecasts.csv",
-      "bytes": 4634,
-      "sha256": "7b9d041624533af422e2c5d8ff0bd4a32cb858997c59d6e4f148c7792cb87035"
+      "bytes": 4761,
+      "sha256": "ec9053f53574a587367ccc7e6f4cc57c95fe05a0cec0e646dc1a610feb529822"
     },
     {
       "name": "NL_scores-90d.csv",
-      "bytes": 5397,
-      "sha256": "b069facf2f380997c0f1fcd61fe26ba78e78e80d2d861fc852125fa7a2c96f7c"
+      "bytes": 5552,
+      "sha256": "9cd0f624d130d8fdd9810c51cd958f0588b0b09e837b4858f4611778541cd13d"
     },
     {
       "name": "NL_scores-latest.csv",
-      "bytes": 367,
-      "sha256": "189615e9fb54ccab9580c55b35a8b2980d298a102abbf00b301c65474748702c"
+      "bytes": 366,
+      "sha256": "0c76472d96256e7771be3ff5e00eac98164047634663d6f6afe90995e64b30a1"
+    },
+    {
+      "name": "NL_scores-monthly.csv",
+      "bytes": 374,
+      "sha256": "5cdc2aba2d7ea1b3a74b4e053f110e94f04d158b516065791a5476087458b482"
     },
     {
       "name": "NL_scores.csv",
-      "bytes": 5397,
-      "sha256": "b069facf2f380997c0f1fcd61fe26ba78e78e80d2d861fc852125fa7a2c96f7c"
+      "bytes": 5552,
+      "sha256": "9cd0f624d130d8fdd9810c51cd958f0588b0b09e837b4858f4611778541cd13d"
     },
     {
       "name": "RO_forecasts-90d.csv",
-      "bytes": 3449,
-      "sha256": "a28f241d79e4bb0678990d83f158e893ee37c03912fe60627a181e8357cd7d47"
+      "bytes": 3576,
+      "sha256": "b60e484490b2c7d1d1b1b5916915e18273b6a3597e3d4d52230d7f686b5e7fcd"
     },
     {
       "name": "RO_forecasts-latest.csv",
       "bytes": 263,
-      "sha256": "fe1665ab750b97afc6314db1876285c778340368cc3f86463366b713e17f15fc"
+      "sha256": "ef1e01d061ca61fb3fd4f89819de237f5e7eed37901ca32df473faa6b593ec75"
     },
     {
       "name": "RO_forecasts.csv",
-      "bytes": 3449,
-      "sha256": "a28f241d79e4bb0678990d83f158e893ee37c03912fe60627a181e8357cd7d47"
+      "bytes": 3576,
+      "sha256": "b60e484490b2c7d1d1b1b5916915e18273b6a3597e3d4d52230d7f686b5e7fcd"
     },
     {
       "name": "RO_scores-90d.csv",
-      "bytes": 4945,
-      "sha256": "86073a200db683a3ba20dd94baea18549ceb6c06cc22372611ec2e47100dd9d4"
+      "bytes": 5105,
+      "sha256": "93e5d05c54ea3d2d28dfdc6c6d61e5ac81f7681476af61e2ca8010e5a694217b"
     },
     {
       "name": "RO_scores-latest.csv",
       "bytes": 371,
-      "sha256": "e001bfc82db6af8637ea39a7878c6e0a16cc5e9a025436e347b8a76c2e29dba0"
+      "sha256": "192eb84e2fc7144e8ff52c9327fcfc198a8220078d93d52f98325c1243e74166"
+    },
+    {
+      "name": "RO_scores-monthly.csv",
+      "bytes": 369,
+      "sha256": "a1d9c5a026f3a583b6f28c84f41901c63b333cf6b7a5fea932042d27b92b6ecd"
     },
     {
       "name": "RO_scores.csv",
-      "bytes": 4945,
-      "sha256": "86073a200db683a3ba20dd94baea18549ceb6c06cc22372611ec2e47100dd9d4"
+      "bytes": 5105,
+      "sha256": "93e5d05c54ea3d2d28dfdc6c6d61e5ac81f7681476af61e2ca8010e5a694217b"
     },
     {
       "name": "forecasts-latest.csv",
       "bytes": 390,
-      "sha256": "21acbf9941e8d7912f4782ecc9288d6658da11183d1a939b52e500932a06c636"
+      "sha256": "6f365723ef4f4a763fb3cebb3db1847a468e12d717641a79b78883010e535c49"
     },
     {
       "name": "scores-latest.csv",
-      "bytes": 527,
-      "sha256": "33822c888581752bfadfdbb1241d1efac2c5f1e95ac65c46aa8137650b0c1b22"
+      "bytes": 526,
+      "sha256": "645776c9b5b57d47b6d442fd66159b35c6757ab681dd2cd4eeb39f57e210d7eb"
+    },
+    {
+      "name": "scores-monthly-latest.csv",
+      "bytes": 372,
+      "sha256": "621533ed08b54f86c156d10a09edc6bbbef753efcc4a93572f79646cd9aa7e14"
     },
     {
       "name": "zones.json",
       "bytes": 505,
-      "sha256": "d2c6f5ce78ff935f8eb893a5b20c91e945bff20f57654438ba9d4c327d7328ee"
+      "sha256": "453fd9d66127f62f86e297e0d88c0cef3f9cecba14d0506a906b9d1bb7f95a79"
     }
   ]
 }
