@@ -547,6 +547,109 @@ def monthly_status(r):
     return '<td class="running">running, not settled</td>'
 
 
+# ---------------------------------------------------------------- chart
+# PREVIEW: the cumulative series is summed here from <ZONE>_scores.csv. Under
+# SITE.md the server should publish it (a cumulative file in v1) and the site
+# should only draw it. Replace cumulative_series() with a reader of that file.
+
+ZONE_COLOURS = ["#157A7F", "#0E2A33", "#E39B2F"]
+SHOW_CUMULATIVE_CHART = False   # off until the owner decides (2026-10-21)
+
+
+def home_chart(ctx):
+    if not SHOW_CUMULATIVE_CHART:
+        return ""
+    return ('<h2>Accumulated &ldquo;Simplest trading strategy&rdquo; PnL</h2>'
+            '<p class="caption">EUR per 1 MW, summed from the first published day; days without a decision '
+            'add nothing. Dashed lines mark methodology changes.</p>'
+            + cumulative_chart(ctx, "trailing_bias_value", "Accumulated simplest trading strategy PnL by zone"))
+
+
+def cumulative_series(rows, key):
+    out, total = [], 0.0
+    for r in sorted(rows, key=lambda r: r["delivery_day"]):
+        if r[key] != "":
+            total += float(r[key])
+        out.append((r["delivery_day"], total, r["methodology_version"]))
+    return out
+
+
+def methodology_changes(series):
+    marks, prev = [], None
+    for day, _, m in series:
+        if prev is not None and m != prev:
+            marks.append((day, m))
+        prev = m
+    return marks
+
+
+def cumulative_chart(ctx, key, title):
+    W, H = 900, 300
+    L, R, T, B = 70, 120, 28, 34
+    series = {z: cumulative_series(ctx.scores[z], key) for z in ctx.zone_codes if ctx.scores[z]}
+    if not series:
+        return ""
+    days = sorted({d for s_ in series.values() for d, _, _ in s_})
+    d0, d1 = date.fromisoformat(days[0]), date.fromisoformat(days[-1])
+    span = max((d1 - d0).days, 1)
+    vals = [v for s_ in series.values() for _, v, _ in s_] + [0.0]
+    lo, hi = min(vals), max(vals)
+    pad = (hi - lo) * 0.08 or 1.0
+    lo, hi = lo - pad, hi + pad
+
+    def x(day):
+        return L + (date.fromisoformat(day) - d0).days / span * (W - L - R)
+
+    def y(v):
+        return T + (hi - v) / (hi - lo) * (H - T - B)
+
+    parts = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(title)}" class="chart">']
+    # y grid: about 5 round steps
+    raw = (hi - lo) / 5
+    mag = 10 ** len(str(int(abs(raw)))) / 10 if raw >= 1 else 1
+    step = min((m * mag for m in (1, 2, 2.5, 5, 10)), key=lambda st: abs(st - raw))
+    v = (lo // step + 1) * step
+    while v < hi:
+        yy = y(v)
+        stroke = "#6B7780" if abs(v) < 1e-9 else "#D8DEE0"
+        parts.append(f'<line x1="{L}" x2="{W - R}" y1="{yy:.1f}" y2="{yy:.1f}" stroke="{stroke}" stroke-width="1"/>')
+        parts.append(f'<text x="{L - 8}" y="{yy + 4:.1f}" text-anchor="end" class="ax">{num(v)[:-3]}</text>')
+        v += step
+    # x ticks: the first published day, then the first day of each month
+    parts.append(f'<text x="{L}" y="{H - 10}" text-anchor="start" class="ax">{d0.day} {d0.strftime("%b %Y")}</text>')
+    d = date(d0.year, d0.month, 1)
+    while d <= d1:
+        if d >= d0 and x(d.isoformat()) - L > 90:
+            xx = x(d.isoformat())
+            parts.append(f'<text x="{xx:.1f}" y="{H - 10}" text-anchor="middle" class="ax">{d.strftime("%b %Y")}</text>')
+        d = date(d.year + (d.month == 12), d.month % 12 + 1, 1)
+    # methodology changes
+    marks = {}
+    for z, s_ in series.items():
+        for day, m in methodology_changes(s_):
+            marks.setdefault(day, []).append(f"{z}: methodology {m} since {day}")
+    last_x = -1e9
+    for day in sorted(marks):
+        xx = x(day)
+        tip = "; ".join(marks[day])
+        parts.append(f'<g><title>{esc(tip)}</title>'
+                     f'<line x1="{xx:.1f}" x2="{xx:.1f}" y1="{T - 6}" y2="{H - B}" stroke="#6B7780" stroke-width="1" stroke-dasharray="3 3"/>')
+        if xx - last_x > 40:
+            label = "m" + marks[day][0].split("methodology ")[1].split(" ")[0]
+            parts.append(f'<text x="{xx + 3:.1f}" y="{T - 10}" class="ax mark">{label}</text>')
+            last_x = xx
+        parts.append('</g>')
+    # lines, direct labels at the end
+    for i, (z, s_) in enumerate(series.items()):
+        col = ZONE_COLOURS[i % len(ZONE_COLOURS)]
+        pts = " ".join(f"{x(dd):.1f},{y(vv):.1f}" for dd, vv, _ in s_)
+        parts.append(f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2"/>')
+        ld, lv, _ = s_[-1]
+        parts.append(f'<text x="{x(ld) + 6:.1f}" y="{y(lv) + 4:.1f}" class="lab" fill="{col}">{z} {num(lv)[:-3]}</text>')
+    parts.append('</svg>')
+    return "".join(parts)
+
+
 def home_monthly_table(ctx, rel):
     rows = []
     for z in ctx.zone_codes:
@@ -728,6 +831,7 @@ def page_home(ctx):
 {home_forecasts_table(ctx, rel)}
 <h2>Last settled month</h2>
 {home_monthly_table(ctx, rel)}
+{home_chart(ctx)}
 <h2>Two key benchmarks</h2>
 {KEY_DEFINITIONS}
 <p><a href="{rel('benchmarks/')}">Zones details</a> · <a href="{rel('docs/')}">Methodology and Data Interface</a></p>

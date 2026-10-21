@@ -94,3 +94,8 @@ dl.defs dd { margin-left: 18px; }
 h4 { font-size: 1rem; margin: 18px 0 4px; color: var(--ink); }
 td.running { color: var(--amber); font-style: italic; white-space: nowrap; }
 th[title] { cursor: help; }
+svg.chart { width: 100%; height: auto; display: block; margin: 4px 0 16px; }
+svg.chart .ax { font-size: 12px; fill: var(--grey); font-family: inherit; }
+svg.chart .lab { font-size: 13px; font-weight: 600; font-family: inherit; }
+svg.chart .mark { font-size: 11px; }
+p.caption { color: var(--grey); font-size: 0.85rem; margin: 0 0 4px; }
