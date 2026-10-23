@@ -785,6 +785,12 @@ document.querySelectorAll("time.lt").forEach(function (t) {
   if (isNaN(d)) return;
   t.insertAdjacentText("beforeend", " (" + d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) + " local time)");
 });
+function openZone() {
+  var d = location.hash && document.getElementById(location.hash.slice(1));
+  if (d && d.tagName === "DETAILS") { d.open = true; d.scrollIntoView(); }
+}
+openZone();
+window.addEventListener("hashchange", openZone);
 </script>"""
 
 
@@ -877,10 +883,15 @@ def page_benchmarks(ctx):
                     f'{esc(zi.get("timezone", ""))}</span>')
             # method_note() is kept for later: at launch the page says nothing about
             # earlier methodologies (owner's call, 2026-10-02).
+            ls, lf = ctx.latest_score.get(z), ctx.latest_forecast.get(z)
+            brief = (f'Last scored day {ls["delivery_day"] if ls else "none yet"} · '
+                     f'Next action {lf["delivery_day"] if lf else "none yet"}')
+            # Collapsed by default; the script below opens the zone named in the URL hash.
             zone_blocks.append(
-                f'<section id="{z}"><h2>{zone_name(ctx, z)} {meta}</h2>'
+                f'<details class="zone" id="{z}"><summary><h2>{zone_name(ctx, z)} {meta}</h2>'
+                f'<span class="z-brief">{brief}</span></summary>'
                 f'{zone_days_table(ctx, z, rel)}<h3>Monthly totals</h3>{zone_monthly_table(ctx, z, rel)}'
-                f'<h3>Archive</h3>{downloads(ctx, z, rel)}</section>')
+                f'<h3>Archive</h3>{downloads(ctx, z, rel)}</details>')
         return f"""<h1>Benchmarks</h1>
 <p class="version">Schema {esc(st['schema'])} · Methodology {esc(st['methodology'])}</p>
 <p class="zones">Zones: {zone_index}</p>

@@ -99,3 +99,12 @@ svg.chart .ax { font-size: 12px; fill: var(--grey); font-family: inherit; }
 svg.chart .lab { font-size: 13px; font-weight: 600; font-family: inherit; }
 svg.chart .mark { font-size: 11px; }
 p.caption { color: var(--grey); font-size: 0.85rem; margin: 0 0 4px; }
+
+details.zone { scroll-margin-top: 12px; border-bottom: 1px solid var(--rule); }
+details.zone > summary { cursor: pointer; list-style: none; padding: 10px 0 8px; }
+details.zone > summary::-webkit-details-marker { display: none; }
+details.zone > summary h2 { display: inline; margin: 0; padding: 0; border: 0; }
+details.zone > summary::before { content: "\25B8"; display: inline-block; width: 1.2em; color: var(--grey); transition: transform .15s; }
+details.zone[open] > summary::before { transform: rotate(90deg); }
+.z-brief { display: block; margin-left: 1.2em; font-size: 0.85rem; color: var(--grey); }
+details.zone[open] { padding-bottom: 16px; }
