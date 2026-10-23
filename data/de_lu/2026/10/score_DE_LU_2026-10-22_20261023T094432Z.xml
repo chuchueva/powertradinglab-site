@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tradinglab kind="score" area="DE_LU" delivery_day="2026-10-22">
+  <knownby_ts>2026-10-23T09:44:32Z</knownby_ts>
+  <calc_iteration>1</calc_iteration>
+  <version schema="6" methodology="3" />
+  <parameters n_days_trailing_bias_default="3" final_day_of_month="20" run_time_utc="09:40" causality="as_of" />
+  <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
+  <unit>EUR per 1 MW of trading quantity</unit>
+  <action_codes>+1 = buy on the day-ahead auction and settle in imbalance; -1 = sell. The attribute is absent when no action was issued.</action_codes>
+  <attribution>Derived from data published on the ENTSO-E Transparency Platform (transparency.entsoe.eu). Imbalance prices (A85) are reused under CC-BY 4.0. Day-ahead prices (A44) belong to the respective power exchanges and are NOT republished here — this file contains only values derived from them.</attribution>
+  <notice>This file reports a measurement of market conditions, not a trading recommendation and not investment advice.</notice>
+  <totals extractable_value="1437.7473" adverse_value="-1437.7473" passive_da_buy_value="-587.0168" passive_da_sell_value="587.0168" />
+  <no_action reason="no_forecast_issued" />
+  <points count="96">
+    <p ts="2026-10-21T22:00:00Z" extractable_value="4.9937" adverse_value="-4.9937" passive_da_buy_value="4.9937" passive_da_sell_value="-4.9937" />
+    <p ts="2026-10-21T22:15:00Z" extractable_value="2.3205" adverse_value="-2.3205" passive_da_buy_value="2.3205" passive_da_sell_value="-2.3205" />
+    <p ts="2026-10-21T22:30:00Z" extractable_value="4.3953" adverse_value="-4.3953" passive_da_buy_value="4.3953" passive_da_sell_value="-4.3953" />
+    <p ts="2026-10-21T22:45:00Z" extractable_value="10.3968" adverse_value="-10.3968" passive_da_buy_value="10.3968" passive_da_sell_value="-10.3968" />
+    <p ts="2026-10-21T23:00:00Z" extractable_value="16.0937" adverse_value="-16.0937" passive_da_buy_value="16.0937" passive_da_sell_value="-16.0937" />
+    <p ts="2026-10-21T23:15:00Z" extractable_value="29.3920" adverse_value="-29.3920" passive_da_buy_value="29.3920" passive_da_sell_value="-29.3920" />
+    <p ts="2026-10-21T23:30:00Z" extractable_value="14.2658" adverse_value="-14.2658" passive_da_buy_value="14.2658" passive_da_sell_value="-14.2658" />
+    <p ts="2026-10-21T23:45:00Z" extractable_value="6.7737" adverse_value="-6.7737" passive_da_buy_value="6.7737" passive_da_sell_value="-6.7737" />
+    <p ts="2026-10-22T00:00:00Z" extractable_value="4.4680" adverse_value="-4.4680" passive_da_buy_value="4.4680" passive_da_sell_value="-4.4680" />
+    <p ts="2026-10-22T00:15:00Z" extractable_value="2.4360" adverse_value="-2.4360" passive_da_buy_value="2.4360" passive_da_sell_value="-2.4360" />
+    <p ts="2026-10-22T00:30:00Z" extractable_value="3.6227" adverse_value="-3.6227" passive_da_buy_value="3.6227" passive_da_sell_value="-3.6227" />
+    <p ts="2026-10-22T00:45:00Z" extractable_value="11.8977" adverse_value="-11.8977" passive_da_buy_value="11.8977" passive_da_sell_value="-11.8977" />
+    <p ts="2026-10-22T01:00:00Z" extractable_value="2.9175" adverse_value="-2.9175" passive_da_buy_value="2.9175" passive_da_sell_value="-2.9175" />
+    <p ts="2026-10-22T01:15:00Z" extractable_value="11.0290" adverse_value="-11.0290" passive_da_buy_value="11.0290" passive_da_sell_value="-11.0290" />
+    <p ts="2026-10-22T01:30:00Z" extractable_value="11.4973" adverse_value="-11.4973" passive_da_buy_value="11.4973" passive_da_sell_value="-11.4973" />
+    <p ts="2026-10-22T01:45:00Z" extractable_value="9.4550" adverse_value="-9.4550" passive_da_buy_value="9.4550" passive_da_sell_value="-9.4550" />
+    <p ts="2026-10-22T02:00:00Z" extractable_value="8.6227" adverse_value="-8.6227" passive_da_buy_value="8.6227" passive_da_sell_value="-8.6227" />
+    <p ts="2026-10-22T02:15:00Z" extractable_value="9.1945" adverse_value="-9.1945" passive_da_buy_value="9.1945" passive_da_sell_value="-9.1945" />
+    <p ts="2026-10-22T02:30:00Z" extractable_value="8.8210" adverse_value="-8.8210" passive_da_buy_value="8.8210" passive_da_sell_value="-8.8210" />
+    <p ts="2026-10-22T02:45:00Z" extractable_value="10.7338" adverse_value="-10.7338" passive_da_buy_value="10.7338" passive_da_sell_value="-10.7338" />
+    <p ts="2026-10-22T03:00:00Z" extractable_value="11.0708" adverse_value="-11.0708" passive_da_buy_value="11.0708" passive_da_sell_value="-11.0708" />
+    <p ts="2026-10-22T03:15:00Z" extractable_value="0.7020" adverse_value="-0.7020" passive_da_buy_value="0.7020" passive_da_sell_value="-0.7020" />
+    <p ts="2026-10-22T03:30:00Z" extractable_value="6.0952" adverse_value="-6.0952" passive_da_buy_value="6.0952" passive_da_sell_value="-6.0952" />
+    <p ts="2026-10-22T03:45:00Z" extractable_value="5.5138" adverse_value="-5.5138" passive_da_buy_value="5.5138" passive_da_sell_value="-5.5138" />
+    <p ts="2026-10-22T04:00:00Z" extractable_value="17.4402" adverse_value="-17.4402" passive_da_buy_value="-17.4402" passive_da_sell_value="17.4402" />
+    <p ts="2026-10-22T04:15:00Z" extractable_value="20.6707" adverse_value="-20.6707" passive_da_buy_value="-20.6707" passive_da_sell_value="20.6707" />
+    <p ts="2026-10-22T04:30:00Z" extractable_value="7.0380" adverse_value="-7.0380" passive_da_buy_value="7.0380" passive_da_sell_value="-7.0380" />
+    <p ts="2026-10-22T04:45:00Z" extractable_value="8.3070" adverse_value="-8.3070" passive_da_buy_value="-8.3070" passive_da_sell_value="8.3070" />
+    <p ts="2026-10-22T05:00:00Z" extractable_value="21.5338" adverse_value="-21.5338" passive_da_buy_value="-21.5338" passive_da_sell_value="21.5338" />
+    <p ts="2026-10-22T05:15:00Z" extractable_value="5.0012" adverse_value="-5.0012" passive_da_buy_value="-5.0012" passive_da_sell_value="5.0012" />
+    <p ts="2026-10-22T05:30:00Z" extractable_value="1.0605" adverse_value="-1.0605" passive_da_buy_value="-1.0605" passive_da_sell_value="1.0605" />
+    <p ts="2026-10-22T05:45:00Z" extractable_value="6.4305" adverse_value="-6.4305" passive_da_buy_value="6.4305" passive_da_sell_value="-6.4305" />
+    <p ts="2026-10-22T06:00:00Z" extractable_value="23.0032" adverse_value="-23.0032" passive_da_buy_value="23.0032" passive_da_sell_value="-23.0032" />
+    <p ts="2026-10-22T06:15:00Z" extractable_value="44.8287" adverse_value="-44.8287" passive_da_buy_value="44.8287" passive_da_sell_value="-44.8287" />
+    <p ts="2026-10-22T06:30:00Z" extractable_value="22.4825" adverse_value="-22.4825" passive_da_buy_value="22.4825" passive_da_sell_value="-22.4825" />
+    <p ts="2026-10-22T06:45:00Z" extractable_value="57.4625" adverse_value="-57.4625" passive_da_buy_value="57.4625" passive_da_sell_value="-57.4625" />
+    <p ts="2026-10-22T07:00:00Z" extractable_value="28.9748" adverse_value="-28.9748" passive_da_buy_value="28.9748" passive_da_sell_value="-28.9748" />
+    <p ts="2026-10-22T07:15:00Z" extractable_value="33.6135" adverse_value="-33.6135" passive_da_buy_value="-33.6135" passive_da_sell_value="33.6135" />
+    <p ts="2026-10-22T07:30:00Z" extractable_value="43.1860" adverse_value="-43.1860" passive_da_buy_value="-43.1860" passive_da_sell_value="43.1860" />
+    <p ts="2026-10-22T07:45:00Z" extractable_value="18.1855" adverse_value="-18.1855" passive_da_buy_value="-18.1855" passive_da_sell_value="18.1855" />
+    <p ts="2026-10-22T08:00:00Z" extractable_value="21.3000" adverse_value="-21.3000" passive_da_buy_value="-21.3000" passive_da_sell_value="21.3000" />
+    <p ts="2026-10-22T08:15:00Z" extractable_value="21.0102" adverse_value="-21.0102" passive_da_buy_value="-21.0102" passive_da_sell_value="21.0102" />
+    <p ts="2026-10-22T08:30:00Z" extractable_value="16.0768" adverse_value="-16.0768" passive_da_buy_value="-16.0768" passive_da_sell_value="16.0768" />
+    <p ts="2026-10-22T08:45:00Z" extractable_value="19.4273" adverse_value="-19.4273" passive_da_buy_value="-19.4273" passive_da_sell_value="19.4273" />
+    <p ts="2026-10-22T09:00:00Z" extractable_value="20.8197" adverse_value="-20.8197" passive_da_buy_value="-20.8197" passive_da_sell_value="20.8197" />
+    <p ts="2026-10-22T09:15:00Z" extractable_value="22.1500" adverse_value="-22.1500" passive_da_buy_value="-22.1500" passive_da_sell_value="22.1500" />
+    <p ts="2026-10-22T09:30:00Z" extractable_value="19.0555" adverse_value="-19.0555" passive_da_buy_value="-19.0555" passive_da_sell_value="19.0555" />
+    <p ts="2026-10-22T09:45:00Z" extractable_value="13.9893" adverse_value="-13.9893" passive_da_buy_value="-13.9893" passive_da_sell_value="13.9893" />
+    <p ts="2026-10-22T10:00:00Z" extractable_value="4.7113" adverse_value="-4.7113" passive_da_buy_value="4.7113" passive_da_sell_value="-4.7113" />
+    <p ts="2026-10-22T10:15:00Z" extractable_value="12.6020" adverse_value="-12.6020" passive_da_buy_value="-12.6020" passive_da_sell_value="12.6020" />
+    <p ts="2026-10-22T10:30:00Z" extractable_value="9.0273" adverse_value="-9.0273" passive_da_buy_value="-9.0273" passive_da_sell_value="9.0273" />
+    <p ts="2026-10-22T10:45:00Z" extractable_value="19.4947" adverse_value="-19.4947" passive_da_buy_value="-19.4947" passive_da_sell_value="19.4947" />
+    <p ts="2026-10-22T11:00:00Z" extractable_value="8.9515" adverse_value="-8.9515" passive_da_buy_value="-8.9515" passive_da_sell_value="8.9515" />
+    <p ts="2026-10-22T11:15:00Z" extractable_value="14.3822" adverse_value="-14.3822" passive_da_buy_value="-14.3822" passive_da_sell_value="14.3822" />
+    <p ts="2026-10-22T11:30:00Z" extractable_value="16.3582" adverse_value="-16.3582" passive_da_buy_value="-16.3582" passive_da_sell_value="16.3582" />
+    <p ts="2026-10-22T11:45:00Z" extractable_value="14.4287" adverse_value="-14.4287" passive_da_buy_value="-14.4287" passive_da_sell_value="14.4287" />
+    <p ts="2026-10-22T12:00:00Z" extractable_value="13.9068" adverse_value="-13.9068" passive_da_buy_value="-13.9068" passive_da_sell_value="13.9068" />
+    <p ts="2026-10-22T12:15:00Z" extractable_value="15.0087" adverse_value="-15.0087" passive_da_buy_value="-15.0087" passive_da_sell_value="15.0087" />
+    <p ts="2026-10-22T12:30:00Z" extractable_value="19.2393" adverse_value="-19.2393" passive_da_buy_value="-19.2393" passive_da_sell_value="19.2393" />
+    <p ts="2026-10-22T12:45:00Z" extractable_value="26.2125" adverse_value="-26.2125" passive_da_buy_value="-26.2125" passive_da_sell_value="26.2125" />
+    <p ts="2026-10-22T13:00:00Z" extractable_value="12.7767" adverse_value="-12.7767" passive_da_buy_value="-12.7767" passive_da_sell_value="12.7767" />
+    <p ts="2026-10-22T13:15:00Z" extractable_value="17.8635" adverse_value="-17.8635" passive_da_buy_value="-17.8635" passive_da_sell_value="17.8635" />
+    <p ts="2026-10-22T13:30:00Z" extractable_value="27.6845" adverse_value="-27.6845" passive_da_buy_value="-27.6845" passive_da_sell_value="27.6845" />
+    <p ts="2026-10-22T13:45:00Z" extractable_value="13.7930" adverse_value="-13.7930" passive_da_buy_value="-13.7930" passive_da_sell_value="13.7930" />
+    <p ts="2026-10-22T14:00:00Z" extractable_value="11.0175" adverse_value="-11.0175" passive_da_buy_value="-11.0175" passive_da_sell_value="11.0175" />
+    <p ts="2026-10-22T14:15:00Z" extractable_value="3.6550" adverse_value="-3.6550" passive_da_buy_value="-3.6550" passive_da_sell_value="3.6550" />
+    <p ts="2026-10-22T14:30:00Z" extractable_value="6.9462" adverse_value="-6.9462" passive_da_buy_value="6.9462" passive_da_sell_value="-6.9462" />
+    <p ts="2026-10-22T14:45:00Z" extractable_value="10.0778" adverse_value="-10.0778" passive_da_buy_value="-10.0778" passive_da_sell_value="10.0778" />
+    <p ts="2026-10-22T15:00:00Z" extractable_value="28.4058" adverse_value="-28.4058" passive_da_buy_value="-28.4058" passive_da_sell_value="28.4058" />
+    <p ts="2026-10-22T15:15:00Z" extractable_value="2.8537" adverse_value="-2.8537" passive_da_buy_value="2.8537" passive_da_sell_value="-2.8537" />
+    <p ts="2026-10-22T15:30:00Z" extractable_value="11.4820" adverse_value="-11.4820" passive_da_buy_value="11.4820" passive_da_sell_value="-11.4820" />
+    <p ts="2026-10-22T15:45:00Z" extractable_value="32.5305" adverse_value="-32.5305" passive_da_buy_value="-32.5305" passive_da_sell_value="32.5305" />
+    <p ts="2026-10-22T16:00:00Z" extractable_value="23.0682" adverse_value="-23.0682" passive_da_buy_value="-23.0682" passive_da_sell_value="23.0682" />
+    <p ts="2026-10-22T16:15:00Z" extractable_value="23.7587" adverse_value="-23.7587" passive_da_buy_value="-23.7587" passive_da_sell_value="23.7587" />
+    <p ts="2026-10-22T16:30:00Z" extractable_value="11.7477" adverse_value="-11.7477" passive_da_buy_value="-11.7477" passive_da_sell_value="11.7477" />
+    <p ts="2026-10-22T16:45:00Z" extractable_value="18.1730" adverse_value="-18.1730" passive_da_buy_value="-18.1730" passive_da_sell_value="18.1730" />
+    <p ts="2026-10-22T17:00:00Z" extractable_value="13.2430" adverse_value="-13.2430" passive_da_buy_value="-13.2430" passive_da_sell_value="13.2430" />
+    <p ts="2026-10-22T17:15:00Z" extractable_value="14.1785" adverse_value="-14.1785" passive_da_buy_value="-14.1785" passive_da_sell_value="14.1785" />
+    <p ts="2026-10-22T17:30:00Z" extractable_value="7.5900" adverse_value="-7.5900" passive_da_buy_value="-7.5900" passive_da_sell_value="7.5900" />
+    <p ts="2026-10-22T17:45:00Z" extractable_value="7.4522" adverse_value="-7.4522" passive_da_buy_value="-7.4522" passive_da_sell_value="7.4522" />
+    <p ts="2026-10-22T18:00:00Z" extractable_value="8.9143" adverse_value="-8.9143" passive_da_buy_value="-8.9143" passive_da_sell_value="8.9143" />
+    <p ts="2026-10-22T18:15:00Z" extractable_value="4.9825" adverse_value="-4.9825" passive_da_buy_value="-4.9825" passive_da_sell_value="4.9825" />
+    <p ts="2026-10-22T18:30:00Z" extractable_value="11.4312" adverse_value="-11.4312" passive_da_buy_value="-11.4312" passive_da_sell_value="11.4312" />
+    <p ts="2026-10-22T18:45:00Z" extractable_value="2.9700" adverse_value="-2.9700" passive_da_buy_value="-2.9700" passive_da_sell_value="2.9700" />
+    <p ts="2026-10-22T19:00:00Z" extractable_value="0.8820" adverse_value="-0.8820" passive_da_buy_value="0.8820" passive_da_sell_value="-0.8820" />
+    <p ts="2026-10-22T19:15:00Z" extractable_value="1.5613" adverse_value="-1.5613" passive_da_buy_value="1.5613" passive_da_sell_value="-1.5613" />
+    <p ts="2026-10-22T19:30:00Z" extractable_value="18.2155" adverse_value="-18.2155" passive_da_buy_value="-18.2155" passive_da_sell_value="18.2155" />
+    <p ts="2026-10-22T19:45:00Z" extractable_value="18.1492" adverse_value="-18.1492" passive_da_buy_value="-18.1492" passive_da_sell_value="18.1492" />
+    <p ts="2026-10-22T20:00:00Z" extractable_value="21.6255" adverse_value="-21.6255" passive_da_buy_value="-21.6255" passive_da_sell_value="21.6255" />
+    <p ts="2026-10-22T20:15:00Z" extractable_value="24.1725" adverse_value="-24.1725" passive_da_buy_value="-24.1725" passive_da_sell_value="24.1725" />
+    <p ts="2026-10-22T20:30:00Z" extractable_value="30.1920" adverse_value="-30.1920" passive_da_buy_value="-30.1920" passive_da_sell_value="30.1920" />
+    <p ts="2026-10-22T20:45:00Z" extractable_value="19.1900" adverse_value="-19.1900" passive_da_buy_value="-19.1900" passive_da_sell_value="19.1900" />
+    <p ts="2026-10-22T21:00:00Z" extractable_value="9.7812" adverse_value="-9.7812" passive_da_buy_value="-9.7812" passive_da_sell_value="9.7812" />
+    <p ts="2026-10-22T21:15:00Z" extractable_value="25.2055" adverse_value="-25.2055" passive_da_buy_value="-25.2055" passive_da_sell_value="25.2055" />
+    <p ts="2026-10-22T21:30:00Z" extractable_value="26.3018" adverse_value="-26.3018" passive_da_buy_value="-26.3018" passive_da_sell_value="26.3018" />
+    <p ts="2026-10-22T21:45:00Z" extractable_value="21.7957" adverse_value="-21.7957" passive_da_buy_value="-21.7957" passive_da_sell_value="21.7957" />
+  </points>
+</tradinglab>

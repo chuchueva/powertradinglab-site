@@ -6,7 +6,7 @@
     "url": "https://powertradinglab.org"
   },
   "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
-  "generated_from": "2026-10-22T09:42:33Z",
+  "generated_from": "2026-10-23T09:44:32Z",
   "unit": "EUR per MW of trading capacity, summed over the delivery day",
   "granularity": "one row per zone per delivery day, newest pass only",
   "benchmarks": {
@@ -49,99 +49,279 @@
     "knownby_ts": "The newest instant among the month's rows: everything in the line was knowable then."
   },
   "zones": [
+    "AL",
+    "DE_LU",
+    "EE",
     "NL",
-    "RO"
+    "RO",
+    "SE1",
+    "SI"
   ],
   "files": [
     {
+      "name": "AL_forecasts-90d.csv",
+      "bytes": 262,
+      "sha256": "58a0ee9f162467820c50b1d9ed7c7f702b199f6948a87c530f44e4b81a2a31a7"
+    },
+    {
+      "name": "AL_forecasts-latest.csv",
+      "bytes": 262,
+      "sha256": "58a0ee9f162467820c50b1d9ed7c7f702b199f6948a87c530f44e4b81a2a31a7"
+    },
+    {
+      "name": "AL_forecasts.csv",
+      "bytes": 262,
+      "sha256": "58a0ee9f162467820c50b1d9ed7c7f702b199f6948a87c530f44e4b81a2a31a7"
+    },
+    {
+      "name": "AL_scores-90d.csv",
+      "bytes": 5608,
+      "sha256": "decaad7d236b9922ae1bc7cb1714aee3f1428c09d9eeb79edbe4211d2476d303"
+    },
+    {
+      "name": "AL_scores-latest.csv",
+      "bytes": 361,
+      "sha256": "b877fb232613306f743c6d8604f1a28c9050061f056aad7a24d009b4e66a9d14"
+    },
+    {
+      "name": "AL_scores-monthly.csv",
+      "bytes": 356,
+      "sha256": "eed3b3d07b2788c84830ab2712bbca2d9a5ccfde7f2c30ee4946834b0a52329a"
+    },
+    {
+      "name": "AL_scores.csv",
+      "bytes": 5608,
+      "sha256": "decaad7d236b9922ae1bc7cb1714aee3f1428c09d9eeb79edbe4211d2476d303"
+    },
+    {
+      "name": "DE_LU_forecasts-90d.csv",
+      "bytes": 272,
+      "sha256": "05dbb770836ca483cef154edf7863650b57bd311162b4a32639abfd17559ef0e"
+    },
+    {
+      "name": "DE_LU_forecasts-latest.csv",
+      "bytes": 272,
+      "sha256": "05dbb770836ca483cef154edf7863650b57bd311162b4a32639abfd17559ef0e"
+    },
+    {
+      "name": "DE_LU_forecasts.csv",
+      "bytes": 272,
+      "sha256": "05dbb770836ca483cef154edf7863650b57bd311162b4a32639abfd17559ef0e"
+    },
+    {
+      "name": "DE_LU_scores-90d.csv",
+      "bytes": 5851,
+      "sha256": "93b78bb734887d8f45452a584b333dc4c73f50aa4496c5e39e140f364b136792"
+    },
+    {
+      "name": "DE_LU_scores-latest.csv",
+      "bytes": 368,
+      "sha256": "ff9e4a632db6d7135a2a6011a117d8e349391f6a40adfefbcae73aa0cbe455a8"
+    },
+    {
+      "name": "DE_LU_scores-monthly.csv",
+      "bytes": 354,
+      "sha256": "bedfd5cd3776d3e799e9df0071aab275fde707a2f700d68fef6ad03b6bae0ad1"
+    },
+    {
+      "name": "DE_LU_scores.csv",
+      "bytes": 5851,
+      "sha256": "93b78bb734887d8f45452a584b333dc4c73f50aa4496c5e39e140f364b136792"
+    },
+    {
+      "name": "EE_forecasts-90d.csv",
+      "bytes": 292,
+      "sha256": "c9e6def7e612d79a3e50561f68e5e339d70de7ccbf196a03fee9dbe4e2b452c4"
+    },
+    {
+      "name": "EE_forecasts-latest.csv",
+      "bytes": 292,
+      "sha256": "c9e6def7e612d79a3e50561f68e5e339d70de7ccbf196a03fee9dbe4e2b452c4"
+    },
+    {
+      "name": "EE_forecasts.csv",
+      "bytes": 292,
+      "sha256": "c9e6def7e612d79a3e50561f68e5e339d70de7ccbf196a03fee9dbe4e2b452c4"
+    },
+    {
+      "name": "EE_scores-90d.csv",
+      "bytes": 5523,
+      "sha256": "36ea6252130ae720a68aaa118e4e173b9625068865c145467f3649da57aa40ca"
+    },
+    {
+      "name": "EE_scores-latest.csv",
+      "bytes": 357,
+      "sha256": "ba2a98e405ed445fdcc5214994e1821feeb1ec0154dcd97cad90198ac920734e"
+    },
+    {
+      "name": "EE_scores-monthly.csv",
+      "bytes": 348,
+      "sha256": "6f2a97470b75be2afea3b5463bfb91695475751fb7a3f696c141265c9a15cdb5"
+    },
+    {
+      "name": "EE_scores.csv",
+      "bytes": 5523,
+      "sha256": "36ea6252130ae720a68aaa118e4e173b9625068865c145467f3649da57aa40ca"
+    },
+    {
       "name": "NL_forecasts-90d.csv",
-      "bytes": 4888,
-      "sha256": "06bfd03a87544008cd7a756202a98e40a743b542c0c09eb4476792d7fa64faf0"
+      "bytes": 5015,
+      "sha256": "16487785761322bb2e55b9f242a6dd44c3de55cce1797331b0612eda4c16dc24"
     },
     {
       "name": "NL_forecasts-latest.csv",
       "bytes": 263,
-      "sha256": "3a4504019cc0c9acf8f1808b5b231c352f1dcfd2e1666e8891c07cf62bb11e08"
+      "sha256": "46dbd1579bb3b3af8cd50cec24ada6f23d212339e098992806b1bb5c1e5ef7d2"
     },
     {
       "name": "NL_forecasts.csv",
-      "bytes": 4888,
-      "sha256": "06bfd03a87544008cd7a756202a98e40a743b542c0c09eb4476792d7fa64faf0"
+      "bytes": 5015,
+      "sha256": "16487785761322bb2e55b9f242a6dd44c3de55cce1797331b0612eda4c16dc24"
     },
     {
       "name": "NL_scores-90d.csv",
-      "bytes": 5706,
-      "sha256": "aba95362eb8c101bf7d52a8490bb8da344c5577250b39ae97e3950a8aa0770e3"
+      "bytes": 5864,
+      "sha256": "80fbdc47b1c56e18894fd1e36f9f9d504e8b623a0242b4fd66ee327ea6b165ee"
     },
     {
       "name": "NL_scores-latest.csv",
-      "bytes": 365,
-      "sha256": "234855da13021d77714a7adfde1f68a0813e98209933743bac4f6ce12aacc332"
+      "bytes": 369,
+      "sha256": "c7bad8c740ad3712a3c97522595ddf69ebb7ad7031ce9adbd0b812b3f4022553"
     },
     {
       "name": "NL_scores-monthly.csv",
       "bytes": 375,
-      "sha256": "c9b359595411c4b4dbb8e2b1048910b8c51654ec566c1e9c82ac48ac40901eca"
+      "sha256": "8a616f79c261ae747ce5d27b39a8fde4e6ff162650efff01f87c30534bc3b156"
     },
     {
       "name": "NL_scores.csv",
-      "bytes": 5706,
-      "sha256": "aba95362eb8c101bf7d52a8490bb8da344c5577250b39ae97e3950a8aa0770e3"
+      "bytes": 5864,
+      "sha256": "80fbdc47b1c56e18894fd1e36f9f9d504e8b623a0242b4fd66ee327ea6b165ee"
     },
     {
       "name": "RO_forecasts-90d.csv",
-      "bytes": 3703,
-      "sha256": "8c5c32bdf6bffae5f5cadcfe7ddda89a34ae1d7c610235f6f8f43ca31178d77f"
+      "bytes": 3830,
+      "sha256": "6e6bba4f06097251f549c40b504cdf3cb2acacd1cc5c87d5f09a76cf45a81433"
     },
     {
       "name": "RO_forecasts-latest.csv",
       "bytes": 263,
-      "sha256": "ceb621ec665792e43e8517b02b99bf219e745d581ff4cea3a2954e844e9f3077"
+      "sha256": "f9a8f52b62907e42e67ec470542e679c1ada92128c9b43de3c16a3af789161d2"
     },
     {
       "name": "RO_forecasts.csv",
-      "bytes": 3703,
-      "sha256": "8c5c32bdf6bffae5f5cadcfe7ddda89a34ae1d7c610235f6f8f43ca31178d77f"
+      "bytes": 3830,
+      "sha256": "6e6bba4f06097251f549c40b504cdf3cb2acacd1cc5c87d5f09a76cf45a81433"
     },
     {
       "name": "RO_scores-90d.csv",
-      "bytes": 5262,
-      "sha256": "e19e82fd4d0141f8dc34fca92295d86a326d987d93cdf5fe1d71d2143858e85f"
+      "bytes": 5423,
+      "sha256": "50b612444518e1decade16f0cfe73eddfa9f1b2cd7727fa1f0a22a76e97e1669"
     },
     {
       "name": "RO_scores-latest.csv",
-      "bytes": 368,
-      "sha256": "2c6647d81250840fd6c8c95766a529d4bf565b6eaa6afead5a28c1ae74223622"
+      "bytes": 372,
+      "sha256": "6bab87ab407bf4f443ed86313b2e67787cb396db2252ce55238a327481a1ff42"
     },
     {
       "name": "RO_scores-monthly.csv",
       "bytes": 369,
-      "sha256": "2d229dfe3cdcdb2b254300fddabd0306247002d4751cc0c3cdc09814c47abfe0"
+      "sha256": "ff2e38b19a26691296d93c733e08505ac9ef4659b5ea67121755a30bb9271fcd"
     },
     {
       "name": "RO_scores.csv",
-      "bytes": 5262,
-      "sha256": "e19e82fd4d0141f8dc34fca92295d86a326d987d93cdf5fe1d71d2143858e85f"
+      "bytes": 5423,
+      "sha256": "50b612444518e1decade16f0cfe73eddfa9f1b2cd7727fa1f0a22a76e97e1669"
+    },
+    {
+      "name": "SE1_forecasts-90d.csv",
+      "bytes": 266,
+      "sha256": "3ed796d4b55b5e59c5e17022af663991c1024a19bc12f1cbf0a7acf652ed586d"
+    },
+    {
+      "name": "SE1_forecasts-latest.csv",
+      "bytes": 266,
+      "sha256": "3ed796d4b55b5e59c5e17022af663991c1024a19bc12f1cbf0a7acf652ed586d"
+    },
+    {
+      "name": "SE1_forecasts.csv",
+      "bytes": 266,
+      "sha256": "3ed796d4b55b5e59c5e17022af663991c1024a19bc12f1cbf0a7acf652ed586d"
+    },
+    {
+      "name": "SE1_scores-90d.csv",
+      "bytes": 5563,
+      "sha256": "1f1a20fb5c43bb316b6a3fda24141773a716b1c92bfca810319460ed96e5f63a"
+    },
+    {
+      "name": "SE1_scores-latest.csv",
+      "bytes": 360,
+      "sha256": "bf45de5446cf3d40355cca16be86ab941e97466e3d021b4315875a90b460e5c9"
+    },
+    {
+      "name": "SE1_scores-monthly.csv",
+      "bytes": 348,
+      "sha256": "bec764a440658fc395b6ec7eee80850ac7c733ba732a13445804fe5870894565"
+    },
+    {
+      "name": "SE1_scores.csv",
+      "bytes": 5563,
+      "sha256": "1f1a20fb5c43bb316b6a3fda24141773a716b1c92bfca810319460ed96e5f63a"
+    },
+    {
+      "name": "SI_forecasts-90d.csv",
+      "bytes": 262,
+      "sha256": "d169ec0f630e1baa1e8a6257cfa4458162c760f6d85780a96ee8c78985c149bd"
+    },
+    {
+      "name": "SI_forecasts-latest.csv",
+      "bytes": 262,
+      "sha256": "d169ec0f630e1baa1e8a6257cfa4458162c760f6d85780a96ee8c78985c149bd"
+    },
+    {
+      "name": "SI_forecasts.csv",
+      "bytes": 262,
+      "sha256": "d169ec0f630e1baa1e8a6257cfa4458162c760f6d85780a96ee8c78985c149bd"
+    },
+    {
+      "name": "SI_scores-90d.csv",
+      "bytes": 5563,
+      "sha256": "8a0699b7c3df8093118c83b6ca758f871d94d816501d85830a1edfd42258aba6"
+    },
+    {
+      "name": "SI_scores-latest.csv",
+      "bytes": 361,
+      "sha256": "5379237e90b7f12666600d051c42716578abb8fb9f400574c513267a9640eae7"
+    },
+    {
+      "name": "SI_scores-monthly.csv",
+      "bytes": 350,
+      "sha256": "8d9f9d7a70f7743b2ce0810da4be4c3812fda8e01a5462fcea03358822876f7e"
+    },
+    {
+      "name": "SI_scores.csv",
+      "bytes": 5563,
+      "sha256": "8a0699b7c3df8093118c83b6ca758f871d94d816501d85830a1edfd42258aba6"
     },
     {
       "name": "forecasts-latest.csv",
-      "bytes": 390,
-      "sha256": "0ae1dc547a6010fde9e7d261c855b9f2189858887bb76e40cc683e064027677b"
+      "bytes": 1064,
+      "sha256": "ca81a75a2b2cbd961fd2d6ecf35ef69e3496f7404d07ba6bfa4d8e41b79dc838"
     },
     {
       "name": "scores-latest.csv",
-      "bytes": 522,
-      "sha256": "1f20945b10660198374a3a85c185bd3a27669db4c9c46b765ba9bf8972fb95aa"
+      "bytes": 1282,
+      "sha256": "d5fe557a7a88f756811bc466bd7904bf2cb9355a3a54179958e849de96d9b4a2"
     },
     {
       "name": "scores-monthly-latest.csv",
-      "bytes": 372,
-      "sha256": "621533ed08b54f86c156d10a09edc6bbbef753efcc4a93572f79646cd9aa7e14"
+      "bytes": 831,
+      "sha256": "b1599276a6b6cb4cc8b08395b7c8bb7e0ba7f4fbbdbe069a9ce3e5e764ce9152"
     },
     {
       "name": "zones.json",
-      "bytes": 505,
-      "sha256": "fb0206d3cb4fd62b73495ea9de12e4a9532315bba106f7ea1efe2adcc08f0ac0"
+      "bytes": 1756,
+      "sha256": "1a2719b2dbb4e64c9e85137435ddf8c93a47cb23ccc97e7c377708457ff3823e"
     }
   ]
 }

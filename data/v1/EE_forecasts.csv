@@ -1,0 +1,2 @@
+zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
+EE,2026-10-24,2026-10-23T09:44:26Z,96,20,68,8,2026-10-23T07:00:00Z,hour_incomplete:2026-10-22:IM,6,3,ee/2026/10/forecast_EE_2026-10-24_20261023T094426Z.xml
