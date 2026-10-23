@@ -1,6 +1,14 @@
 # News
 
 
+## 2026-10-23
+
+PowerTradingLab adds five bidding zones to the daily benchmarks: Estonia (**EE**), Slovenia (**SI**),
+Sweden 1 (**SE1**), Albania (**AL**) and Germany–Luxembourg (**DE_LU**). From the run of 23 October at 09:40 UTC
+they are live alongside the Netherlands and Romania: the first forecasts are published today for
+delivery on 24 October, and each day is scored after delivery as for the other zones. Before going live, 
+the input data for 1–13 October was checked for each zone in shadow mode.
+
 ## 2026-10-14
 
 Irina Chuchueva publishes a preprint on latencies in low-latency trading on the Nord Pool order book, based on live data 

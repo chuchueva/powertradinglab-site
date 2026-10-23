@@ -383,7 +383,7 @@ def value_cells(r):
 # Display names. zones.json may carry its own "name", which wins; otherwise this
 # table; otherwise the code alone.
 ZONE_NAMES = {
-    "AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "CH": "Switzerland",
+    "AL": "Albania", "DE_LU": "Germany–Luxembourg", "AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "CH": "Switzerland",
     "CZ": "Czechia", "DE-LU": "Germany–Luxembourg", "DK1": "Denmark West",
     "DK2": "Denmark East", "EE": "Estonia", "ES": "Spain", "FI": "Finland",
     "FR": "France", "GR": "Greece", "HR": "Croatia", "HU": "Hungary",
