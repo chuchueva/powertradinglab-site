@@ -670,6 +670,28 @@ def home_monthly_table(ctx, rel):
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
+def latest_monthly_table(ctx, rel):
+    """All five benchmarks of each zone's last settled month (scores-monthly-latest.csv)."""
+    head = "".join(monthly_th(ctx, k, lbl) for k, lbl in VALUES)
+    rows = []
+    for z in ctx.zone_codes:
+        r = ctx.monthly_latest.get(z)
+        if r is None:
+            rows.append(f'<tr><th>{z}</th><td colspan="8" class="muted">No settled month yet.</td></tr>')
+            continue
+        rows.append(f'<tr><th>{z}</th><td>{month_name(r["month"])}</td>'
+                    + "".join(monthly_value(r[k]) for k, _ in VALUES) +
+                    f'<td class="n">{r["days_scored"]} / {r["days_in_month"]}</td>'
+                    f'<td class="n">{r["days_with_decision"]}</td></tr>')
+    return (f'<div class="scroll"><table><caption>EUR per 1 MW of trading quantity, summed over the scored '
+            f'days of the month. Settled: the values will not change. '
+            f'{data_link(rel, "v1/scores-monthly-latest.csv", "File")}.</caption>'
+            f'<thead><tr><th>Zone</th>{monthly_th(ctx, "month", "Month", False)}{head}'
+            f'{monthly_th(ctx, "days_scored", "Days scored /<br>days in month")}'
+            f'{monthly_th(ctx, "days_with_decision", "Days with<br>decision")}</tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
 def zone_monthly_table(ctx, z, rel):
     rows = sorted(ctx.monthly.get(z, []), key=lambda r: r["month"], reverse=True)
     if not rows:
@@ -825,10 +847,10 @@ def page_home(ctx):
         st = ctx.status
         b = ctx.index["benchmarks"]
         return f"""<div class="intro">{md(content('home.md'), rel)}</div>
-<h2>Latest scored day</h2>
-{home_scores_table(ctx, rel)}
 <h2>Next trading action (Trailing Bias Value)</h2>
 {home_forecasts_table(ctx, rel)}
+<h2>Latest scored day</h2>
+{home_scores_table(ctx, rel)}
 <h2>Last settled month</h2>
 {home_monthly_table(ctx, rel)}
 {home_chart(ctx)}
@@ -865,10 +887,12 @@ def page_benchmarks(ctx):
 <h2>Status</h2>
 <p>Last run {ts(st['generated_ts'])}. Data through {ts(ctx.index['generated_from'])}.</p>
 <div class="scroll"><table><thead><tr><th>Zone</th><th>Day-ahead through</th><th>Imbalance through</th><th>Last poll</th></tr></thead><tbody>{srows}</tbody></table></div>
-<h2>All zones, latest scored day</h2>
-{latest_scores_table(ctx, rel)}
 <h2>Next trading action (Trailing Bias Value)</h2>
 {latest_forecasts_table(ctx, rel)}
+<h2>All zones, latest scored day</h2>
+{latest_scores_table(ctx, rel)}
+<h2>All zones, last settled month</h2>
+{latest_monthly_table(ctx, rel)}
 {''.join(zone_blocks)}
 <h2>Definitions</h2>
 <h3>Key</h3>
