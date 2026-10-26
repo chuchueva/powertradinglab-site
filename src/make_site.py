@@ -670,6 +670,28 @@ def home_monthly_table(ctx, rel):
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
+def home_current_month_table(ctx, rel):
+    """Each zone's running month: the open row of <ZONE>_scores-monthly.csv, shown as published."""
+    rows = []
+    for z in ctx.zone_codes:
+        r = next((x for x in ctx.monthly.get(z, []) if x["status"] == "open"), None)
+        if r is None:
+            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No running month.</td></tr>')
+            continue
+        rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{month_name(r["month"])}</td>'
+                    f'{monthly_value(r["extractable_value"])}{monthly_value(r["trailing_bias_value"])}'
+                    f'<td class="n">{r["days_scored"]} / {r["days_in_month"]}</td>'
+                    f'<td>{data_link(rel, "v1/" + z + "_scores-monthly.csv", "monthly")}</td></tr>')
+    return (f'<div class="scroll"><table><caption>EUR per 1 MW of trading quantity, summed over the '
+            f'scored days of the month so far. Running: the values change every day until the month '
+            f'settles on the 20th of the following month.</caption>'
+            f'<thead><tr><th>Zone</th>{monthly_th(ctx, "month", "Month", False)}'
+            f'{monthly_th(ctx, "extractable_value", "&ldquo;Speculative Fat&rdquo;<br>(Extractable)")}'
+            f'{monthly_th(ctx, "trailing_bias_value", "&ldquo;Simplest trading strategy&rdquo; PnL<br>(Trailing bias)")}'
+            f'{monthly_th(ctx, "days_scored", "Days scored /<br>days in month")}<th>File</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+
+
 def latest_monthly_table(ctx, rel):
     """All five benchmarks of each zone's last settled month (scores-monthly-latest.csv)."""
     head = "".join(monthly_th(ctx, k, lbl) for k, lbl in VALUES)
@@ -857,6 +879,8 @@ def page_home(ctx):
 {home_forecasts_table(ctx, rel)}
 <h2>Latest scored day</h2>
 {home_scores_table(ctx, rel)}
+<h2>Current month, running total</h2>
+{home_current_month_table(ctx, rel)}
 <h2>Last settled month</h2>
 {home_monthly_table(ctx, rel)}
 {home_chart(ctx)}
