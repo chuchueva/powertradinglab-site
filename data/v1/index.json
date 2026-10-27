@@ -6,7 +6,7 @@
     "url": "https://powertradinglab.org"
   },
   "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
-  "generated_from": "2026-10-27T09:41:41Z",
+  "generated_from": "2026-10-27T14:04:01Z",
   "unit": "EUR per MW of trading capacity, summed over the delivery day",
   "granularity": "one row per zone per delivery day, newest pass only",
   "benchmarks": {
@@ -75,23 +75,23 @@
     },
     {
       "name": "AL_scores-90d.csv",
-      "bytes": 6080,
-      "sha256": "6a157c868fa14b62323e6444632b8dc2adb3dd79a9df6d9c4a32d94eaa010fbc"
+      "bytes": 6230,
+      "sha256": "842dc4e0dbb93793754a3f17c9e3ce39edd228d118228eb8751e4b4b629f591d"
     },
     {
       "name": "AL_scores-latest.csv",
-      "bytes": 373,
-      "sha256": "8ffa81eea0d18533abffadcac31de3eb793eecbd1d4ee68bc90795b5efb202fe"
+      "bytes": 361,
+      "sha256": "7380da2b4b0a9a6e722d1c653442c0755b3af9addc0aaec81f3122ef093df956"
     },
     {
       "name": "AL_scores-monthly.csv",
       "bytes": 366,
-      "sha256": "70028236082269b673380d387b1b7f4af6fc20e402e51b55c07bb8e24a3312f5"
+      "sha256": "7722f1389e58be2791bc4a314f2515635f2125a232b79039a13a2de57295a332"
     },
     {
       "name": "AL_scores.csv",
-      "bytes": 6080,
-      "sha256": "6a157c868fa14b62323e6444632b8dc2adb3dd79a9df6d9c4a32d94eaa010fbc"
+      "bytes": 6230,
+      "sha256": "842dc4e0dbb93793754a3f17c9e3ce39edd228d118228eb8751e4b4b629f591d"
     },
     {
       "name": "DE_LU_forecasts-90d.csv",
@@ -310,8 +310,8 @@
     },
     {
       "name": "scores-latest.csv",
-      "bytes": 1334,
-      "sha256": "d974b50ffe56bb2c28ad69355d442b18276a19e528985845f5183f65a559443f"
+      "bytes": 1322,
+      "sha256": "8946a56138bd353b2c78b3435d9d476e4d0bea16762e2bd30f656acd7e5072f3"
     },
     {
       "name": "scores-monthly-latest.csv",
@@ -321,7 +321,7 @@
     {
       "name": "zones.json",
       "bytes": 1756,
-      "sha256": "484fb1f1c4d795292ababde7eb33fe0c878c6397e3ec6b1a42c1f45259458bae"
+      "sha256": "09fa088149243ffe4ef984264ea3a9175da8afccd527e93a6f30d3c358cac1ff"
     }
   ]
 }

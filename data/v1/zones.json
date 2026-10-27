@@ -1,11 +1,11 @@
 {
   "AL": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 39,
+    "delivery_days": 40,
     "eic": "10YAL-KESH-----5",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-10-25",
+    "last_delivery_day": "2026-10-26",
     "timezone": "Europe/Tirane"
   },
   "DE_LU": {
