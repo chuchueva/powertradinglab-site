@@ -6,7 +6,7 @@
     "url": "https://powertradinglab.org"
   },
   "terms": "Free to use with attribution. Derived values only: no day-ahead or imbalance prices are republished here or anywhere else in this dataset.",
-  "generated_from": "2026-10-28T09:41:27Z",
+  "generated_from": "2026-10-28T14:03:59Z",
   "unit": "EUR per MW of trading capacity, summed over the delivery day",
   "granularity": "one row per zone per delivery day, newest pass only",
   "benchmarks": {
@@ -75,23 +75,23 @@
     },
     {
       "name": "AL_scores-90d.csv",
-      "bytes": 6230,
-      "sha256": "842dc4e0dbb93793754a3f17c9e3ce39edd228d118228eb8751e4b4b629f591d"
+      "bytes": 6380,
+      "sha256": "a19e7025780339669b49ffcc2dcfcb16119ec797e4eadfc9c46c715cddf203d6"
     },
     {
       "name": "AL_scores-latest.csv",
       "bytes": 361,
-      "sha256": "7380da2b4b0a9a6e722d1c653442c0755b3af9addc0aaec81f3122ef093df956"
+      "sha256": "14c1e7acd466af28966459edd4f9292b3b80efa63ead40a066586e37bb151529"
     },
     {
       "name": "AL_scores-monthly.csv",
       "bytes": 366,
-      "sha256": "7722f1389e58be2791bc4a314f2515635f2125a232b79039a13a2de57295a332"
+      "sha256": "06c022378cacbf1f1cbcc9df1881c5fb7a437870ad7d9eb7ab31dc4cafc3cb18"
     },
     {
       "name": "AL_scores.csv",
-      "bytes": 6230,
-      "sha256": "842dc4e0dbb93793754a3f17c9e3ce39edd228d118228eb8751e4b4b629f591d"
+      "bytes": 6380,
+      "sha256": "a19e7025780339669b49ffcc2dcfcb16119ec797e4eadfc9c46c715cddf203d6"
     },
     {
       "name": "DE_LU_forecasts-90d.csv",
@@ -311,7 +311,7 @@
     {
       "name": "scores-latest.csv",
       "bytes": 1317,
-      "sha256": "d54ca89a6f22e7928b53726b11361c3b5dd0e833a2c2d198f241ce3b35620ead"
+      "sha256": "79acb662f6e4d4a38999c92a79e9b714d3a599d922c97f5ffbc5d82e5f01eafa"
     },
     {
       "name": "scores-monthly-latest.csv",
@@ -321,7 +321,7 @@
     {
       "name": "zones.json",
       "bytes": 1756,
-      "sha256": "ac7174a1201b1f0b94dc345562e5ac0ef5c9538ecb7fc89c3085d150960c0a81"
+      "sha256": "c56202d31bb96f40625cb01c6b8a3f02d324acbea795a257b164722a2cf09fe1"
     }
   ]
 }
