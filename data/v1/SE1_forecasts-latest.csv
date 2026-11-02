@@ -1,2 +1,2 @@
 zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
-SE1,2026-11-02,2026-11-01T09:41:58Z,96,60,32,4,2026-11-01T09:00:00Z,hour_incomplete:2026-10-30:IM,6,3,se1/2026/11/forecast_SE1_2026-11-02_20261101T094158Z.xml
+SE1,2026-11-03,2026-11-02T09:01:18Z,96,48,44,4,2026-11-02T07:00:00Z,hour_incomplete:2026-10-30:IM,6,4,se1/2026/11/forecast_SE1_2026-11-03_20261102T090118Z.xml
