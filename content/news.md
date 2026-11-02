@@ -3,6 +3,8 @@
 
 ## 2026-11-02
 
+versions: schema 6, methodology 4
+
 Methodology 4 is live. From delivery day 3 November 2026, I compute the trailing bias 
 value on a window tied to timestamps: for each hour, the three most recent complete 
 observations of the same hour, including today’s if the zone has already published it in full. 
