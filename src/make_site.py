@@ -409,14 +409,11 @@ def latest_scores_table(ctx, rel):
             rows.append(f'<tr><th>{z}</th>'
                         f'<td colspan="9" class="muted">No scored day published yet.</td></tr>')
             continue
-        if r["methodology_version"] != ctx.m:
-            cells = f'<td>{r["delivery_day"]}</td>' + not_comparable(r, 8)
-        else:
-            cells = (f'<td>{r["delivery_day"]}</td><td class="nw">{esc(r["pass"])}</td>' + value_cells(r) +
-                     f'<td class="n">{r["ptu"]} / {r["ptu_with_action"]}</td>'
-                     f'<td>{data_link(rel, r["source_file"], "score")}</td>')
-            for s in score_statements(r, ctx.zones[z]["timezone"]):
-                notes.append(f"<li><strong>{z} {r['delivery_day']}.</strong> {s}</li>")
+        cells = (f'<td>{r["delivery_day"]}</td><td class="nw">{esc(r["pass"])}</td>' + value_cells(r) +
+                 f'<td class="n">{r["ptu"]} / {r["ptu_with_action"]}</td>'
+                 f'<td>{data_link(rel, r["source_file"], "score")}</td>')
+        for s in score_statements(r, ctx.zones[z]["timezone"]):
+            notes.append(f"<li><strong>{z} {r['delivery_day']}.</strong> {s}</li>")
         rows.append(f'<tr><th>{z}</th>{cells}</tr>')
     note_html = f'<ul class="notes">{"".join(notes)}</ul>' if notes else ""
     return (f'<div class="scroll"><table><caption>{UNIT}.</caption>'
@@ -431,9 +428,6 @@ def latest_forecasts_table(ctx, rel):
         r = ctx.latest_forecast.get(z)
         if r is None:
             rows.append(f'<tr><th>{z}</th><td colspan="6" class="muted">No forecast published yet.</td></tr>')
-            continue
-        if r["methodology_version"] != ctx.m:
-            rows.append(f'<tr><th>{z}</th><td>{r["delivery_day"]}</td>{not_comparable(r, 5)}</tr>')
             continue
         rows.append(
             f'<tr><th>{z}</th><td>{r["delivery_day"]}</td>'
@@ -466,10 +460,11 @@ def zone_days_table(ctx, z, rel):
     tzname = ctx.zones[z]["timezone"]
     scores = {r["delivery_day"]: r for r in ctx.scores[z]}
     fcs = {r["delivery_day"]: r for r in ctx.forecasts[z]}
-    cur_scores = sorted(d for d, r in scores.items() if r["methodology_version"] == ctx.m)
-    cur_fcs = sorted(d for d, r in fcs.items() if r["methodology_version"] == ctx.m)
+    # All methodologies are shown; each row names its own (owner, 2026-11-02).
+    cur_scores = sorted(scores)
+    cur_fcs = sorted(fcs)
     if not cur_scores and not cur_fcs:
-        return '<p class="muted">No delivery day under the current methodology yet.</p>'
+        return '<p class="muted">No delivery day yet.</p>'
     last_score = cur_scores[-1] if cur_scores else None
     end = max(([last_score] if last_score else []) + ([cur_fcs[-1]] if cur_fcs else []))
     first_cur = min(cur_scores + cur_fcs)
@@ -489,9 +484,6 @@ def zone_days_table(ctx, z, rel):
         if f is None:
             fcell = '<td class="muted">none</td>'
             notes.append("No forecast was published for this day.")
-        elif f["methodology_version"] != ctx.m:
-            fcell = not_comparable(f)
-            files.append(data_link(rel, f["source_file"], "forecast"))
         else:
             fcell = (f'<td class="n">{f["ptu_buy"]} / {f["ptu_sell"]} / {f["ptu_no_action"]}</td>')
             notes.append(forecast_statement(f))
@@ -502,14 +494,16 @@ def zone_days_table(ctx, z, rel):
                 scell = '<td colspan="6" class="muted">Not scored yet.</td>'
             else:
                 scell = '<td colspan="6" class="muted">Not scored: no score was published for this day.</td>'
-        elif s["methodology_version"] != ctx.m:
-            scell = not_comparable(s, 6)
-            files.append(data_link(rel, s["source_file"], "score"))
         else:
             scell = value_cells(s) + f'<td class="n">{s["ptu"]} / {s["ptu_with_action"]}</td>'
             notes.extend(score_statements(s, tzname))
             notes.append(f"Pass: {esc(s['pass'])}.")
             files.append(data_link(rel, s["source_file"], "score"))
+        mf, msc = (f or {}).get("methodology_version"), (s or {}).get("methodology_version")
+        if mf and msc and mf != msc:
+            notes.append(f"Forecast under methodology {mf}, score under methodology {msc}.")
+        elif mf or msc:
+            notes.append(f"Methodology {mf or msc}.")
         rows.append(f'<tr><th>{day}</th>{fcell}{scell}</tr>'
                     f'<tr class="sub"><td></td><td colspan="7">{" ".join(notes)} '
                     f'{" · ".join(files)}</td></tr>')
@@ -827,9 +821,6 @@ def home_scores_table(ctx, rel):
         if r is None:
             rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No scored day yet.</td></tr>')
             continue
-        if r["methodology_version"] != ctx.m:
-            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td>{not_comparable(r, 4)}</tr>')
-            continue
         cells = []
         for key in ("extractable_value", "trailing_bias_value"):
             v = r[key]
@@ -855,9 +846,6 @@ def home_forecasts_table(ctx, rel):
         r = ctx.latest_forecast.get(z)
         if r is None:
             rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No forecast yet.</td></tr>')
-            continue
-        if r["methodology_version"] != ctx.m:
-            rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td>{not_comparable(r, 4)}</tr>')
             continue
         rows.append(f'<tr><th>{zone_link(rel, z)}</th><td>{r["delivery_day"]}</td><td>{ts(r["knownby_ts"])}</td>'
                     f'<td class="n">{r["ptu_buy"]}</td><td class="n">{r["ptu_sell"]}</td>'
