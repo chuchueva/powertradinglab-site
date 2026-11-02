@@ -1,6 +1,17 @@
 # News
 
 
+## 2026-11-02
+
+Methodology 4 is live. From delivery day 3 November 2026, I compute the trailing bias 
+value on a window tied to timestamps: for each hour, the three most recent complete 
+observations of the same hour, including today’s if the zone has already published it in full. 
+Today’s hours in zones that do not settle in euro are valued at the last exchange rate known at 
+the moment of the decision. The decision now runs 20 minutes before the day-ahead auction closes, 
+at 11:40 CET all year round, so in winter it sees one more hour of data than before. Files 
+published earlier keep methodology 3; every file states its version in the methodology_version 
+field.
+
 ## 2026-10-23
 
 PowerTradingLab adds five bidding zones to the daily benchmarks: Estonia (**EE**), Slovenia (**SI**),

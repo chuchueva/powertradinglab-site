@@ -3,38 +3,60 @@
 Nine rules govern how the service handles data and time. Each rule exists
 because the result would be wrong without it.
 
-1. **One clock.** Every timestamp is UTC. Market-local time appears only as
-   `delivery_day`, the day as the zone itself counts it (23, 24 or 25 hours).
-2. **Two times per number.** `delivery_ts` is the 15-minute delivery period starts; 
-   `knownby_ts` is when the number became known. Any value can be
-    placed on both axes.
+1. **One clock.** Every timestamp is Coordinated Universal Time (UTC).
+   Market-local time appears only as `delivery_day`, the day as the zone
+   itself counts it (23, 24 or 25 hours).
+2. **Two times per number.** `delivery_ts` is the start of the 15-minute
+   delivery period; `knownby_ts` is when the number became known. Any value
+   can be placed on both axes.
 3. **Only what was published.** A decision for day D uses only data that was
-   public before the day-ahead auction for D closed, in the latest version
-   available at that moment. No later revision reaches back into a decision, no backfilling.
+   public when the decision was made, 20 minutes before the day-ahead auction
+   for D closed, in the latest version available at that moment. No later
+   revision reaches back into a decision, and nothing is backfilled into one.
 4. **Every revision is kept.** When the source corrects a price, the service
    stores the new value beside the old one, so the record can answer what
    was known at any past instant.
 5. **Only changes are stored.** `knownby_ts` therefore means the first time
-   the service saw that value. The first and last versions of a delivery period are its
-   as-known and as-final states.
+   the service saw that value. The first and last versions of a delivery
+   period are its as-known and as-final states.
 6. **Currency is read, not assumed.** Each source document states its
-   currency. Values are reported in EUR; a non-EUR price is converted with the
-   central bank's published rate for that day, and a day with no published
-   rate gets no converted value.
-7. **A day is scored exactly twice:** as-known, the morning after delivery,
-   once imbalance prices are complete; as-final, after the 20th of the
+   currency. Values are reported in euro (EUR); a non-EUR price is converted
+   with the central bank's published rate for that day, and a day with no
+   published rate gets no converted value. One stated exception: in the
+   decision, today's hours are valued at the last rate known at that moment,
+   because the central bank publishes today's rate only in the afternoon.
+   Every rate carries its own `knownby_ts`.
+7. **A day is scored exactly twice:** as-known, as soon as imbalance prices for the day are complete; as-final, after the 20th of the
    following month, once settlement has closed.
 8. **A published file is never changed.** A correction is a new file beside
    the old one, and history is never re-rendered under a newer methodology.
    Every row states the versions in force when it was computed.
-9. **Nothing is invented.** A gap stays a gap: no incomplete day scored as whole, no default decision where
+9. **Nothing is invented.** A gap stays a gap: no incomplete day scored as
+   whole, no partly published hour used as whole, no default decision where
    the signal did not form, no interpolation.
+
+## The decision (methodology 4, from delivery day 2026-11-03)
+
+The decision for day D is made on D−1 at 11:40 Brussels time, 20 minutes
+before the day-ahead auction closes: 09:40 UTC in summer, 10:40 UTC in winter.
+
+For each delivery hour, the rule looks at the same hour on three consecutive
+days. The newest of them is today's hour if the zone has already published it
+in full, otherwise yesterday's; the other two are exactly one and two days
+earlier. If any of the three is missing or incomplete, that hour gets no
+decision and the file says why. The rule buys on the day-ahead auction if,
+over those three hours, buying would have paid more than selling, and sells
+otherwise.
+
+Files computed before 2026-11-02 follow methodology 3; each file states its
+version in `methodology_version`.
 
 ## What is NOT claimed
 
-- **A yardstick, not a market size.** Every value is calculated per 1 MW, summed over a
-  delivery day. It measures how much the spread between day-ahead and
-  imbalance prices offered, and how much of that a simple rule captured.
+- **A yardstick, not a market size.** Every value is calculated per 1 MW,
+  summed over a delivery day. It measures how much the spread between
+  day-ahead and imbalance prices offered, and how much of that a simple rule
+  captured.
 - **Price-taker assumptions.** A 1 MW position is assumed to be filled at the
   clearing price and not to move any price. Fees, collateral and balancing
   obligations are not considered.
