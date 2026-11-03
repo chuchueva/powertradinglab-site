@@ -668,7 +668,9 @@ def home_current_month_table(ctx, rel):
     """Each zone's running month: the open row of <ZONE>_scores-monthly.csv, shown as published."""
     rows = []
     for z in ctx.zone_codes:
-        r = next((x for x in ctx.monthly.get(z, []) if x["status"] == "open"), None)
+        # Up to the 20th two months can be open (the previous one not yet settled): take the newest.
+        r = max((x for x in ctx.monthly.get(z, []) if x["status"] == "open"),
+                key=lambda x: x["month"], default=None)
         if r is None:
             rows.append(f'<tr><th>{zone_link(rel, z)}</th><td colspan="5" class="muted">No running month.</td></tr>')
             continue
