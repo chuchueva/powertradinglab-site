@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 AL,2026-09,final,30,14,0,-43210.7500,24192.8300,26436.3100,-45454.2300,,2026-10-23T09:44:32Z
 AL,2026-10,open,31,31,2,-154744.0000,86087.1700,90023.1200,-158679.9500,11411.7700,2026-11-01T14:28:58Z
-AL,2026-11,open,30,1,0,-4017.3000,832.0000,1865.7400,-5051.0400,,2026-11-02T10:42:52Z
+AL,2026-11,open,30,2,0,-7552.6100,-230.5000,1643.0200,-9426.1300,,2026-11-03T10:56:26Z
