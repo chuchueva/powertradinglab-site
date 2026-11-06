@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tradinglab kind="status">
-  <generated_ts>2026-11-05T14:13:01Z</generated_ts>
+  <generated_ts>2026-11-06T10:45:27Z</generated_ts>
   <version schema="6" methodology="4" />
   <publisher name="PowerTradingLab" url="https://powertradinglab.org" />
   <notice>The only file here that changes. Everything inside a dated folder is frozen: written once and never rewritten.</notice>
   <area code="NL" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-04T22:45:00Z" last_poll="2026-11-05T14:00:53Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-04T22:00:00Z" with_signal="96" ptu="96" file="nl/2026/11/forecast_NL_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="nl/2026/11/score_NL_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-05T22:45:00Z" last_poll="2026-11-06T10:40:17Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-05T22:00:00Z" with_signal="96" ptu="96" file="nl/2026/11/forecast_NL_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="nl/2026/11/score_NL_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="RO" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:01:42Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="92" ptu="96" status="no_forecast" reason="hour_incomplete" missing_day="2026-11-02" leg="IM" file="ro/2026/11/forecast_RO_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="ro/2026/11/score_RO_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:40:46Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="88" ptu="96" status="no_forecast" reason="hour_incomplete" missing_day="2026-11-05" leg="IM" file="ro/2026/11/forecast_RO_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="94" file="ro/2026/11/score_RO_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="EE" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T11:45:00Z" last_poll="2026-11-05T14:02:27Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T08:00:00Z" with_signal="96" ptu="96" file="ee/2026/11/forecast_EE_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="ee/2026/11/score_EE_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T08:45:00Z" last_poll="2026-11-06T10:41:11Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T08:00:00Z" with_signal="96" ptu="96" file="ee/2026/11/forecast_EE_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="ee/2026/11/score_EE_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="SI" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:03:17Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="si/2026/11/forecast_SI_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="si/2026/11/score_SI_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:15:00Z" last_poll="2026-11-06T10:41:26Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="si/2026/11/forecast_SI_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="si/2026/11/score_SI_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="SE1" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:04:08Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="se1/2026/11/forecast_SE1_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="se1/2026/11/score_SE1_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:41:53Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="se1/2026/11/forecast_SE1_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="se1/2026/11/score_SE1_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="NO5" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:04:46Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="no5/2026/11/forecast_NO5_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" days_in_pass="40" file="no5/2026/11/score_NO5_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:42:07Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="no5/2026/11/forecast_NO5_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="no5/2026/11/score_NO5_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="AL" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-04T22:45:00Z" last_poll="2026-11-05T14:05:29Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-04T22:00:00Z" with_signal="96" ptu="96" file="al/2026/11/forecast_AL_2026-11-06_20261105T104506Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-04T22:45:00Z" last_poll="2026-11-06T10:42:20Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-04T22:00:00Z" with_signal="0" ptu="96" status="no_forecast" reason="input_incomplete" missing_day="2026-11-05" leg="IM" file="al/2026/11/forecast_AL_2026-11-07_20261106T104420Z.xml" />
     <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="al/2026/11/score_AL_2026-11-04_20261105T104528Z.xml" />
   </area>
   <area code="DE_LU" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:06:09Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="de_lu/2026/11/forecast_DE_LU_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" file="de_lu/2026/11/score_DE_LU_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:42:44Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="de_lu/2026/11/forecast_DE_LU_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="de_lu/2026/11/score_DE_LU_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="HR" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:06:58Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="hr/2026/11/forecast_HR_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" days_in_pass="37" file="hr/2026/11/score_HR_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:42:59Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="hr/2026/11/forecast_HR_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="hr/2026/11/score_HR_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="CZ" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:45:00Z" last_poll="2026-11-05T14:07:30Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="cz/2026/11/forecast_CZ_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" days_in_pass="37" file="cz/2026/11/score_CZ_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:15:00Z" last_poll="2026-11-06T10:43:12Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="cz/2026/11/forecast_CZ_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="cz/2026/11/score_CZ_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="BE" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:45:00Z" last_poll="2026-11-05T14:08:23Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T09:00:00Z" with_signal="96" ptu="96" file="be/2026/11/forecast_BE_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" days_in_pass="37" file="be/2026/11/score_BE_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:15:00Z" last_poll="2026-11-06T10:43:25Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T09:00:00Z" with_signal="96" ptu="96" file="be/2026/11/forecast_BE_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="be/2026/11/score_BE_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="CH" mode="live">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T12:15:00Z" last_poll="2026-11-05T14:09:28Z" />
-    <forecast delivery_day="2026-11-06" knownby_ts="2026-11-05T10:45:06Z" data_through="2026-11-05T08:00:00Z" with_signal="96" ptu="96" file="ch/2026/11/forecast_CH_2026-11-06_20261105T104506Z.xml" />
-    <score delivery_day="2026-11-04" knownby_ts="2026-11-05T10:45:28Z" calc_iteration="1" ptu="96" days_in_pass="49" file="ch/2026/11/score_CH_2026-11-04_20261105T104528Z.xml" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T09:00:00Z" last_poll="2026-11-06T10:43:38Z" />
+    <forecast delivery_day="2026-11-07" knownby_ts="2026-11-06T10:44:20Z" data_through="2026-11-06T08:00:00Z" with_signal="96" ptu="96" file="ch/2026/11/forecast_CH_2026-11-07_20261106T104420Z.xml" />
+    <score delivery_day="2026-11-05" knownby_ts="2026-11-06T10:44:42Z" calc_iteration="1" ptu="96" file="ch/2026/11/score_CH_2026-11-05_20261106T104442Z.xml" />
   </area>
   <area code="AT" mode="shadow">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:15:00Z" last_poll="2026-11-05T14:09:44Z" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T10:00:00Z" last_poll="2026-11-06T10:43:51Z" />
   </area>
   <area code="HU" mode="shadow">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:30:00Z" last_poll="2026-11-05T14:10:40Z" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T09:45:00Z" last_poll="2026-11-06T10:44:01Z" />
   </area>
   <area code="LV" mode="shadow">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-05T13:15:00Z" last_poll="2026-11-05T14:11:36Z" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-06T09:45:00Z" last_poll="2026-11-06T10:44:03Z" />
   </area>
   <area code="SK" mode="shadow">
-    <source da_through="2026-11-05T22:45:00Z" im_through="2026-11-04T22:45:00Z" last_poll="2026-11-05T14:12:13Z" />
+    <source da_through="2026-11-06T22:45:00Z" im_through="2026-11-05T22:45:00Z" last_poll="2026-11-06T10:44:13Z" />
   </area>
 </tradinglab>
