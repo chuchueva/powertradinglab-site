@@ -1,2 +1,2 @@
 zone,delivery_day,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,ptu,ptu_with_action,pass,calc_iteration,knownby_ts,schema_version,methodology_version,source_file
-CH,2026-11-05,1115.9525,-1115.9525,2543.2425,-2543.2425,,96,0,as-known,1,2026-11-06T10:44:42Z,6,4,ch/2026/11/score_CH_2026-11-05_20261106T104442Z.xml
+CH,2026-11-06,-636.0650,636.0650,1833.8600,-1833.8600,-413.9800,96,96,as-known,1,2026-11-07T10:44:00Z,6,4,ch/2026/11/score_CH_2026-11-06_20261107T104400Z.xml
