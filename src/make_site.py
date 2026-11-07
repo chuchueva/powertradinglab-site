@@ -535,9 +535,15 @@ def monthly_value(v):
     return f'<td class="n {sign}">{num(v)}</td>'
 
 
-def monthly_status(r):
+def monthly_status(ctx, r):
+    """open + month before the server run's month = ended, waiting for the final pass on the 20th.
+    The run time comes from status.xml, not the build clock, so builds stay reproducible."""
     if r["status"] == "final":
         return "<td>settled</td>"
+    if r["month"] < ctx.status["generated_ts"][:7]:
+        y, mo = map(int, r["month"].split("-"))
+        settle = date(y + mo // 12, mo % 12 + 1, 20).strftime("%-d %B")
+        return f'<td class="running">ended, settles on {settle}</td>'
     return '<td class="running">running, not settled</td>'
 
 
@@ -718,7 +724,7 @@ def zone_monthly_table(ctx, z, rel):
     body = []
     for r in rows:
         cls = "" if r["status"] == "final" else ' class="open"'
-        body.append(f'<tr{cls}><th>{month_name(r["month"])}</th>{monthly_status(r)}'
+        body.append(f'<tr{cls}><th>{month_name(r["month"])}</th>{monthly_status(ctx, r)}'
                     + "".join(monthly_value(r[k]) for k, _ in VALUES) +
                     f'<td class="n">{r["days_scored"]} / {r["days_in_month"]}</td>'
                     f'<td class="n">{r["days_with_decision"]}</td></tr>')
