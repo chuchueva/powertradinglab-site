@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 NO5,2026-09,final,30,14,0,158.8525,-158.8525,2345.2375,-2345.2375,,2026-11-05T10:45:28Z
 NO5,2026-10,open,31,22,0,669.7225,-669.7225,3068.3525,-3068.3525,,2026-11-05T10:45:28Z
-NO5,2026-11,open,30,6,1,282.6900,-282.6900,415.5350,-415.5350,56.5475,2026-11-07T10:44:00Z
+NO5,2026-11,open,30,7,2,442.8600,-442.8600,575.7050,-575.7050,118.5575,2026-11-08T10:42:57Z
