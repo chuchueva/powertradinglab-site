@@ -1,110 +1,110 @@
 {
   "AL": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 51,
+    "delivery_days": 52,
     "eic": "10YAL-KESH-----5",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Tirane"
   },
   "BE": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 40,
+    "delivery_days": 41,
     "eic": "10YBE----------2",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Brussels"
   },
   "CH": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10YCH-SWISSGRIDZ",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Zurich"
   },
   "CZ": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 40,
+    "delivery_days": 41,
     "eic": "10YCZ-CEPS-----N",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "CZK",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Prague"
   },
   "DE_LU": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10Y1001A1001A82H",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Berlin"
   },
   "EE": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10Y1001A1001A39I",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Tallinn"
   },
   "HR": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 40,
+    "delivery_days": 41,
     "eic": "10YHR-HEP------M",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Zagreb"
   },
   "NL": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10YNL----------L",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Amsterdam"
   },
   "NO5": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 43,
+    "delivery_days": 44,
     "eic": "10Y1001A1001A48H",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Oslo"
   },
   "RO": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 50,
+    "delivery_days": 51,
     "eic": "10YRO-TEL------P",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "RON",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Bucharest"
   },
   "SE1": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10Y1001A1001A44P",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Stockholm"
   },
   "SI": {
     "day_ahead_currency": "EUR",
-    "delivery_days": 52,
+    "delivery_days": 53,
     "eic": "10YSI-ELES-----O",
     "first_delivery_day": "2026-09-17",
     "imbalance_currency": "EUR",
-    "last_delivery_day": "2026-11-07",
+    "last_delivery_day": "2026-11-08",
     "timezone": "Europe/Ljubljana"
   }
 }
