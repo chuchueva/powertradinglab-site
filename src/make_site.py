@@ -58,7 +58,9 @@ CSS_VERSION = hashlib.sha256((SRC / "style.css").read_bytes()).hexdigest()[:10]
 
 
 REPORT = "chuchueva_2026_europe_power_trade_opportunities_2020_2026_eng.pdf"   # content/ -> /docs/
-RUN_TIMES_UTC = ("09:40", "14:00")   # the server's schedule (SITE.md)
+# The server's schedule (SITE.md). The decision run is tied to Central European time
+# (methodology 4: 11:40 all year, i.e. 09:40 UTC in summer, 10:40 UTC in winter).
+RUN_TIMES = (("11:40", "Europe/Brussels"), ("14:00", "UTC"))
 
 
 class BuildError(Exception):
@@ -786,15 +788,20 @@ EXTRA_DEFINITIONS = """<dl class="defs">
 
 
 def next_run(generated_ts):
-    """The next scheduled run after the last one, from RUN_TIMES_UTC."""
+    """The next scheduled run after the last one, from RUN_TIMES (local clock times -> UTC)."""
     if not generated_ts:
         return ""
-    day, hm = generated_ts[:10], generated_ts[11:16]
-    later = [t for t in RUN_TIMES_UTC if t > hm]
-    if later:
-        return f"{day}T{later[0]}:00Z"
-    d = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
-    return f"{d}T{RUN_TIMES_UTC[0]}:00Z"
+    last = datetime.fromisoformat(generated_ts.replace("Z", "+00:00"))
+    day = last.date()
+    for k in range(3):
+        d = day + timedelta(days=k)
+        runs = sorted(
+            datetime(d.year, d.month, d.day, int(t[:2]), int(t[3:]), tzinfo=ZoneInfo(tz)).astimezone(timezone.utc)
+            for t, tz in RUN_TIMES)
+        for r in runs:
+            if r > last:
+                return r.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return ""
 
 
 def utc_time(x):
