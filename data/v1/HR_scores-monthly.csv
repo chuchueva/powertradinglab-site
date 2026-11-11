@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 HR,2026-09,final,30,14,0,-1917.5075,1917.5075,64022.5425,-64022.5425,,2026-11-05T10:45:28Z
 HR,2026-10,open,31,19,0,3207.5100,-3207.5100,90191.5650,-90191.5650,,2026-11-05T10:45:28Z
-HR,2026-11,open,30,9,4,4903.4700,-4903.4700,37775.8400,-37775.8400,1318.0150,2026-11-10T10:52:41Z
+HR,2026-11,open,30,10,5,6826.8875,-6826.8875,41781.9725,-41781.9725,2832.7575,2026-11-11T10:44:34Z
