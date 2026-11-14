@@ -1,2 +1,2 @@
 zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
-NO5,2026-11-14,2026-11-13T10:48:19Z,96,40,56,0,2026-11-13T09:00:00Z,,6,4,no5/2026/11/forecast_NO5_2026-11-14_20261113T104819Z.xml
+NO5,2026-11-15,2026-11-14T10:42:54Z,96,56,40,0,2026-11-14T09:00:00Z,,6,4,no5/2026/11/forecast_NO5_2026-11-15_20261114T104254Z.xml
