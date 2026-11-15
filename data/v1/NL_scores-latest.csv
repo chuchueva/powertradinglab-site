@@ -1,2 +1,2 @@
 zone,delivery_day,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,ptu,ptu_with_action,pass,calc_iteration,knownby_ts,schema_version,methodology_version,source_file
-NL,2026-11-13,-831.1025,-477.9050,752.3350,-2061.3425,-657.6225,96,96,as-known,1,2026-11-14T10:43:18Z,6,4,nl/2026/11/score_NL_2026-11-13_20261114T104318Z.xml
+NL,2026-11-14,-1488.8375,783.8500,869.1225,-1574.1100,-859.2350,96,96,as-known,1,2026-11-15T10:45:24Z,6,4,nl/2026/11/score_NL_2026-11-14_20261115T104524Z.xml
