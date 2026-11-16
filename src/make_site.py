@@ -47,7 +47,6 @@ NAV = [
     ("benchmarks/", "Benchmarks"),
     ("docs/", "Docs"),
     ("news/", "News"),
-    ("support/", "Support"),
     ("contact/", "Contact"),
 ]
 
@@ -246,7 +245,8 @@ def md(text, rel):
         elif m := re.match(r"(#{1,4})\s+(.*)", line):
             flush()
             lvl = len(m.group(1))
-            out.append(f"<h{lvl}>{inline(m.group(2))}</h{lvl}>")
+            slug = re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>|&\w+;", "", m.group(2).lower())).strip("-")
+            out.append(f'<h{lvl} id="{slug}">{inline(m.group(2))}</h{lvl}>')
         elif line.startswith("- ") or re.match(r"\d+\.\s", line):
             new = "ul" if line.startswith("- ") else "ol"
             if para or (items and kind[0] != new):
@@ -1085,11 +1085,11 @@ def build(out):
         "about/": page_content(ctx, "about/", "about.md", "About"),
         "chuchueva/": page_content(ctx, "chuchueva/", "chuchueva.md", "Irina Chuchueva"),
         "contact/": page_content(ctx, "contact/", "contact.md", "Contact"),
-        "support/": page_content(ctx, "support/", "support.md", "Support"),
     }
     moved = {
         "docs/methodology/": redirect("docs/methodology/", "docs/#methodology"),
         "docs/data/": redirect("docs/data/", "docs/#data"),
+        "support/": redirect("support/", "contact/#support"),   # merged into Contact, 2026-11-16
     }
     for path, text in list(pages.items()) + list(moved.items()):
         target = out / path / "index.html"
