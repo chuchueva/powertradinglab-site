@@ -3,7 +3,7 @@
 ::: side
 ![Irina Chuchueva](/img/chuchueva.jpg){width=450}
 
-**Power Market Quant: forecasting, optimisation, algorithmic trading**
+**Power Market Researcher & Developer | Remote Contractor**
 - 
 - Happy mother, book lover, musical theater enthusiast, plan my first marathon
 - PhD in mathematical modelling 
