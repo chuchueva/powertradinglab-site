@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 CH,2026-09,final,30,14,0,3356.3350,-3356.3350,32190.5400,-32190.5400,,2026-11-05T10:45:28Z
 CH,2026-10,open,31,31,0,4299.4450,-4299.4450,75894.6150,-75894.6150,,2026-11-05T10:45:28Z
-CH,2026-11,open,30,15,10,2992.2475,-2992.2475,37322.8075,-37322.8075,-938.0050,2026-11-16T10:56:53Z
+CH,2026-11,open,30,16,11,2392.5525,-2392.5525,39848.6725,-39848.6725,-721.6500,2026-11-17T10:43:22Z
