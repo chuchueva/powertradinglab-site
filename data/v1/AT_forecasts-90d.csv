@@ -1,3 +1,4 @@
 zone,delivery_day,knownby_ts,ptu,ptu_buy,ptu_sell,ptu_no_action,data_through,skip_reason,schema_version,methodology_version,source_file
 AT,2026-11-18,2026-11-17T10:42:59Z,96,12,84,0,2026-11-17T09:00:00Z,,6,4,at/2026/11/forecast_AT_2026-11-18_20261117T104259Z.xml
 AT,2026-11-19,2026-11-18T10:41:20Z,96,20,76,0,2026-11-18T09:00:00Z,,6,4,at/2026/11/forecast_AT_2026-11-19_20261118T104120Z.xml
+AT,2026-11-20,2026-11-19T10:41:51Z,96,28,68,0,2026-11-19T09:00:00Z,,6,4,at/2026/11/forecast_AT_2026-11-20_20261119T104151Z.xml

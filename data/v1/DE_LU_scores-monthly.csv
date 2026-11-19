@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 DE_LU,2026-09,final,30,14,0,-1177.9433,1177.9433,23448.7847,-23448.7847,,2026-10-23T09:44:32Z
 DE_LU,2026-10,open,31,31,8,2799.8013,-2799.8013,41261.7992,-41261.7992,-537.4920,2026-11-01T09:42:09Z
-DE_LU,2026-11,open,30,17,17,9993.8855,-9993.8855,26363.4155,-26363.4155,2971.7705,2026-11-18T10:41:45Z
+DE_LU,2026-11,open,30,18,18,9047.4040,-9047.4040,28066.6570,-28066.6570,2076.3105,2026-11-19T10:42:17Z
