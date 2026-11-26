@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 PL,2026-09,final,30,14,0,2178.0706,-2178.0706,20218.1173,-20218.1173,,2026-11-22T14:09:41Z
 PL,2026-10,final,31,31,0,132.6214,-132.6214,46180.0245,-46180.0245,,2026-11-22T14:09:41Z
-PL,2026-11,open,30,24,1,-969.9272,969.9272,40652.6886,-40652.6886,-757.1186,2026-11-25T10:42:36Z
+PL,2026-11,open,30,25,2,-671.4487,671.4487,41704.0860,-41704.0860,-1009.0278,2026-11-26T10:43:24Z

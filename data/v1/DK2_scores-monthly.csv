@@ -1,4 +1,4 @@
 zone,month,status,days_in_month,days_scored,days_with_decision,passive_da_buy_value,passive_da_sell_value,extractable_value,adverse_value,trailing_bias_value,knownby_ts
 DK2,2026-09,final,30,14,0,-598.0226,598.0226,16667.8827,-16667.8827,,2026-11-22T14:09:41Z
 DK2,2026-10,final,31,31,0,1332.2150,-1332.2150,37072.8250,-37072.8250,,2026-11-22T14:09:41Z
-DK2,2026-11,open,30,24,1,1153.8125,-1153.8125,35524.6375,-35524.6375,-102.9875,2026-11-25T10:42:36Z
+DK2,2026-11,open,30,25,2,1918.0250,-1918.0250,36918.3950,-36918.3950,248.0750,2026-11-26T10:43:24Z
